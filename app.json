@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "grati",
+    "slug": "grati",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "grati"
+}
