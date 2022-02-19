@@ -1,11 +1,32 @@
 {
   "expo": {
-    "name": "grati",
-    "slug": "grati",
+    "name": "Grati",
+    "slug": "Grati",
+    "icon": "./assets/icon.png",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "splash": {
+      "image": "./assets/splash.png",
+      "backgroundColor": "#6874E8",
+      "resizeMode": "contain"
+    },
+    "androidStatusBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#6874E8",
+      "translucent": true
+    },
+    "android": {
+      "icon": "./assets/icon.png",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#6874E8"
+      }
+    },
+    "ios": {
+      "icon": "./assets/icon.png"
+    }
   },
-  "name": "grati"
+  "name": "Grati"
 }

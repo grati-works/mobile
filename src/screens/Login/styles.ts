@@ -3,7 +3,6 @@ import { Platform } from 'react-native';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 export const Container = styled.View`
-  height: 100%;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.light.background};
 `;

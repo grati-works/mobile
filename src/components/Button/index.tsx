@@ -1,13 +1,13 @@
-import { ReactChild } from "react";
+import { ReactNode } from "react";
 import { ButtonContainer, ButtonText } from "./styles";
 
 interface ButtonProps {
-    type: 'primary' | 'secondary' | 'link';
+    type?: 'primary' | 'secondary' | 'link';
     text_align?: 'flex-start' | 'center' | 'flex-end';
-    disabled: boolean;
-    loading: boolean;
-    onPress: () => void;
-    children: ReactChild;
+    disabled?: boolean;
+    loading?: boolean;
+    onPress?: () => void;
+    children: ReactNode;
 }
 
 export function Button({ type = "primary", text_align = 'center', disabled = false, loading = false, onPress, children }: ButtonProps) {
