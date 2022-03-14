@@ -14,8 +14,7 @@ import {
 import {
     KeyboardAvoidingView,
     TouchableWithoutFeedback,
-    Keyboard,
-    Alert
+    Keyboard
   } from 'react-native';
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
@@ -32,7 +31,7 @@ export function Login() {
                         <LoginIllustration />
                     </Header>
                     <ContentContainer>
-                        <Input placeholder="Usuário" icon={<UserIcon />}/>
+                        <Input placeholder="Email" icon={<UserIcon />}/>
                         <Input placeholder="Senha" icon={<LockIcon />}/>
                         <ButtonWrapper>
                             <Button>Autenticar</Button>
