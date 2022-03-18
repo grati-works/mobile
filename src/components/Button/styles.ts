@@ -2,12 +2,17 @@ import styled, { css } from 'styled-components/native';
 import { RectButton } from 'react-native-gesture-handler';
 
 export const ButtonContainer = styled(RectButton)`
-    background-color: ${({ theme, type }) => type === 'primary' ? theme.colors.primary : theme.colors.light.background };
-    border: ${({ theme, type }) => type === 'secondary' ? theme.colors.primary : 'transparent' } 1px solid;
+    background-color: ${({ theme, type }) =>
+        type === 'primary' ? theme.colors.primary : theme.colors.light.background};
+    border: ${({ theme, type }) =>
+        type === 'secondary' ? theme.colors.primary : 'transparent'}
+        1px solid;
     align-items: ${({ align }) => align || 'center'};
     margin-bottom: 8px;
-    
-    ${({ theme, type }) => (type !== 'link') && css`
+
+    ${({ theme, type }) =>
+        type !== 'link' &&
+        css`
         width: 100%;
         height: 53px;
         justify-content: center;
@@ -16,6 +21,7 @@ export const ButtonContainer = styled(RectButton)`
 `;
 
 export const ButtonText = styled.Text`
-    color: ${({ theme, type }) => type === 'link' ? theme.colors.primary : theme.colors.button_text};
-    text-decoration: ${({ type }) => type === 'link' ? 'underline' : 'none'};
+    color: ${({ theme, type }) =>
+        type === 'link' ? theme.colors.primary : theme.colors.button_text};
+    text-decoration: ${({ type }) => (type === 'link' ? 'underline' : 'none')};
 `;

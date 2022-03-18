@@ -1,4 +1,3 @@
-
 export default {
   colors: {
     primaryLight: '#7b87f0',
@@ -10,22 +9,22 @@ export default {
 
     light: {
       background: '#F6F7F8',
-      background_highlight: '#FFF',
+      background_highlight: '#FFF'
     },
     dark: {
       background: '#1a1a1a',
-      background_highlight: '#252525',
+      background_highlight: '#252525'
     },
 
     text: '#4B5066',
     text_detail: '#666666',
     title: '#2D3142',
     placeholder: '#AEAEB3',
-    button_text: '#FFFFFF',
+    button_text: '#FFFFFF'
   },
   fonts: {
     primary_400: 'Inter_400Regular',
     primary_500: 'Inter_500Medium',
     primary_600: 'Inter_500SemiBold'
   }
-}
+};

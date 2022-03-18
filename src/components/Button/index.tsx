@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
-import { ButtonContainer, ButtonText } from "./styles";
+import { ReactNode } from 'react';
+import { ButtonContainer, ButtonText } from './styles';
 
 interface ButtonProps {
     type?: 'primary' | 'secondary' | 'link';
@@ -10,12 +10,17 @@ interface ButtonProps {
     children: ReactNode;
 }
 
-export function Button({ type = "primary", text_align = 'center', disabled = false, loading = false, onPress, children }: ButtonProps) {
+export function Button({
+    type = 'primary',
+    text_align = 'center',
+    disabled = false,
+    loading = false,
+    onPress,
+    children
+}: ButtonProps) {
     return (
-        <ButtonContainer type={type}  align={text_align}>
-            <ButtonText type={type}>
-                {children}
-            </ButtonText>
+        <ButtonContainer type={type} align={text_align}>
+            <ButtonText type={type}>{children}</ButtonText>
         </ButtonContainer>
-    )
+    );
 }

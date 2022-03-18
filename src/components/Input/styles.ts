@@ -12,7 +12,7 @@ export const IconContainer = styled.View`
     height: 100%;
     width: 53px;
     border-right-width: 2px;
-    border-right-color: #F4F5F6;
+    border-right-color: #f4f5f6;
     align-items: center;
     justify-content: center;
 `;

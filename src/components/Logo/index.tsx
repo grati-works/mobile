@@ -6,10 +6,10 @@ interface LogoProps {
     size?: number;
 }
 
-export function Logo({ mode = "light", size = 180 }: LogoProps) {
-    return (
-        mode === "light" ?
-        <DarkLogo width={size} height={size} /> :
+export function Logo({ mode = 'light', size = 180 }: LogoProps) {
+    return mode === 'light' ? (
+        <DarkLogo width={size} height={size} />
+    ) : (
         <LightLogo width={size} height={size} />
-    )
+    );
 }
