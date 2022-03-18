@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Container,
   CardList,
@@ -17,6 +17,7 @@ import {
 import { OrganizationCard } from "../../components/OrganizationCard";
 import { Modal } from "../../components/Modal";
 import { GroupCard } from "../../components/GroupCard";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export function Organizations() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -74,6 +75,10 @@ export function Organizations() {
     setModalIsOpen(!modalIsOpen);
   }
 
+  useEffect(() => {
+    console.log("organizations")
+  }, []);
+
   return (
     <KeyboardAvoidingView behavior="position" enabled>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -81,27 +86,31 @@ export function Organizations() {
           <Header>
             <Title>Organizações inscritas</Title>
           </Header>
-          <CardList
-            data={DATA}
-            renderItem={({ item }) => (
-              <OrganizationCard
-                key={item.id}
-                name={item.name}
-                image={item.image}
-                color={item.color}
-                onPress={toggleModal}
-              />
-            )}
-            keyExtractor={(item) => item.id}
-          />
+          <GestureHandlerRootView>
+            <CardList
+              data={DATA}
+              renderItem={({ item }) => (
+                <OrganizationCard
+                  key={item.id}
+                  name={item.name}
+                  image={item.image}
+                  color={item.color}
+                  onPress={toggleModal}
+                />
+              )}
+              keyExtractor={(item) => item.id}
+            />
+          </GestureHandlerRootView>
           <Modal isOpen={modalIsOpen} toggleFunction={toggleModal} padding={24}>
             <ModalTitle>Grupos inscritos na organização - Senai</ModalTitle>
-            <GroupList
-              data={DATA[0].groups}
-              renderItem={({ item }) => (
-                <GroupCard key={item.id} name={item.name} color={item.color} />
-              )}
-            />
+            <GestureHandlerRootView>
+              <GroupList
+                data={DATA[0].groups}
+                renderItem={({ item }) => (
+                  <GroupCard key={item.id} name={item.name} color={item.color} />
+                )}
+              />
+            </GestureHandlerRootView>
           </Modal>
         </Container>
       </TouchableWithoutFeedback>

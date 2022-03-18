@@ -9,7 +9,8 @@ export default {
 
     light: {
       background: '#F6F7F8',
-      background_highlight: '#FFF'
+      background_highlight: '#FFF',
+      detail: '#EFEEF2'
     },
     dark: {
       background: '#1a1a1a',
@@ -20,7 +21,8 @@ export default {
     text_detail: '#666666',
     title: '#2D3142',
     placeholder: '#AEAEB3',
-    button_text: '#FFFFFF'
+    button_text: '#FFFFFF',
+    transparent_black: '#4B506677',
   },
   fonts: {
     primary_400: 'Inter_400Regular',

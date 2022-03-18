@@ -10,7 +10,7 @@ export const ButtonContainer = styled(RectButton)`
     align-items: ${({ align }) => align || 'center'};
     margin-bottom: 8px;
 
-    ${({ theme, type }) =>
+    ${({ type }) =>
         type !== 'link' &&
         css`
         width: 100%;
