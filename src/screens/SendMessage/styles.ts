@@ -1,11 +1,21 @@
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
 import { getStatusBarHeight } from "react-native-iphone-x-helper";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import { RectButton } from "react-native-gesture-handler";
 
-export const Container = styled.ScrollView`
+export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.light.background};
-  height: ${RFPercentage(100) + getStatusBarHeight()}px;
-  margin-top: ${getStatusBarHeight()}px;
+
+  ${({ keyboardIsVisible, keyboardHeight, theme }) =>
+    keyboardIsVisible
+      ? css`
+          height: ${RFPercentage(100) - keyboardHeight}px;
+          margin-top: ${keyboardHeight + getStatusBarHeight()}px;
+        `
+      : css`
+          height: ${RFPercentage(100)}px;
+          margin-top: ${getStatusBarHeight()}px;
+        `};
 `;
 
 export const ReceiversUsernamesWrapper = styled.View`
@@ -32,7 +42,12 @@ export const ReceiverInput = styled.TextInput`
   font-size: ${RFValue(14)}px;
 `;
 
-export const MessageInfoWrapper = styled.View``;
+export const TagInput = styled.TextInput`
+  height: 48px;
+  font-size: ${RFValue(14)}px;
+`;
+
+export const MessageInfoWrapper = styled.ScrollView``;
 
 export const TagsWrapper = styled.View`
   width: 100%;
@@ -75,4 +90,49 @@ export const TagName = styled.Text`
   font-size: ${RFValue(14)}px;
   padding: 8px 16px;
   color: ${({ theme }) => theme.colors.text};
+`;
+
+export const TextInput = styled.TextInput`
+  color: ${({ theme }) => theme.colors.text};
+  padding: 0 32px;
+  font-size: ${RFValue(14)}px;
+  max-width: 100%;
+`;
+
+export const FooterWrapper = styled.View`
+  padding: 0 32px;
+
+  position: absolute;
+  bottom: 0;
+
+  display: flex;
+  flex-direction: row;
+
+  margin-bottom: ${getStatusBarHeight()}px;
+`;
+
+export const AttachButton = styled(RectButton)`
+  width: ${RFValue(48)}px;
+  height: ${RFValue(48)}px;
+  background-color: ${({ theme }) => theme.colors.light.detail};
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-right: 10px;
+`;
+
+export const SendButton = styled(RectButton)`
+  width: ${RFValue(48)}px;
+  height: ${RFValue(48)}px;
+  background-color: ${({ theme }) => theme.colors.primary};
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-left: 9%;
 `;
