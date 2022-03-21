@@ -1,8 +1,6 @@
-import { Logo } from "../../components/Logo";
-import LoginIllustration from "../../assets/images/login_illustration.svg";
-import UserIcon from "../../assets/icons/user.svg";
-import LockIcon from "../../assets/icons/lock.svg";
 import { useNavigation } from "@react-navigation/native";
+import { useAuth } from "../../hooks/auth";
+import { useState } from "react";
 
 import {
   Container,
@@ -20,20 +18,26 @@ import {
 } from "react-native";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
-import { useAuth } from "../../hooks/auth";
+
+import { Logo } from "../../components/Logo";
+import LoginIllustration from "../../assets/images/login_illustration.svg";
+import UserIcon from "../../assets/icons/user.svg";
+import LockIcon from "../../assets/icons/lock.svg";
 
 export function Login() {
   const navigation = useNavigation();
   const { signIn } = useAuth();
 
-  async function handleSignIn() {
-    console.log("AA");
-    try {
-      const email = "";
-      const password = "";
+  const [email, setEmail] = useState('erick.capito@hotmail.com');
+  const [password, setPassword] = useState('12345678Teste!');
 
-      signIn({ email, password });
-    } catch (error) {}
+  async function handleSignIn() {
+
+    try {
+      const user = await signIn({ email, password });
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   async function handleRecoverPassword() {
@@ -52,8 +56,18 @@ export function Login() {
               <LoginIllustration />
             </Header>
             <ContentContainer>
-              <Input placeholder="Email" icon={<UserIcon />} />
-              <Input placeholder="Senha" icon={<LockIcon />} />
+              <Input
+                placeholder="Email"
+                icon={<UserIcon />}
+                value={email}
+                onChangeText={setEmail}
+              />
+              <Input
+                placeholder="Senha"
+                icon={<LockIcon />}
+                value={password}
+                onChangeText={setPassword}
+              />
               <ButtonWrapper>
                 <Button onPress={handleSignIn}>Autenticar</Button>
                 <Button

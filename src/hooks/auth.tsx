@@ -5,17 +5,17 @@ import React, {
   createContext,
   ReactNode,
 } from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { api } from "../services/api";
 
 interface User {
   id: string;
-  user_id: string;
   email: string;
   name: string;
-  driver_license: string;
-  avatar: string;
+  profile_picture: string;
   token: string;
+  refresh_token: string;
 }
 
 interface SignInCredentials {
@@ -48,11 +48,19 @@ function AuthProvider({ children }: AuthProviderProps) {
         password,
       });
 
-      const { token, user } = response.data;
+      const { token, refresh_token, user } = response.data.data;
 
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      // TODO: Save user on AsyncStorage
-      setData({ ...user, token });
+
+      const userInfo = { ...user, token, refresh_token };
+
+      await AsyncStorage.setItem("@Grati:user", JSON.stringify(userInfo));
+      await AsyncStorage.setItem("@Grati:token", token);
+      await AsyncStorage.setItem("@Grati:refresh_token", refresh_token);
+
+      setData(userInfo);
+
+      return userInfo;
     } catch (error) {
       throw new Error(error);
     }
@@ -61,6 +69,10 @@ function AuthProvider({ children }: AuthProviderProps) {
   async function signOut() {
     try {
       // TODO: Remove user from AsyncStorage
+      await AsyncStorage.removeItem("@Grati:user");
+      await AsyncStorage.removeItem("@Grati:token");
+      await AsyncStorage.removeItem("@Grati:refresh_token");
+      
       setData({} as User);
     } catch (error) {
       throw new Error(error);
@@ -69,21 +81,29 @@ function AuthProvider({ children }: AuthProviderProps) {
 
   function updateUser(user: User) {
     try {
-      // TODO: Update user on AsyncStorage
       setData(user);
+
+      AsyncStorage.setItem("@Grati:user", JSON.stringify(user));
     } catch (error) {
       throw new Error(error);
     }
   }
 
   useEffect(() => {
-    
       async function loadUserData() {
         // TODO: Get user from AsyncStorage
+        const user = await AsyncStorage.getItem("@Grati:user");
+        const token = await AsyncStorage.getItem("@Grati:token");
+        const refresh_token = await AsyncStorage.getItem("@Grati:refresh_token");
+
+        if (user && token && refresh_token) {
+          api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+          setData(JSON.parse(user));
+        }
       }
   
       loadUserData();
-      
   }, []);
 
   return (

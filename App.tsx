@@ -3,6 +3,7 @@ import AppLoading from "expo-app-loading";
 import { ThemeProvider } from "styled-components";
 import theme from "./src/styles/theme";
 import { Routes } from "./src/routes";
+import { AuthProvider } from "./src/hooks/auth";
 
 import {
   useFonts,
@@ -23,8 +24,10 @@ export default function App() {
   }
 
   return (
+    <AuthProvider>
       <ThemeProvider theme={theme}>
         <Routes />
       </ThemeProvider>
+    </AuthProvider>
   );
 }

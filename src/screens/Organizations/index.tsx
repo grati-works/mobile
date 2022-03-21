@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   Container,
   CardList,
@@ -75,10 +75,6 @@ export function Organizations() {
     setModalIsOpen(!modalIsOpen);
   }
 
-  useEffect(() => {
-    console.log("organizations")
-  }, []);
-
   return (
     <KeyboardAvoidingView behavior="position" enabled>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -86,9 +82,9 @@ export function Organizations() {
           <Header>
             <Title>Organizações inscritas</Title>
           </Header>
-          <GestureHandlerRootView>
             <CardList
               data={DATA}
+              contentContainerStyle={{paddingBottom:100}} 
               renderItem={({ item }) => (
                 <OrganizationCard
                   key={item.id}
@@ -99,18 +95,16 @@ export function Organizations() {
                 />
               )}
               keyExtractor={(item) => item.id}
+              panGestureComponentEnabled={true}
             />
-          </GestureHandlerRootView>
           <Modal isOpen={modalIsOpen} toggleFunction={toggleModal} padding={24}>
             <ModalTitle>Grupos inscritos na organização - Senai</ModalTitle>
-            <GestureHandlerRootView>
               <GroupList
                 data={DATA[0].groups}
                 renderItem={({ item }) => (
                   <GroupCard key={item.id} name={item.name} color={item.color} />
                 )}
               />
-            </GestureHandlerRootView>
           </Modal>
         </Container>
       </TouchableWithoutFeedback>

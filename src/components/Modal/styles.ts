@@ -1,3 +1,4 @@
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
@@ -24,7 +25,7 @@ export const ModalContentWrapper = styled.View`
     padding: ${({ padding }) => padding || 0}px;
 `;
 
-export const ModalBackground = styled.View`
+export const ModalBackground = styled.TouchableOpacity`
     width: 100%;
     height: 100%;
     background-color: ${({ theme }) => theme.colors.transparent_black};

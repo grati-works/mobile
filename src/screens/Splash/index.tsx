@@ -10,7 +10,6 @@ export function Splash() {
   }
 
   useEffect(() => {
-    console.log("splash");
     setTimeout(startApp, 3000);
   }, []);
 

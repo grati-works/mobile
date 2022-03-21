@@ -1,4 +1,3 @@
-import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { OrganizationCardWrapper, OrganizationImageWrapper, OrganizationImage, OrganizationName } from "./styles";
 
 interface OrganizationCardProps {
@@ -10,7 +9,6 @@ interface OrganizationCardProps {
 
 export function OrganizationCard({ color, image, name, onPress }: OrganizationCardProps) {
     return (
-        <GestureHandlerRootView>
             <OrganizationCardWrapper onPress={onPress}>
                 <OrganizationImageWrapper color={color}>
                     <OrganizationImage source={{
@@ -19,6 +17,5 @@ export function OrganizationCard({ color, image, name, onPress }: OrganizationCa
                 </OrganizationImageWrapper>
                 <OrganizationName>{name}</OrganizationName>
             </OrganizationCardWrapper>
-        </GestureHandlerRootView>
     );
 }
