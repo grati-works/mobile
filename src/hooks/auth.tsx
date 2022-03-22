@@ -62,6 +62,7 @@ function AuthProvider({ children }: AuthProviderProps) {
 
       return userInfo;
     } catch (error) {
+      console.log("API ERROR [Sessions]: ", error.response.data);
       throw new Error(error);
     }
   }
@@ -91,15 +92,27 @@ function AuthProvider({ children }: AuthProviderProps) {
 
   useEffect(() => {
       async function loadUserData() {
-        // TODO: Get user from AsyncStorage
-        const user = await AsyncStorage.getItem("@Grati:user");
-        const token = await AsyncStorage.getItem("@Grati:token");
-        const refresh_token = await AsyncStorage.getItem("@Grati:refresh_token");
-
-        if (user && token && refresh_token) {
-          api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-
-          setData(JSON.parse(user));
+        try {
+          const userToken = await AsyncStorage.getItem("@Grati:token");
+          const refreshToken = await AsyncStorage.getItem("@Grati:refresh_token");
+  
+          if (userToken && refreshToken) {
+            const newTokens = await api.post('/refresh-token', {
+              token: refreshToken
+            });
+  
+            const { token, refresh_token, user } = newTokens.data.data;
+  
+            api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  
+            await AsyncStorage.setItem("@Grati:token", token);
+            await AsyncStorage.setItem("@Grati:refresh_token", refresh_token);
+            await AsyncStorage.setItem("@Grati:user", JSON.stringify(user));
+  
+            setData(user);
+          }
+        } catch(error) {
+          console.log("API ERROR [RefreshToken]: ", error.response.data);
         }
       }
   
