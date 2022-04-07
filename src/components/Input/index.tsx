@@ -5,7 +5,8 @@ interface InputProps {
     icon?: React.ReactElement<SvgProps>;
     placeholder: string;
     value?: string;
-    onChangeText?: React.Dispatch<(prevState: undefined) => undefined>
+    onChangeText?: React.Dispatch<(prevState: undefined) => undefined>;
+    secureTextEntry?: boolean;
 }
 
 export function Input({ icon, placeholder, value, onChangeText, ...props }: InputProps) {

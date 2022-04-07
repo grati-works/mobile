@@ -12,3 +12,9 @@ export const MessageCardWrapper = styled.View`
 
 export const ReceiverInfoWrapper = styled.View``
 export const TagMessage = styled.Text``
+
+export const MessageWrapper = styled.Text``;
+
+export const ActionsWrapper = styled.View``
+export const Timestamp = styled.Text``
+export const Author = styled.Text``

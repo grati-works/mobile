@@ -48,7 +48,7 @@ function AuthProvider({ children }: AuthProviderProps) {
         password,
       });
 
-      const { token, refresh_token, user } = response.data.data;
+      const { token, refresh_token, user } = response.data;
 
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
@@ -97,11 +97,11 @@ function AuthProvider({ children }: AuthProviderProps) {
           const refreshToken = await AsyncStorage.getItem("@Grati:refresh_token");
   
           if (userToken && refreshToken) {
-            const newTokens = await api.post('/refresh-token', {
+            const newTokens = await api.post('/refresh', {
               token: refreshToken
             });
   
-            const { token, refresh_token, user } = newTokens.data.data;
+            const { token, refresh_token, user } = newTokens.data;
   
             api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   

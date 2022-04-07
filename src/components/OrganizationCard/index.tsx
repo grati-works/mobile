@@ -2,19 +2,14 @@ import { OrganizationCardWrapper, OrganizationImageWrapper, OrganizationImage, O
 
 interface OrganizationCardProps {
     name: string;
-    image: string;
     color: string;
     onPress: () => void;
 }
 
-export function OrganizationCard({ color, image, name, onPress }: OrganizationCardProps) {
+export function OrganizationCard({ color, name, onPress }: OrganizationCardProps) {
     return (
             <OrganizationCardWrapper onPress={onPress}>
-                <OrganizationImageWrapper color={color}>
-                    <OrganizationImage source={{
-                        uri: image
-                    }} resizeMode="contain" />
-                </OrganizationImageWrapper>
+                <OrganizationImageWrapper color={color} />
                 <OrganizationName>{name}</OrganizationName>
             </OrganizationCardWrapper>
     );

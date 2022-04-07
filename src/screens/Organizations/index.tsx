@@ -1,11 +1,10 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Container,
   CardList,
   Header,
   Title,
   ModalTitle,
-  GroupList,
 } from "./styles";
 
 import {
@@ -13,67 +12,69 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useTheme } from 'styled-components';
 
 import { OrganizationCard } from "../../components/OrganizationCard";
-import { Modal } from "../../components/Modal";
 import { GroupCard } from "../../components/GroupCard";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { api } from "../../services/api";
+import { useNavigation } from "@react-navigation/native";
+import { Modalize } from 'react-native-modalize';
 
 export function Organizations() {
+  const navigation = useNavigation();
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const DATA = [
-    {
-      id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-      name: "Kalunga",
-      color: "#000000",
-      image:
-        "https://img.kalunga.com.br/hotsite/images/trabalhe-conosco/logo.png",
-      groups: [
-        {
-          id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-          color: "#1BA",
-          name: "Squad Turtle",
-        },
-        {
-          id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28bb",
-          color: "#A00",
-          name: "Administração",
-        },
-      ],
-    },
-    {
-      id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28bb",
-      name: "Senai",
-      color: "#CF4A32",
-      image:
-        "https://www.inova.unicamp.br/wp-content/uploads/2021/05/SENAI-SP.jpg",
-      groups: [
-        {
-          id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28bb",
-          color: "#A00",
-          name: "Administração",
-        },
-      ],
-    },
-    {
-      id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28bc",
-      name: "Microsoft",
-      color: "#EEEEEE",
-      image:
-        "https://aem.dropbox.com/cms/content/dam/dropbox/www/en-us/business/app-integrations/microsoft-cloud-app-security/microsoft-logo.png",
-      groups: [
-        {
-          id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28bc",
-          color: "#121212",
-          name: "Gaming Developers",
-        },
-      ],
-    },
-  ];
+  const [organizations, setOrganizations] = useState([]);
+  const [selectedOrganization, setSelectedOrganization] = useState(null);
+  const [selectedGroup, setSelectedGroup] = useState(null);
+  const theme = useTheme();
 
-  function toggleModal() {
-    setModalIsOpen(!modalIsOpen);
+  const modalizeRef = useRef<Modalize>(null);
+
+  async function toggleModal(id: number) {
+    setSelectedOrganization(id);
+    AsyncStorage.setItem("@Grati:organization_id", id.toString());
+    // setModalIsOpen(!modalIsOpen);
+    modalizeRef.current?.open();
   }
+
+  function enterGroup(id: number) {
+    navigation.navigate("Home", {
+      organization_id: selectedOrganization,
+      group_id: id,
+    })
+    AsyncStorage.setItem("@Grati:group_id", id.toString());
+    setSelectedGroup(id);
+  }
+
+  useEffect(() => {
+    async function loadSelectedInfo() {
+      try {
+        const organization_id = await AsyncStorage.getItem("@Grati:organization_id");
+        const group_id = await AsyncStorage.getItem("@Grati:group_id");
+  
+        if(organization_id) setSelectedOrganization(organization_id);
+        if(group_id) setSelectedGroup(group_id);
+      } catch (error) {
+        console.debug('Não foi possível recarregar organização selecionada')
+      }
+    }
+
+    async function loadOrganizations() {
+      try {
+        const organizations = await api.get('user/organizations');
+
+        setOrganizations(organizations.data);
+        console.log(organizations.data)
+      } catch (error) {
+        console.log(error);
+        console.debug('Não foi possível carregar as organizações de usuário');
+      }
+    }
+
+    loadSelectedInfo();
+    loadOrganizations();
+  }, []);
 
   return (
     <KeyboardAvoidingView behavior="position" enabled>
@@ -83,29 +84,42 @@ export function Organizations() {
             <Title>Organizações inscritas</Title>
           </Header>
             <CardList
-              data={DATA}
+              data={organizations}
               contentContainerStyle={{paddingBottom:100}} 
               renderItem={({ item }) => (
                 <OrganizationCard
                   key={item.id}
                   name={item.name}
-                  image={item.image}
                   color={item.color}
-                  onPress={toggleModal}
+                  onPress={() => toggleModal(item.id)}
                 />
               )}
               keyExtractor={(item) => item.id}
               panGestureComponentEnabled={true}
             />
-          <Modal isOpen={modalIsOpen} toggleFunction={toggleModal} padding={24}>
-            <ModalTitle>Grupos inscritos na organização - Senai</ModalTitle>
-              <GroupList
-                data={DATA[0].groups}
-                renderItem={({ item }) => (
-                  <GroupCard key={item.id} name={item.name} color={item.color} />
-                )}
-              />
-          </Modal>
+            <Modalize
+              ref={modalizeRef}
+              snapPoint={700}
+              HeaderComponent={
+                <ModalTitle>Grupos inscritos na organização - {organizations.find(organization => organization.id === selectedOrganization)?.name}</ModalTitle>
+              }
+              childrenStyle={{padding: 20}}
+              modalStyle={{
+                padding: 40,
+                backgroundColor: theme.colors.light.background,
+              }}
+            >
+                  {
+                    organizations.find(organization => organization.id === selectedOrganization)?.groups.map(group => (
+                      <GroupCard
+                        key={group.id}
+                        name={group.name}
+                        color={group.color}
+                        onPress={() => enterGroup(group.id)}
+                        />
+                    ))
+                  }
+            </Modalize>
         </Container>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>

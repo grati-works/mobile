@@ -8,6 +8,7 @@ import HomeSvg from '../assets/icons/bottom-tab/home.svg';
 
 import { AppStackRoutes } from './app.stack.routes';
 import { SendMessage } from '../screens/SendMessage';
+import { Organizations } from '../screens/Organizations';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -24,7 +25,7 @@ export function AppTabRoutes() {
           paddingVertical: Platform.OS === 'ios' ? 20 : 0,
           height: 78,
           backgroundColor: theme.colors.title,
-        }
+        },
       }}
     >
       <Screen

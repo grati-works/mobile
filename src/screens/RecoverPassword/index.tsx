@@ -8,7 +8,8 @@ import {
     ContentContainer,
     Header,
     LogoContainer,
-    ButtonWrapper
+    ButtonWrapper,
+    Title
 } from './styles';
 
 import {
@@ -35,6 +36,7 @@ export function RecoverPassword() {
                 <LoginIllustration />
             </Header>
             <ContentContainer>
+                <Title>Recuperar senha</Title>
                 <Input placeholder='Email' icon={<UserIcon />} />
                 <ButtonWrapper>
                 <Button>Enviar e-mail de recuperação</Button>

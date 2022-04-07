@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { RFValue, RFPercentage } from 'react-native-responsive-fontsize';
 import { FlatList, RectButton } from 'react-native-gesture-handler';
+import { Modalize } from 'react-native-modalize';
 
 export const Container = styled.View`
   align-items: center;
@@ -57,4 +58,8 @@ export const GroupName = styled.Text`
   font-size: ${RFValue(16)}px;
   font-family: ${({ theme }) => theme.fonts.primary_600};
   text-align: center;
+`;
+
+export const StyledModal = styled(Modalize)`
+  padding: 102px;
 `;

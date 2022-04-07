@@ -12,14 +12,11 @@ export function AppStackRoutes() {
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName="Home"
+      initialRouteName="Organizations"
     >
       <Screen
         name="Organizations"
         component={Organizations}
-        options={{
-          gestureEnabled: false,
-        }}
       />
       <Screen
         name="Home"

@@ -24,4 +24,5 @@ export const ButtonText = styled.Text`
     color: ${({ theme, type }) =>
         type === 'link' ? theme.colors.primary : theme.colors.button_text};
     text-decoration: ${({ type }) => (type === 'link' ? 'underline' : 'none')};
+    text-align: ${({ type }) => (type === 'link' ? 'left' : 'center')};;
 `;

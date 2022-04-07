@@ -22,7 +22,7 @@ export function Button({
     return (
         <GestureHandlerRootView>
             <ButtonContainer type={type} align={text_align} {...props}>
-                <ButtonText type={type}>{children}</ButtonText>
+                <ButtonText align={text_align} type={type}>{children}</ButtonText>
             </ButtonContainer>
         </GestureHandlerRootView>
     );

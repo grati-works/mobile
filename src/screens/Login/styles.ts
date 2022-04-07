@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import { Platform } from 'react-native';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
-import { RFPercentage } from 'react-native-responsive-fontsize';
+import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
 
 export const Container = styled.View`
   align-items: center;
@@ -26,7 +26,13 @@ export const LogoContainer = styled.View`
 
 export const ContentContainer = styled.View`
   width: 100%;
-  padding: 32px;
+  padding: 10px 32px;
+`;
+
+export const Title = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.primary_600};
+  font-size: ${RFValue(20)}px;
+  margin-bottom: 15px;
 `;
 
 export const ButtonWrapper = styled.View`

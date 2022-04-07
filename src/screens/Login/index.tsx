@@ -8,6 +8,7 @@ import {
   Header,
   LogoContainer,
   ButtonWrapper,
+  Title,
 } from "./styles";
 
 import {
@@ -28,15 +29,14 @@ export function Login() {
   const navigation = useNavigation();
   const { signIn } = useAuth();
 
-  const [email, setEmail] = useState('erick.capito@hotmail.com');
-  const [password, setPassword] = useState('12345678Teste!');
+  const [email, setEmail] = useState("erick.capito@hotmail.com");
+  const [password, setPassword] = useState("12345678Teste!");
 
   async function handleSignIn() {
-
     try {
       const user = await signIn({ email, password });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 
@@ -56,6 +56,7 @@ export function Login() {
               <LoginIllustration />
             </Header>
             <ContentContainer>
+              <Title>Acessar conta</Title>
               <Input
                 placeholder="Email"
                 icon={<UserIcon />}
@@ -67,6 +68,7 @@ export function Login() {
                 icon={<LockIcon />}
                 value={password}
                 onChangeText={setPassword}
+                secureTextEntry
               />
               <ButtonWrapper>
                 <Button onPress={handleSignIn}>Autenticar</Button>
