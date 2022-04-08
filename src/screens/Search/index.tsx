@@ -9,6 +9,7 @@ import {
 } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
+import { UserCard } from "../../components/UserCard";
 
 export function Search() {
   const navigation = useNavigation();
@@ -21,6 +22,7 @@ export function Search() {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <Container>
           <Text style={{ marginTop: 100 }}>Search</Text>
+          <UserCard/>
         </Container>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
