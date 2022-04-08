@@ -9,11 +9,11 @@ export const Container = styled.View`
   ${({ keyboardIsVisible, keyboardHeight, theme }) =>
     keyboardIsVisible
       ? css`
-          height: ${RFPercentage(100) - keyboardHeight}px;
-          margin-top: ${keyboardHeight + getStatusBarHeight()}px;
+          height: ${RFPercentage(100) - keyboardHeight - 78}px;
+          margin-top: ${keyboardHeight + getStatusBarHeight() - 78}px;
         `
       : css`
-          height: ${RFPercentage(100)}px;
+          height: ${RFPercentage(100) - 78}px;
           margin-top: ${getStatusBarHeight()}px;
         `};
 `;

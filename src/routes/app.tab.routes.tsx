@@ -5,10 +5,15 @@ import { useTheme } from 'styled-components';
 
 import MessageSvg from '../assets/icons/bottom-tab/message.svg';
 import HomeSvg from '../assets/icons/bottom-tab/home.svg';
+import MedalSvg from '../assets/icons/bottom-tab/medal.svg';
+import SearchSvg from '../assets/icons/bottom-tab/search.svg';
+import UserSvg from '../assets/icons/bottom-tab/user.svg';
 
 import { AppStackRoutes } from './app.stack.routes';
 import { SendMessage } from '../screens/SendMessage';
-import { Organizations } from '../screens/Organizations';
+import { Ranking } from '../screens/Ranking';
+import { Search } from '../screens/Search';
+import { Profile } from '../screens/Profile';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -19,7 +24,8 @@ export function AppTabRoutes() {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: theme.colors.primary,
-        tabBarInactiveTintColor: theme.colors.text_detail,
+        tabBarInactiveTintColor: theme.colors.light.background,
+        tabBarActiveBackgroundColor: theme.colors.transparent_black,
         tabBarShowLabel: false,
         tabBarStyle: {
           paddingVertical: Platform.OS === 'ios' ? 20 : 0,
@@ -33,7 +39,16 @@ export function AppTabRoutes() {
         component={AppStackRoutes}
         options={{
           tabBarIcon: ({ color }) => (
-            <HomeSvg width={24} height={24} fill={color} />
+            <HomeSvg width={26} height={26} stroke={color} />
+          )
+        }}
+      />
+      <Screen
+        name="Ranking"
+        component={Ranking}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <MedalSvg width={27} height={27} stroke={color} />
           )
         }}
       />
@@ -42,7 +57,25 @@ export function AppTabRoutes() {
         component={SendMessage}
         options={{
           tabBarIcon: ({ color }) => (
-            <MessageSvg width={24} height={24} fill={color} />
+            <MessageSvg width={27} height={27} stroke={color} />
+          )
+        }}
+      />
+      <Screen
+        name="Search"
+        component={Search}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <SearchSvg width={26} height={26} stroke={color} />
+          )
+        }}
+      />
+      <Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <UserSvg width={26} height={26} stroke={color} />
           )
         }}
       />
