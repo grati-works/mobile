@@ -1,8 +1,7 @@
 import styled from 'styled-components/native';
 import { RFValue } from 'react-native-responsive-fontsize';
-import { RectButton } from 'react-native-gesture-handler';
 
-export const GroupCardWrapper = styled(RectButton)`
+export const GroupCardWrapper = styled.TouchableOpacity`
   padding: 16px;
   border-radius: 5px;
   background-color: ${({ theme }) => theme.colors.light.background_highlight};

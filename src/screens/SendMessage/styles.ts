@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components/native";
 import { getStatusBarHeight } from "react-native-iphone-x-helper";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
-import { RectButton } from "react-native-gesture-handler";
 
 export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.light.background};
@@ -9,11 +8,11 @@ export const Container = styled.View`
   ${({ keyboardIsVisible, keyboardHeight, theme }) =>
     keyboardIsVisible
       ? css`
-          height: ${RFPercentage(100) - keyboardHeight - 78}px;
-          margin-top: ${keyboardHeight + getStatusBarHeight() - 78}px;
+          height: ${RFPercentage(100) - keyboardHeight - 70}px;
+          margin-top: ${keyboardHeight + getStatusBarHeight() - 48}px;
         `
       : css`
-          height: ${RFPercentage(100) - 78}px;
+          height: ${RFPercentage(100) - 48}px;
           margin-top: ${getStatusBarHeight()}px;
         `};
 `;
@@ -31,6 +30,7 @@ export const ReceiversUsernamesWrapper = styled.View`
 
 export const ReceiverUsername = styled.Text`
   background-color: ${({ theme }) => theme.colors.light.detail};
+  font-family: ${({ theme }) => theme.fonts.primary_400};
   border-radius: 5px;
   padding: 8px 16px;
   margin-right: 12px;
@@ -38,13 +38,17 @@ export const ReceiverUsername = styled.Text`
 `;
 
 export const ReceiverInput = styled.TextInput`
+  flex: 1;
   height: 36px;
-  font-size: ${RFValue(14)}px;
+  font-size: ${RFValue(12)}px;
+  font-family: ${({ theme }) => theme.fonts.primary_400};
 `;
 
 export const TagInput = styled.TextInput`
+  flex: 1;
   height: 48px;
-  font-size: ${RFValue(14)}px;
+  font-size: ${RFValue(12)}px;
+  font-family: ${({ theme }) => theme.fonts.primary_400};
 `;
 
 export const MessageInfoWrapper = styled.ScrollView``;
@@ -90,6 +94,7 @@ export const TagName = styled.Text`
   font-size: ${RFValue(14)}px;
   padding: 8px 16px;
   color: ${({ theme }) => theme.colors.text};
+  font-family: ${({ theme }) => theme.fonts.primary_400};
 `;
 
 export const TextInput = styled.TextInput`
@@ -111,7 +116,7 @@ export const FooterWrapper = styled.View`
   margin-bottom: ${getStatusBarHeight()}px;
 `;
 
-export const AttachButton = styled(RectButton)`
+export const AttachButton = styled.TouchableOpacity`
   width: ${RFValue(48)}px;
   height: ${RFValue(48)}px;
   background-color: ${({ theme }) => theme.colors.light.detail};
@@ -124,7 +129,7 @@ export const AttachButton = styled(RectButton)`
   margin-right: 10px;
 `;
 
-export const SendButton = styled(RectButton)`
+export const SendButton = styled.TouchableOpacity`
   width: ${RFValue(48)}px;
   height: ${RFValue(48)}px;
   background-color: ${({ theme }) => theme.colors.primary};

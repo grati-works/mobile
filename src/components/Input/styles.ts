@@ -20,4 +20,5 @@ export const IconContainer = styled.View`
 export const StyledInput = styled.TextInput`
     flex: 1;
     padding: 0px 10px;
+    font-family: ${({ theme }) => theme.fonts.primary_400};
 `;

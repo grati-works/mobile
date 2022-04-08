@@ -9,6 +9,7 @@ import {
 } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
+import { Header } from "../../components/Header";
 
 export function Ranking() {
   const navigation = useNavigation();
@@ -20,7 +21,7 @@ export function Ranking() {
     <KeyboardAvoidingView behavior="position" enabled>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <Container>
-          <Text style={{ marginTop: 100 }}>Ranking</Text>
+          <Header />
         </Container>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>

@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { ButtonContainer, ButtonText } from './styles';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 interface ButtonProps {
     type?: 'primary' | 'secondary' | 'link';
@@ -20,10 +19,8 @@ export function Button({
     ...props
 }: ButtonProps) {
     return (
-        <GestureHandlerRootView>
-            <ButtonContainer type={type} align={text_align} {...props}>
-                <ButtonText align={text_align} type={type}>{children}</ButtonText>
-            </ButtonContainer>
-        </GestureHandlerRootView>
+        <ButtonContainer type={type} align={text_align} {...props}>
+            <ButtonText align={text_align} type={type}>{children}</ButtonText>
+        </ButtonContainer>
     );
 }

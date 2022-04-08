@@ -26,8 +26,7 @@ import Image from "../../assets/icons/image.svg";
 import Gif from "../../assets/icons/gif.svg";
 import Document from "../../assets/icons/document.svg";
 import Airplane from "../../assets/icons/airplane.svg";
-import { Keyboard, KeyboardAvoidingView } from "react-native";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import { Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback } from "react-native";
 
 export function SendMessage() {
   const theme = useTheme();

@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components/native';
-import { RectButton } from 'react-native-gesture-handler';
 
-export const ButtonContainer = styled(RectButton)`
+export const ButtonContainer = styled.TouchableOpacity`
     background-color: ${({ theme, type }) =>
         type === 'primary' ? theme.colors.primary : theme.colors.light.background};
     border: ${({ theme, type }) =>
@@ -21,6 +20,7 @@ export const ButtonContainer = styled(RectButton)`
 `;
 
 export const ButtonText = styled.Text`
+    font-family: ${({ theme }) => theme.fonts.primary_400};
     color: ${({ theme, type }) =>
         type === 'link' ? theme.colors.primary : theme.colors.button_text};
     text-decoration: ${({ type }) => (type === 'link' ? 'underline' : 'none')};

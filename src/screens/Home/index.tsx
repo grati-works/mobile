@@ -1,6 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react";
 import { Text, TouchableOpacity } from "react-native";
+import { Header } from "../../components/Header";
 import { MessageCard } from "../../components/MessageCard";
 import { useAuth } from "../../hooks/auth";
 import { api } from "../../services/api";
@@ -27,6 +28,7 @@ export function Home() {
 
   return (
     <>
+    <Header />
       {messages.map((message, index) => (
         <MessageCard
           key={index}

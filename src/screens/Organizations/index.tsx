@@ -65,7 +65,6 @@ export function Organizations() {
         const organizations = await api.get('user/organizations');
 
         setOrganizations(organizations.data);
-        console.log(organizations.data)
       } catch (error) {
         console.log(error);
         console.debug('Não foi possível carregar as organizações de usuário');
