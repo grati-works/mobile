@@ -7,14 +7,24 @@ export const MessageCardWrapper = styled.View`
     padding: 18px;
     margin-bottom: 32px;
 
-    margin-top: 100px;
+    margin-top: 0px;
 `;
 
 export const ReceiverInfoWrapper = styled.View``
-export const TagMessage = styled.Text``
+export const TagMessage = styled.Text`
+    font-family: ${({ theme }) => theme.fonts.primary_400};
+`
 
-export const MessageWrapper = styled.Text``;
+export const MessageWrapper = styled.Text`
+    font-family: ${({ theme }) => theme.fonts.primary_400};
+    margin-top: 6px;
+`;
 
 export const ActionsWrapper = styled.View``
-export const Timestamp = styled.Text``
-export const Author = styled.Text``
+export const Timestamp = styled.Text`
+    font-family: ${({ theme }) => theme.fonts.primary_400};
+    margin-top: 20px;
+`
+export const Author = styled.Text`
+    font-family: ${({ theme }) => theme.fonts.primary_400};
+`

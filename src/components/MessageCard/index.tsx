@@ -1,5 +1,13 @@
-import { useEffect } from "react";
-import { MessageCardWrapper, ReceiverInfoWrapper, TagMessage, MessageWrapper, ActionsWrapper, Timestamp, Author } from "./styles";
+import { useEffect } from 'react';
+import {
+  MessageCardWrapper,
+  ReceiverInfoWrapper,
+  TagMessage,
+  MessageWrapper,
+  ActionsWrapper,
+  Timestamp,
+  Author
+} from './styles';
 import { Emoji } from 'emoji-mart-native';
 
 interface User {
@@ -23,27 +31,30 @@ interface MessageCardProps {
 
 export function MessageCard(message: MessageCardProps) {
   useEffect(() => {
-    console.log(message)
-  }, [])
+    console.log(message);
+  }, []);
   return (
     <MessageCardWrapper>
       <ReceiverInfoWrapper>
         {message.receivers.length > 1 ? (
           <TagMessage>
-            foram gratificados por #{message.tags.map((tag) => tag.name).join(", #")}
+            foram gratificados por #
+            {message.tags.map((tag) => tag.name).join(', #')}
           </TagMessage>
         ) : (
-          <TagMessage>foi gratificado por #{message.tags.map((tag) => tag.name).join(", #")}</TagMessage>
+          <TagMessage>
+            foi gratificado por #
+            {message.tags.map((tag) => tag.name).join(', #')}
+          </TagMessage>
         )}
-        <Emoji emoji={message.emoji} size={24}  set='twitter' />
+        <Emoji emoji={message.emoji} size={24} set='twitter' />
       </ReceiverInfoWrapper>
-      <MessageWrapper>
-          {message.message}
-          <ActionsWrapper>
-            <Timestamp>Há 4h por <Author>{message.sender.name}</Author></Timestamp>
-            
-          </ActionsWrapper>
-      </MessageWrapper>
+      <MessageWrapper>{message.message}</MessageWrapper>
+      <ActionsWrapper>
+        <Timestamp>
+          Há 4h por <Author>{message.sender.name}</Author>
+        </Timestamp>
+      </ActionsWrapper>
     </MessageCardWrapper>
   );
 }
