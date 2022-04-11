@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { RFPercentage } from 'react-native-responsive-fontsize';
+import { Dimensions } from 'react-native';
 
 export const Container = styled.View`
   align-items: center;
@@ -8,20 +9,15 @@ export const Container = styled.View`
   height: ${RFPercentage(100) + getStatusBarHeight()}px;
 `;
 
-export const Texto = styled.Text`
-  text-align: center;
-`;
-
 export const Row = styled.View`
+  borderRadius: 10
+  borderWidth: 6
   flexDirection: row
   align-items: center
-  borderColor: #DCDCDC
-  backgroundColor: #fff
-  
-`;
-
-export const Padding = styled.View`
-  borderWidth: 0;
+  borderColor: ${({ theme }) => theme.colors.light.background_highlight}
+  backgroundColor: ${({ theme }) => theme.colors.light.background_highlight}
+  borderWidth: 12
+  width: ${Dimensions.get('window').width}px
 `;
 
 export const Pic = styled.Image` 
@@ -33,13 +29,13 @@ export const Pic = styled.Image`
 export const NameContainer = styled.View` 
   flexDirection: row
   justifyContent: space-between
-  width: 280
+  width: 325
   `;
 
 export const NameTxt = styled.Text` 
   marginLeft: 15
-  fontWeight: 600
-  color: #222
+  fontFamily: ${({ theme }) => theme.fonts.primary_600}
+  color: ${({ theme }) => theme.colors.title}
   fontSize: 18
   width:170`;
 
@@ -50,10 +46,22 @@ export const MsgContainer = styled.View`
 
 export const MsgTxt = styled.Text`   
  fontWeight: 400
-  color: #008B8B
+  color: ${({ theme }) => theme.colors.text}
   fontSize: 12
-  marginLeft: 15`;
+  marginLeft: 16
+  marginTop:3`;
 
-export const XpView = styled.Text``;
+export const Xp = styled.View`
+  flexDirection: row
+`;
+
+export const XpView = styled.Text`
+color: ${({ theme }) => theme.colors.text}
+fontFamily: ${({ theme }) => theme.fonts.primary_500}
+`;
+
+export const XpNumber = styled.Text`
+  color: ${({ theme }) => theme.colors.primary};
+`;
 
 export const ViewHelper = styled.View``;

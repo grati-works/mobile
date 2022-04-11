@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import {
   Container,
-  Texto,
   Row,
   Pic,
   NameContainer,
@@ -10,7 +9,8 @@ import {
   MsgContainer,
   MsgTxt,
   XpView,
-  Padding,
+  Xp,
+  XpNumber,
 } from './styles';
 
 import { useNavigation } from '@react-navigation/native';
@@ -24,20 +24,21 @@ export function UserCard() {
   return (
     <Container>
       <Row>
-        {/* <Padding> */}
         <Pic source={require('../../../tmp/images/EnWo7vrXMAAb5vO.png')} />
         <ViewHelper>
           <NameContainer>
             <NameTxt numberOfLines={1} ellipsizeMode="tail">
-              4
+              Luciano Monteiro
             </NameTxt>
           </NameContainer>
           <MsgContainer>
             <MsgTxt>Nível 2</MsgTxt>
-            <XpView>333 xp</XpView>
+            <Xp>
+              <XpNumber>3333</XpNumber>
+              <XpView> xp</XpView>
+            </Xp>
           </MsgContainer>
         </ViewHelper>
-        {/* </Padding> */}
       </Row>
     </Container>
   );
