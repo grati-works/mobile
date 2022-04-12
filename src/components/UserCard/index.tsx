@@ -6,8 +6,8 @@ import {
   NameContainer,
   NameTxt,
   ViewHelper,
-  MsgContainer,
-  MsgTxt,
+  InfoContainer,
+  LvlTxt,
   XpView,
   Xp,
   XpNumber,
@@ -27,17 +27,17 @@ export function UserCard() {
         <Pic source={require('../../../tmp/images/EnWo7vrXMAAb5vO.png')} />
         <ViewHelper>
           <NameContainer>
-            <NameTxt numberOfLines={1} ellipsizeMode="tail">
+            <NameTxt numberOfLines={1} ellipsizeMode="clip">
               Luciano Monteiro
             </NameTxt>
           </NameContainer>
-          <MsgContainer>
-            <MsgTxt>Nível 2</MsgTxt>
+          <InfoContainer>
+            <LvlTxt>Nível 2</LvlTxt>
             <Xp>
               <XpNumber>3333</XpNumber>
               <XpView> xp</XpView>
             </Xp>
-          </MsgContainer>
+          </InfoContainer>
         </ViewHelper>
       </Row>
     </Container>

@@ -10,49 +10,48 @@ export const Container = styled.View`
 `;
 
 export const Row = styled.View`
-  borderRadius: 10
-  borderWidth: 6
+  borderRadius: 10px
+  borderWidth: 6px
   flexDirection: row
   align-items: center
   borderColor: ${({ theme }) => theme.colors.light.background_highlight}
   backgroundColor: ${({ theme }) => theme.colors.light.background_highlight}
-  borderWidth: 12
+  borderWidth: 12px
   width: ${Dimensions.get('window').width}px
 `;
 
 export const Pic = styled.Image` 
- borderRadius: 30
-  width: 60
-  height: 60
+ borderRadius: 30px
+  width: 60px
+  height: 60px
 `;
 
 export const NameContainer = styled.View` 
   flexDirection: row
   justifyContent: space-between
-  width: 325
+  width: 325px
   `;
 
 export const NameTxt = styled.Text` 
-  marginLeft: 15
+  marginLeft: 15px
   fontFamily: ${({ theme }) => theme.fonts.primary_600}
   color: ${({ theme }) => theme.colors.title}
-  fontSize: 18
-  width:170`;
+  fontSize: 18px
+  width:170px`;
 
-export const MsgContainer = styled.View`
+export const InfoContainer = styled.View`
   flexDirection: row
   alignItems: center
   justifyContent: space-between`;
 
-export const MsgTxt = styled.Text`   
- fontWeight: 400
+export const LvlTxt = styled.Text` 
   color: ${({ theme }) => theme.colors.text}
-  fontSize: 12
-  marginLeft: 16
-  marginTop:3`;
+  fontSize: 12px
+  marginLeft: 16px
+  marginTop: 3px`;
 
 export const Xp = styled.View`
-  flexDirection: row
+  flexDirection: row;
 `;
 
 export const XpView = styled.Text`
