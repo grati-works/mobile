@@ -1,12 +1,11 @@
 import styled from 'styled-components/native';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
-import { RFPercentage } from 'react-native-responsive-fontsize';
+import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
 import { Dimensions } from 'react-native';
 
 export const Container = styled.View`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.light.background};
-  height: ${RFPercentage(100) + getStatusBarHeight()}px;
 `;
 
 export const Row = styled.View`
@@ -17,9 +16,9 @@ export const Row = styled.View`
   borderColor: ${({ theme }) => theme.colors.light.background_highlight}
   backgroundColor: ${({ theme }) => theme.colors.light.background_highlight}
   borderWidth: 12px
-  width: ${Dimensions.get('window').width}px
-`;
-
+  width: 100%;
+  `;
+  
 export const Pic = styled.Image` 
  borderRadius: 30px
   width: 60px
@@ -36,7 +35,7 @@ export const NameTxt = styled.Text`
   marginLeft: 15px
   fontFamily: ${({ theme }) => theme.fonts.primary_600}
   color: ${({ theme }) => theme.colors.title}
-  fontSize: 18px
+  font-size: ${RFValue(20)}px;
   width:170px`;
 
 export const InfoContainer = styled.View`

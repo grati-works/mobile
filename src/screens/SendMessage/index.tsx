@@ -26,7 +26,11 @@ import Image from "../../assets/icons/image.svg";
 import Gif from "../../assets/icons/gif.svg";
 import Document from "../../assets/icons/document.svg";
 import Airplane from "../../assets/icons/airplane.svg";
-import { Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback } from "react-native";
+import {
+  Keyboard,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+} from "react-native";
 
 export function SendMessage() {
   const theme = useTheme();
@@ -36,12 +40,15 @@ export function SendMessage() {
 
   useEffect(() => {
     setKeyboardIsVisible(keyboard.keyboardShown);
-  } , [keyboard.keyboardShown]);
+  }, [keyboard.keyboardShown]);
 
   return (
     <KeyboardAvoidingView behavior="position" enabled>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <Container keyboardIsVisible={keyboardIsVisible} keyboardHeight={keyboard.keyboardHeight}>
+        <Container
+          keyboardIsVisible={keyboardIsVisible}
+          keyboardHeight={keyboard.keyboardHeight}
+        >
           <ReceiversUsernamesWrapper>
             <ReceiverUsername>@ericknathan</ReceiverUsername>
             <ReceiverInput placeholder="Insira o próximo usuário" />
@@ -60,7 +67,7 @@ export function SendMessage() {
                 </TagIconWrapper>
                 <TagName>Resiliência</TagName>
               </Tag>
-            <TagInput placeholder="Insira a próxima tag" />
+              <TagInput placeholder="Insira a próxima tag" />
             </TagsWrapper>
             <TextInput
               placeholder="Digite aqui sua mensagem..."

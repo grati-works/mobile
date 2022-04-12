@@ -113,7 +113,7 @@ export const FooterWrapper = styled.View`
   display: flex;
   flex-direction: row;
 
-  margin-bottom: ${getStatusBarHeight()}px;
+  margin-bottom: ${getStatusBarHeight() + 10}px;
 `;
 
 export const AttachButton = styled.TouchableOpacity`
