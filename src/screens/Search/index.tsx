@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, SearchInput, Margin } from './styles';
+import { Container, SearchInput, Margin, SearchIcon, SearchSection } from './styles';
 
 import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, FlatList } from 'react-native';
 
@@ -18,14 +18,18 @@ export function Search() {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <Container>
           <Header />
-          <SearchInput
-            placeholder="Luciano Monteirо"
-            // value={message}
-            // onChangeText={setMessage}
-            multiline={false}
-            placeholderTextColor={({ theme }) => theme.colors.primary}
-          />
-          <Margin/>
+
+          <SearchSection>
+            <SearchInput
+              placeholder="Luciano Monteirо"
+              // value={search}
+              multiline={false}
+              // placeholderTextColor= {({ theme }) => theme.colors.text}
+              placeholderTextColor="#4B5066"
+            />
+            <SearchIcon source={require('../../../tmp/images/EnWo7vrXMAAb5vO.png')} />
+          </SearchSection>
+
           <FlatList
             data={[
               {
