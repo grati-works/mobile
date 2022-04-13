@@ -15,14 +15,14 @@ import {
 
 import { useNavigation } from '@react-navigation/native';
 
-export function UserCard() {
+export function UserCard({ user }) {
   const navigation = useNavigation();
   const [state, setState] = useState();
 
   useEffect(() => {}, []);
 
   return (
-    <Container>
+    <Container id={user.id}>
       <Row>
         <Pic source={require('../../../tmp/images/EnWo7vrXMAAb5vO.png')} />
         <ViewHelper>
