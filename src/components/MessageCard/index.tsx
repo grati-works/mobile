@@ -9,6 +9,7 @@ import {
   Author
 } from './styles';
 import { Emoji } from 'emoji-mart-native';
+import { ScrollView } from 'react-native-gesture-handler';
 
 interface User {
   id: number;
@@ -34,27 +35,27 @@ export function MessageCard(message: MessageCardProps) {
     console.log(message);
   }, []);
   return (
-    <MessageCardWrapper>
-      <ReceiverInfoWrapper>
-        {message.receivers.length > 1 ? (
-          <TagMessage>
-            foram gratificados por #
-            {message.tags.map((tag) => tag.name).join(', #')}
-          </TagMessage>
-        ) : (
-          <TagMessage>
-            foi gratificado por #
-            {message.tags.map((tag) => tag.name).join(', #')}
-          </TagMessage>
-        )}
-        <Emoji emoji={message.emoji} size={24} set='twitter' />
-      </ReceiverInfoWrapper>
-      <MessageWrapper>{message.message}</MessageWrapper>
-      <ActionsWrapper>
-        <Timestamp>
-          Há 4h por <Author>{message.sender.name}</Author>
-        </Timestamp>
-      </ActionsWrapper>
-    </MessageCardWrapper>
+      <MessageCardWrapper>
+        <ReceiverInfoWrapper>
+          {message.receivers.length > 1 ? (
+            <TagMessage>
+              foram gratificados por #
+              {message.tags.map((tag) => tag.name).join(', #')}
+            </TagMessage>
+          ) : (
+            <TagMessage>
+              foi gratificado por #
+              {message.tags.map((tag) => tag.name).join(', #')}
+            </TagMessage>
+          )}
+          <Emoji emoji={message.emoji} size={24} set='twitter' />
+        </ReceiverInfoWrapper>
+        <MessageWrapper>{message.message}</MessageWrapper>
+        <ActionsWrapper>
+          <Timestamp>
+            Há 4h por <Author>{message.sender.name}</Author>
+          </Timestamp>
+        </ActionsWrapper>
+      </MessageCardWrapper>
   );
 }

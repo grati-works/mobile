@@ -21,7 +21,7 @@ export const Row = styled.View`
 `;
 
 export const Pic = styled.Image` 
- borderRadius: 30px
+  borderRadius: 30px
   width: 60px
   height: 60px
 `;
@@ -55,8 +55,8 @@ export const Xp = styled.View`
 `;
 
 export const XpView = styled.Text`
-color: ${({ theme }) => theme.colors.text}
-fontFamily: ${({ theme }) => theme.fonts.primary_500}
+  color: ${({ theme }) => theme.colors.text}
+  fontFamily: ${({ theme }) => theme.fonts.primary_500}
 `;
 
 export const XpNumber = styled.Text`

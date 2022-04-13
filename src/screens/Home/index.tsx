@@ -1,10 +1,11 @@
-import { useNavigation } from "@react-navigation/native";
-import { useEffect, useState } from "react";
-import { Text, TouchableOpacity } from "react-native";
-import { Header } from "../../components/Header";
-import { MessageCard } from "../../components/MessageCard";
-import { useAuth } from "../../hooks/auth";
-import { api } from "../../services/api";
+import { useNavigation } from '@react-navigation/native';
+import { useEffect, useState } from 'react';
+import { Text, TouchableOpacity } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
+import { Header } from '../../components/Header';
+import { MessageCard } from '../../components/MessageCard';
+import { useAuth } from '../../hooks/auth';
+import { api } from '../../services/api';
 
 export function Home() {
   const navigation = useNavigation();
@@ -14,12 +15,12 @@ export function Home() {
   useEffect(() => {
     async function loadMessages() {
       try {
-        const response = await api.get("/message/1");
+        const response = await api.get('/message/1');
 
         setMessages(response.data.feedbacks);
-        console.log(response.data.feedbacks)
+        console.log(response.data.feedbacks);
       } catch (error) {
-        console.log("API ERROR [MessageLoad]: ", error.response.data);
+        console.log('API ERROR [MessageLoad]: ', error.response.data);
       }
     }
 
@@ -28,17 +29,19 @@ export function Home() {
 
   return (
     <>
-    <Header />
-      {messages.map((message, index) => (
-        <MessageCard
-          key={index}
-          emoji={message.emoji}
-          receivers={message.receivers}
-          tags={message.tags}
-          message={message.message}
-          sender={message.sender.user}
-        />
-      ))}
+      <Header />
+        <ScrollView>
+          {messages.map((message, index) => (
+            <MessageCard
+              key={index}
+              emoji={message.emoji}
+              receivers={message.receivers}
+              tags={message.tags}
+              message={message.message}
+              sender={message.sender.user}
+            />
+          ))}
+        </ScrollView>
     </>
   );
 }

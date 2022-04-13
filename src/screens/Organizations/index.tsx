@@ -11,6 +11,7 @@ import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
+  Dimensions,
 } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTheme } from 'styled-components';
@@ -98,7 +99,7 @@ export function Organizations() {
             />
             <Modalize
               ref={modalizeRef}
-              snapPoint={700}
+              snapPoint={Dimensions.get('window').height - 100}
               HeaderComponent={
                 <ModalTitle>Grupos inscritos na organização - {organizations.find(organization => organization.id === selectedOrganization)?.name}</ModalTitle>
               }

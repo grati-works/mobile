@@ -13,6 +13,7 @@ import { useNavigation } from "@react-navigation/native";
 import BellIcon from "../../assets/icons/bell.svg";
 import { useTheme } from "styled-components";
 import { NotificationCard } from "../NotificationCard";
+import { Dimensions } from 'react-native';
 
 export function Header() {
   const navigation = useNavigation();
@@ -22,7 +23,6 @@ export function Header() {
   const theme = useTheme();
 
   const notification = {
-    id: 1,
     user: {
       name: "Túlio Nogueira",
     },
@@ -30,7 +30,7 @@ export function Header() {
     created_at: new Date()
   };
 
-  const notifications = [notification, notification, notification];
+  const notifications = [{ id: Math.random(), ...notification}, { id: Math.random(), ...notification}, { id: Math.random(), ...notification}];
 
   const handleOpenProfileModal = () => {
     modalizeProfileRef.current?.open();
@@ -57,16 +57,16 @@ export function Header() {
         </ProfileContainer>
       </Container>
 
-      <Modalize ref={modalizeProfileRef} snapPoint={700}>
+      <Modalize ref={modalizeProfileRef} snapPoint={Dimensions.get('window').height - 200}>
         <ProfileName>Perfil</ProfileName>
       </Modalize>
 
-      <Modalize ref={modalizeNotificationsRef} snapPoint={700} modalStyle={{
+      <Modalize ref={modalizeNotificationsRef} snapPoint={Dimensions.get('window').height - 200} modalStyle={{
         backgroundColor: theme.colors.light.background,
       }}
       flatListProps={{
         data: notifications,
-        renderItem: ({ item }) => <NotificationCard notificationData={item} />,
+        renderItem: ({ item }) => <NotificationCard key={item.id}  notificationData={item} />,
         keyExtractor: item => item.id,
         showsVerticalScrollIndicator: false,
       }}

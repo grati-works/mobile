@@ -5,8 +5,7 @@ export const MessageCardWrapper = styled.View`
     background-color: ${({ theme }) => theme.colors.light.background_highlight};
     border-radius: 5px;
     padding: 18px;
-    margin-bottom: 32px;
-
+    margin-bottom: 4px;
     margin-top: 0px;
 `;
 
@@ -17,13 +16,14 @@ export const TagMessage = styled.Text`
 
 export const MessageWrapper = styled.Text`
     font-family: ${({ theme }) => theme.fonts.primary_400};
-    margin-top: 6px;
+    margin-top: 17px;
 `;
 
 export const ActionsWrapper = styled.View``
 export const Timestamp = styled.Text`
     font-family: ${({ theme }) => theme.fonts.primary_400};
-    margin-top: 20px;
+    margin-top: 16px;
+    margin-bottom: 7px
 `
 export const Author = styled.Text`
     font-family: ${({ theme }) => theme.fonts.primary_400};
