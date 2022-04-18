@@ -1,15 +1,11 @@
-import { useEffect, useState } from "react";
-import { Container } from "./styles";
+import { useEffect, useState } from 'react';
+import { Container } from './styles';
 
-import {
-  KeyboardAvoidingView,
-  TouchableWithoutFeedback,
-  Keyboard,
-  Text,
-} from "react-native";
+import { KeyboardAvoidingView, TouchableWithoutFeedback, FlatList } from 'react-native';
 
-import { useNavigation } from "@react-navigation/native";
-import { Header } from "../../components/Header";
+import { useNavigation } from '@react-navigation/native';
+import { RankingCard } from '../../components/RankingCard';
+import { Header } from '../../components/Header';
 
 export function Ranking() {
   const navigation = useNavigation();
@@ -18,12 +14,21 @@ export function Ranking() {
   useEffect(() => {}, []);
 
   return (
-    <KeyboardAvoidingView behavior="position" enabled>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <Container>
-          <Header />
-        </Container>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+    <Container>
+      <Header />
+
+      <FlatList
+        data={[
+          {
+            id: 1,
+          },
+          {
+            id: 2,
+          },
+        ]}
+        renderItem={(user) => <RankingCard user={user} />}
+        keyExtractor={(user) => user.id}
+      />
+    </Container>
   );
 }
