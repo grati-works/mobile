@@ -21,14 +21,10 @@ borderColor: #D3D0D7
 borderLeftWidth: 0
 borderRightWidth: 0
 borderWidth: 1px
-padding: 10px
+padding: 15px
 marginBottom: 20px
-`;
-
-export const SearchIcon = styled.Image`
-borderRadius: 30px
-width: 60px
-height: 60px
+paddingLeft: 30px
+paddingRight: 30px
 `;
 
 export const SearchInput = styled.TextInput`

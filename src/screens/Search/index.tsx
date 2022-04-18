@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Container, SearchInput, Margin, SearchIcon, SearchSection } from './styles';
+import { Container, SearchInput, SearchSection } from './styles';
 
 import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, FlatList } from 'react-native';
+import SearchIcon from '../../assets/icons/search.svg';
 
 import { useNavigation } from '@react-navigation/native';
 import { UserCard } from '../../components/UserCard';
@@ -21,13 +22,11 @@ export function Search() {
 
           <SearchSection>
             <SearchInput
-              placeholder="Luciano Monteirо"
-              // value={search}
+              placeholder="Luciano Monteiro"
               multiline={false}
-              // placeholderTextColor= {({ theme }) => theme.colors.text}
-              placeholderTextColor="#4B5066"
+              placeholderTextColor={({ theme }) => theme.colors.text}
             />
-            <SearchIcon source={require('../../../tmp/images/EnWo7vrXMAAb5vO.png')} />
+            <SearchIcon width={30} height={30} />
           </SearchSection>
 
           <FlatList
