@@ -1,8 +1,20 @@
-import { useEffect, useState } from 'react';
-import { Container, Text, Rank } from './styles';
+import React, { useEffect, useState } from 'react';
+import {
+  Container,
+  RankingNumber,
+  Rank,
+  Row,
+  Pic,
+  ViewHelper,
+  NameContainer,
+  NameTxt,
+  InfoContainer,
+  LvlTxt,
+  Xp,
+  XpNumber,
+  XpView,
+} from './styles';
 import { useNavigation } from '@react-navigation/native';
-
-import { UserCard } from '../../components/UserCard';
 
 export function RankingCard({ user }) {
   const navigation = useNavigation();
@@ -13,10 +25,28 @@ export function RankingCard({ user }) {
   return (
     <Container id={user.id}>
       <Rank>
-        <Text numberOfLines={1} ellipsizeMode="clip">1</Text>
+        <RankingNumber numberOfLines={1} ellipsizeMode="clip">
+          1
+        </RankingNumber>
       </Rank>
 
-      <UserCard user={user} />
+      <Row>
+        <Pic source={require('../../../tmp/images/EnWo7vrXMAAb5vO.png')} />
+        <ViewHelper>
+          <NameContainer>
+            <NameTxt numberOfLines={1} ellipsizeMode="clip">
+              Luciano Monteiro
+            </NameTxt>
+          </NameContainer>
+          <InfoContainer>
+            <LvlTxt>Nível 2</LvlTxt>
+            <Xp>
+              <XpNumber>3333</XpNumber>
+              <XpView> xp</XpView>
+            </Xp>
+          </InfoContainer>
+        </ViewHelper>
+      </Row>
     </Container>
   );
 }

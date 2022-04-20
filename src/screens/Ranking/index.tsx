@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Container } from './styles';
 
-import { KeyboardAvoidingView, TouchableWithoutFeedback, FlatList } from 'react-native';
+import { FlatList } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 import { RankingCard } from '../../components/RankingCard';
@@ -27,7 +27,8 @@ export function Ranking() {
           },
         ]}
         renderItem={(user) => <RankingCard user={user} />}
-        keyExtractor={(user) => user.id}
+        keyExtractor={(item) => item.id}
+        showsVerticalScrollIndicator={false}
       />
     </Container>
   );

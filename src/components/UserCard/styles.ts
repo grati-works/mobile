@@ -6,10 +6,11 @@ import { Dimensions } from 'react-native';
 export const Container = styled.View`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.light.background};
+  height: ${RFPercentage(13)}px;
 `;
 
 export const Row = styled.View`
-  borderRadius: 10px
+  borderRadius: 5px
   borderWidth: 6px
   flexDirection: row
   align-items: center
@@ -17,8 +18,8 @@ export const Row = styled.View`
   backgroundColor: ${({ theme }) => theme.colors.light.background_highlight}
   borderWidth: 12px
   width: 100%;
-  `;
-  
+`;
+
 export const Pic = styled.Image` 
   borderRadius: 30px
   width: 60px
@@ -28,8 +29,8 @@ export const Pic = styled.Image`
 export const NameContainer = styled.View` 
   flexDirection: row
   justifyContent: space-between
-  width: 325px
-  `;
+  paddingRight: 35%
+`;
 
 export const NameTxt = styled.Text` 
   marginLeft: 15px
