@@ -9,10 +9,9 @@ export const Container = styled.View`
 `;
 
 export const Margin = styled.View`
-  marginbottom: ${RFValue(15)}px;
+  marginBottom: ${RFValue(15)}px;
 `;
 
-// borderColor: ${({ theme }) => theme.colors.transparent_black}
 export const SearchSection = styled.View`
 flexDirection: row
 align-items: center

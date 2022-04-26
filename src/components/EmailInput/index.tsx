@@ -17,7 +17,7 @@ export function EmailInput() {
       <HelperSection>
         <EmailTag>E-mail</EmailTag>
         <SearchInput
-          placeholder=""
+          placeholder="tulio.nogueira@gmail.com"
           multiline={false}
           textColor={({ theme }) => theme.colors.title}
         />

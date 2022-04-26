@@ -7,7 +7,7 @@ flexDirection: row
 width: 90%
 borderColor: #D3D0D7
 borderRadius: 5px
-borderWidth: 2px
+borderWidth: 1px
 alignItems: center
 padding: 15px
 marginTop: 20px

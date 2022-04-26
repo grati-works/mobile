@@ -1,14 +1,22 @@
-import { useEffect, useState } from "react";
-import { Container } from "./styles";
-
+import React, { useEffect, useState } from 'react';
 import {
-  KeyboardAvoidingView,
-  TouchableWithoutFeedback,
-  Keyboard,
-  Text,
-} from "react-native";
+  ButtonSave,
+  Container,
+  ButtonSaveText,
+  ButtonView,
+  Bold,
+  NotBold,
+  ImageView,
+  ProfilePicture,
+} from './styles';
 
-import { useNavigation } from "@react-navigation/native";
+import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native';
+
+import { useNavigation } from '@react-navigation/native';
+
+import { NameInput } from '../../components/NameInput';
+import { UserInput } from '../../components/UserInput';
+import { EmailInput } from '../../components/EmailInput';
 
 export function Profile() {
   const navigation = useNavigation();
@@ -20,7 +28,22 @@ export function Profile() {
     <KeyboardAvoidingView behavior="position" enabled>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <Container>
-          <Text style={{ marginTop: 100 }}>Profile</Text>
+          <ImageView>
+            <ProfilePicture source={{ uri: 'https://imgur.com/random.png' }} />
+          </ImageView>
+
+          <ButtonView>
+            <Bold>Dados</Bold>
+            <NotBold>Trocar senha</NotBold>
+          </ButtonView>
+
+          <NameInput />
+          <UserInput />
+          <EmailInput />
+
+          <ButtonSave>
+            <ButtonSaveText>Salvar alterações</ButtonSaveText>
+          </ButtonSave>
         </Container>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
