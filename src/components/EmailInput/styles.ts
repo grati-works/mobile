@@ -10,13 +10,14 @@ borderRadius: 5px
 borderWidth: 2px
 alignItems: center
 padding: 15px
-marginTop: 20px
+marginBottom: 20px
 `;
 
 export const HelperSection = styled.View`
 flex: 1
 flexDirection: column
-paddingLeft: 10px`;
+paddingLeft: 10px
+`;
 
 export const SearchInput = styled.TextInput`
 width: 100%
@@ -25,6 +26,6 @@ font-size: ${RFValue(20)}px
 paddingRight: 10px
 `;
 
-export const NameTag = styled.Text`
+export const EmailTag = styled.Text`
   color: ${({ theme }) => theme.colors.placeholder};
 `;
