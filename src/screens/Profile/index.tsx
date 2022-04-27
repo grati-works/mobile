@@ -14,9 +14,9 @@ import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-
 
 import { useNavigation } from '@react-navigation/native';
 
-import { NameInput } from '../../components/NameInput';
-import { UserInput } from '../../components/UserInput';
-import { EmailInput } from '../../components/EmailInput';
+import { NameInput } from '../../components/Profile/NameInput';
+import { UserInput } from '../../components/Profile/UserInput';
+import { EmailInput } from '../../components/Profile/EmailInput';
 
 export function Profile() {
   const navigation = useNavigation();

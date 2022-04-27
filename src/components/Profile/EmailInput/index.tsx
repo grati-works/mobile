@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { SearchSection, SearchInput, HelperSection, UserTag } from './styles';
+import { SearchSection, SearchInput, HelperSection, EmailTag } from './styles';
 import { useNavigation } from '@react-navigation/native';
 
-import UserIcon from '../../assets/icons/user.svg';
+import EmailIcon from '../../../assets/icons/user.svg';
 
-export function UserInput() {
+export function EmailInput() {
   const navigation = useNavigation();
   const [state, setState] = useState();
 
@@ -12,12 +12,12 @@ export function UserInput() {
 
   return (
     <SearchSection>
-      <UserIcon width={30} height={30} style={{ marginRight: 10, marginLeft: 10 }} />
+      <EmailIcon width={30} height={30} style={{ marginRight: 10, marginLeft: 1 }} />
 
       <HelperSection>
-        <UserTag>Usuário</UserTag>
+        <EmailTag>E-mail</EmailTag>
         <SearchInput
-          placeholder="tulionogueira"
+          placeholder="tulio.nogueira@gmail.com"
           multiline={false}
           textColor={({ theme }) => theme.colors.title}
         />
