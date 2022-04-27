@@ -1,14 +1,17 @@
-import { useEffect, useState } from "react";
-import { Container } from "./styles";
+import { useEffect, useState } from 'react';
+import { Container } from './styles';
 
 import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
   Text,
-} from "react-native";
+  View
+} from 'react-native';
 
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation } from '@react-navigation/native';
+import { ContentContainer } from '../../Login/styles';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export function ProfileMe() {
   const navigation = useNavigation();
@@ -17,12 +20,14 @@ export function ProfileMe() {
   useEffect(() => {}, []);
 
   return (
-    <KeyboardAvoidingView behavior="position" enabled>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <Container>
-          <Text style={{ marginTop: 100 }}>ProfileMe</Text>
-        </Container>
-      </TouchableWithoutFeedback>
+    <KeyboardAvoidingView behavior='position' enabled>
+      <ScrollView>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <Container>
+            <ContentContainer></ContentContainer>
+          </Container>
+        </TouchableWithoutFeedback>
+      </ScrollView>
     </KeyboardAvoidingView>
   );
 }

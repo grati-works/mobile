@@ -13,7 +13,7 @@ import { AppStackRoutes } from './app.stack.routes';
 import { SendMessage } from '../screens/SendMessage';
 import { Ranking } from '../screens/Ranking';
 import { Search } from '../screens/Search';
-import { Profile } from '../screens/Profile';
+import { ProfileMe } from '../screens/Profile/Me';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -71,8 +71,8 @@ export function AppTabRoutes() {
         }}
       />
       <Screen
-        name="Profile"
-        component={Profile}
+        name="ProfileMe"
+        component={ProfileMe}
         options={{
           tabBarIcon: ({ color }) => (
             <UserSvg width={26} height={26} stroke={color} />

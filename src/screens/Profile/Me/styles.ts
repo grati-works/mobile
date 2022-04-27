@@ -4,6 +4,9 @@ import { RFPercentage } from 'react-native-responsive-fontsize';
 
 export const Container = styled.View`
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.light.background};
   height: ${RFPercentage(100) + getStatusBarHeight()}px;
 `;
+
+export const ContentContainer = styled.View`
+  
+`
