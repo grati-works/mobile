@@ -24,7 +24,7 @@ export const HelperSection = styled.View`
 
   paddingLeft:  ${RFPercentage(3)}px;
 
-  borderLeftWidth: 1;
+  borderLeftWidth: 1px;
   borderColor: ${({ theme }) => theme.colors.light.detail};
 `;
 

@@ -9,10 +9,33 @@ export const Container = styled.View`
   margin-top: ${getStatusBarHeight()}px;
 `;
 
+export const NotificationsContainer = styled.TouchableOpacity``;
+
+export const NotificationIndicator = styled.Text`
+  background-color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.button_text};
+  width: 20px;
+  height: 20px;
+  border-radius: 12px;
+
+  text-align: center;
+  font-size: ${RFValue(13)}px;
+  font-family: ${({ theme }) => theme.fonts.primary_400};
+
+  position: absolute;
+  z-index: 10;
+  right: -3px;
+  top: -3px;
+`;
+
 export const ImageView = styled.View`
   display: flex;
   flexDirection: row;
 
+  width: 90%;
+  justify-content: center;
+
+  marginLeft: ${RFPercentage(3)}px;
   marginTop: ${RFPercentage(3)}px;
 `;
 
