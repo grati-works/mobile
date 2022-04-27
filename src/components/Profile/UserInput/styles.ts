@@ -9,7 +9,7 @@ export const SearchSection = styled.View`
   height: ${RFPercentage(10)}px;
   width: 90%;
 
-  borderColor: ${({ theme }) => theme.colors.transparent_black};
+  borderColor: ${({ theme }) => theme.colors.input_border};
   borderRadius: 5px;
   borderWidth: 1px;
 
