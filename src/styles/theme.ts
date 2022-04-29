@@ -10,11 +10,15 @@ export default {
     light: {
       background: '#F6F7F8',
       background_highlight: '#FFF',
-      detail: '#EFEEF2'
+      detail: '#EFEEF2',
     },
     dark: {
       background: '#1a1a1a',
-      background_highlight: '#252525'
+      background_highlight: '#252525',
+    },
+    input: {
+      input_border: '#D3D0D7',
+      input_icon: '#7A7A80',
     },
 
     text: '#4B5066',
@@ -23,11 +27,10 @@ export default {
     placeholder: '#AEAEB3',
     button_text: '#FFFFFF',
     transparent_black: '#4B506677',
-    input_border: '#D3D0D7',
   },
   fonts: {
     primary_400: 'Inter_400Regular',
     primary_500: 'Inter_500Medium',
     primary_600: 'Inter_600SemiBold',
-  }
+  },
 };

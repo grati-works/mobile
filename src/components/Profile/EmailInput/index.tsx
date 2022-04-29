@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { SearchSection, SearchInput, HelperSection, EmailTag } from './styles';
 import { useNavigation } from '@react-navigation/native';
 
-import EmailIcon from '../../../assets/icons/user.svg';
+import EmailIcon from '../../../assets/icons/email.svg';
 
 export function EmailInput() {
   const navigation = useNavigation();
@@ -12,7 +12,12 @@ export function EmailInput() {
 
   return (
     <SearchSection>
-      <EmailIcon width={30} height={30} style={{ marginRight: 10, marginLeft: 1 }} />
+      <EmailIcon
+        width={30}
+        height={30}
+        // color={({ theme }) => theme.colors.input.input_icon}
+        style={{ marginRight: 10, marginLeft: 1 }}
+      />
 
       <HelperSection>
         <EmailTag>E-mail</EmailTag>

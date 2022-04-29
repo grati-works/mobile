@@ -19,7 +19,7 @@ export function NameInput() {
         <SearchInput
           placeholder="Luciano Monteiro"
           multiline={false}
-         textColor={({ theme }) => theme.colors.title}
+          textColor={({ theme }) => theme.colors.title}
         />
       </HelperSection>
     </SearchSection>
