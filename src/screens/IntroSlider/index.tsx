@@ -1,5 +1,5 @@
-import AppIntroSlider from 'react-native-app-intro-slider';
-import { useState } from 'react';
+import React, { useState } from 'react';
+
 import {
   Dimensions,
   Image,

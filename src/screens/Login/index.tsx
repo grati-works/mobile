@@ -1,6 +1,6 @@
+import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { useAuth } from "../../hooks/auth";
-import { useState } from "react";
 
 import {
   Container,
@@ -11,12 +11,7 @@ import {
   Title,
 } from "./styles";
 
-import {
-  KeyboardAvoidingView,
-  TouchableWithoutFeedback,
-  Keyboard,
-  SafeAreaView,
-} from "react-native";
+import { Keyboard, TouchableWithoutFeedback } from "react-native";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 
@@ -45,45 +40,43 @@ export function Login() {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <KeyboardAvoidingView behavior="position" enabled>
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <Container>
-            <Header>
-              <LogoContainer>
-                <Logo mode="dark" size={64} />
-              </LogoContainer>
-              <LoginIllustration />
-            </Header>
-            <ContentContainer>
-              <Title>Acessar conta</Title>
-              <Input
-                placeholder="Email"
-                icon={<UserIcon />}
-                value={email}
-                onChangeText={setEmail}
-              />
-              <Input
-                placeholder="Senha"
-                icon={<LockIcon />}
-                value={password}
-                onChangeText={setPassword}
-                secureTextEntry
-              />
-              <ButtonWrapper>
-                <Button onPress={handleSignIn}>Autenticar</Button>
-                <Button
-                  type="link"
-                  text_align="flex-end"
-                  onPress={handleRecoverPassword}
-                >
-                  Esqueci minha senha
-                </Button>
-              </ButtonWrapper>
-            </ContentContainer>
-          </Container>
-        </TouchableWithoutFeedback>
-      </KeyboardAvoidingView>
-    </SafeAreaView>
+    <Container behavior="position">
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <Header>
+          <LogoContainer>
+            <Logo mode="dark" size={64} />
+          </LogoContainer>
+          <LoginIllustration />
+        </Header>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <ContentContainer>
+          <Title>Acessar conta</Title>
+          <Input
+            placeholder="Email"
+            icon={<UserIcon />}
+            value={email}
+            onChangeText={setEmail}
+          />
+          <Input
+            placeholder="Senha"
+            icon={<LockIcon />}
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry
+          />
+          <ButtonWrapper>
+            <Button onPress={handleSignIn}>Autenticar</Button>
+            <Button
+              type="link"
+              text_align="flex-end"
+              onPress={handleRecoverPassword}
+            >
+              Esqueci minha senha
+            </Button>
+          </ButtonWrapper>
+        </ContentContainer>
+      </TouchableWithoutFeedback>
+    </Container>
   );
 }

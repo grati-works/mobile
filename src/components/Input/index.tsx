@@ -1,3 +1,4 @@
+import React from 'react';
 import { SvgProps } from 'react-native-svg';
 import { IconContainer, InputContainer, StyledInput } from './styles';
 

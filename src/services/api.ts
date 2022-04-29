@@ -1,7 +1,9 @@
-import axios from 'axios';
+import axios from "axios";
+import { SERVER_URL } from "@env";
 
+console.log(SERVER_URL);
 const api = axios.create({
-  baseURL: 'http://10.107.144.3:3333'
+  baseURL: SERVER_URL,
 });
 
 export { api };

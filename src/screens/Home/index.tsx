@@ -1,6 +1,5 @@
+import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { useEffect, useState } from 'react';
-import { Text, TouchableOpacity } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Header } from '../../components/Header';
 import { MessageCard } from '../../components/MessageCard';

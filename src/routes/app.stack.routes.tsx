@@ -1,7 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import { IntroSlider } from "../screens/IntroSlider";
+import { Organizations } from "../screens/Organizations";
 import { Home } from "../screens/Home";
 
 const { Navigator, Screen } = createStackNavigator();
@@ -12,11 +12,11 @@ export function AppStackRoutes() {
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName="IntroSlider"
+      initialRouteName="Organizations"
     >
       <Screen
-        name="IntroSlider"
-        component={IntroSlider}
+        name="Organizations"
+        component={Organizations}
       />
       <Screen
         name="Home"

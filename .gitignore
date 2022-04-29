@@ -54,3 +54,6 @@ buck-out/
 web-build/
 dist/
 back-end
+
+#config
+.env

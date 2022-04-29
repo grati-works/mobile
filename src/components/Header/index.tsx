@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   Container,
   NotificationsContainer,
@@ -67,7 +67,7 @@ export function Header() {
       flatListProps={{
         data: notifications,
         renderItem: ({ item }) => <NotificationCard key={item.id}  notificationData={item} />,
-        keyExtractor: item => item.id,
+        keyExtractor: item => Math.floor(Math.random() * 100).toString(),
         showsVerticalScrollIndicator: false,
       }}
       />
