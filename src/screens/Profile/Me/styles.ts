@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
+import { Dimensions } from 'react-native';
 
 export const Container = styled.View`
   align-items: center;
@@ -33,13 +34,13 @@ export const NotificationIndicator = styled.Text`
 export const CameraIcon = styled.Text`
   background-color: ${({ theme }) => theme.colors.primary};
 
-  width: 22px;
-  height: 22px;
+  width: ${RFPercentage(6.25)}px;
+  height: ${RFPercentage(6.25)}px;
   border-radius: 2px;
 
   position: absolute;
-  right: -1px;
-  top: 140px;
+  right: ${Dimensions.get('window').width * .01}px;
+  top: ${Dimensions.get('window').width * .35}px;
 `;
 
 export const ImageView = styled.View`

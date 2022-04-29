@@ -44,7 +44,7 @@ export function ProfileMe() {
             <ProfilePictureContainer>
               <ProfilePicture source={{ uri: 'https://imgur.com/random.png' }} />
               <CameraIcon>
-                <Photo width={40} height={40} viewBox={"CameraIcon"} ></Photo>
+                <Photo width={40} height={40}></Photo>
               </CameraIcon>
             </ProfilePictureContainer>
 
