@@ -16,7 +16,7 @@ export const SearchSection = styled.View`
 flexDirection: row
 align-items: center
 width: 100%
-borderColor: #D3D0D7
+borderColor: ${({ theme }) => theme.colors.input_border}
 borderLeftWidth: 0
 borderRightWidth: 0
 borderWidth: 1px

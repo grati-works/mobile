@@ -9,15 +9,40 @@ export const Container = styled.View`
   margin-top: ${getStatusBarHeight()}px;
 `;
 
+export const NotificationsContainer = styled.TouchableOpacity``;
+
+export const NotificationIndicator = styled.Text`
+  background-color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.button_text};
+  width: 20px;
+  height: 20px;
+  border-radius: 12px;
+
+  text-align: center;
+  font-size: ${RFValue(13)}px;
+  font-family: ${({ theme }) => theme.fonts.primary_400};
+
+  position: absolute;
+  z-index: 10;
+  right: -3px;
+  top: -3px;
+`;
+
 export const ImageView = styled.View`
-display: flex;
-flexDirection: row;
-marginTop: ${RFPercentage(10)}px;
+  display: flex;
+  flexDirection: row;
+
+  width: 90%;
+  justify-content: center;
+
+  marginLeft: ${RFPercentage(3)}px;
+  marginTop: ${RFPercentage(3)}px;
 `;
 
 export const ProfilePicture = styled.Image`
   width: ${RFValue(200)}px;
   height: ${RFValue(200)}px;
+
   border-radius: ${RFValue(150)}px;
 `;
 
@@ -26,7 +51,7 @@ export const Bold = styled.Text`
   font-size: ${RFValue(20)}px;
 
   border: none;
-  borderBottomWidth: 3px;
+  borderBottomWidth: ${RFValue(1)}px;
   borderColor: ${({ theme }) => theme.colors.primaryDark};
 `;
 
@@ -36,18 +61,21 @@ export const NotBold = styled.Text`
 `;
 
 export const ButtonSave = styled.TouchableOpacity`
-  backgroundColor: ${({ theme }) => theme.colors.primaryLight};
-  padding: 10px;
-  width: 90%;
-  alignItems: center;
-  height: 10%;
-  borderRadius: 5px;
   display: flex;
+  alignItems: center;
   justify-content: center;
+
+  width: 90%;
+  height: 10%;
+
+  borderRadius: 5px;
+  
+  backgroundColor: ${({ theme }) => theme.colors.primaryLight};
 `;
 
 export const ButtonSaveText = styled.Text`
   color: ${({ theme }) => theme.colors.button_text};
+
   font-size: ${RFValue(20)}px;
 `;
 
@@ -56,9 +84,10 @@ export const ButtonView = styled.View`
   flexDirection: row;
   justify-content: space-evenly;
 
-  marginTop: 20px
+  width: 90%;
+  
+  marginTop: ${RFPercentage(2)}px;
 
   borderBottomWidth: 0.2px;
-  width: 90%;
   border: none;
 `;

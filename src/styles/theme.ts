@@ -23,6 +23,7 @@ export default {
     placeholder: '#AEAEB3',
     button_text: '#FFFFFF',
     transparent_black: '#4B506677',
+    input_border: '#D3D0D7',
   },
   fonts: {
     primary_400: 'Inter_400Regular',
