@@ -1,85 +1,81 @@
-import styled from 'styled-components/native';
-import { getStatusBarHeight } from 'react-native-iphone-x-helper';
-import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
-import { Dimensions } from 'react-native';
+import styled from "styled-components/native";
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import { Dimensions } from "react-native";
 
-export const Row = styled.View`
-  borderRadius: 5px
-  borderWidth: 6px
-  flexDirection: row
-  align-items: center
-  borderColor: ${({ theme }) => theme.colors.light.background_highlight}
-  backgroundColor: ${({ theme }) => theme.colors.light.background_highlight}
-  borderWidth: 12px
-  width: 100%;
+export const CardWrapper = styled.View`
+  border-radius: 5px;
+  flex-direction: row;
+  align-items: center;
+  background-color: ${({ theme }) => theme.colors.light.background_highlight};
+  width: ${Dimensions.get("window").width}px;
+    height: 80px;
 `;
 
-export const Pic = styled.Image` 
-  borderRadius: 30px
-  width: 60px
-  height: 60px
+export const PositionWrapper = styled.View`
+  width: 50px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  border-right-color: ${({ theme }) => theme.colors.light.background};
+  border-right-width: 4px;
 `;
 
-export const NameContainer = styled.View` 
-  flexDirection: row
-  justifyContent: space-between
+export const Position = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.primary_500};
+  font-size: ${RFValue(18)}px;
+
+  text-align: center;
+  color: #666666;
 `;
 
-export const NameTxt = styled.Text`
-  marginLeft: 15px
-  fontFamily: ${({ theme }) => theme.fonts.primary_600}
-  color: ${({ theme }) => theme.colors.title}
-  font-size: ${RFValue(20)}px;
-  width: 60%
+export const ContentWrapper = styled.View`
+  padding: 16px 32px;
+  height: 100%;
+
+  flex-direction: row;
 `;
 
-export const InfoContainer = styled.View`
-  flexDirection: row
-  alignItems: center
-  justifyContent: space-between
+export const ProfilePicture = styled.Image`
+  width: ${RFValue(40)}px;
+  height: ${RFValue(40)}px;
+  border-radius: ${RFValue(20)}px;
+  margin-right: ${RFValue(10)}px;
+
+  background-color: ${({ theme }) => theme.colors.light.background};
 `;
 
-export const LvlTxt = styled.Text` 
-  color: ${({ theme }) => theme.colors.text}
-  fontSize: 12px
-  marginLeft: 16px
-  marginTop: 3px
+export const UserInfo = styled.View``;
+
+export const Name = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.primary_600};
+  font-size: ${RFValue(16)}px;
+`;
+
+export const UserStatus = styled.View`
+  width: 70%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const Level = styled.Text`
+  color: ${({ theme }) => theme.colors.text};
+  font-family: ${({ theme }) => theme.fonts.primary_400};
+  font-size: ${RFValue(12)}px;
 `;
 
 export const Xp = styled.View`
-  flexDirection: row;
-`;
-
-export const XpView = styled.Text`
-  color: ${({ theme }) => theme.colors.text}
-  fontFamily: ${({ theme }) => theme.fonts.primary_500}
+  flex-direction: row;
 `;
 
 export const XpNumber = styled.Text`
   color: ${({ theme }) => theme.colors.primary};
+  font-family: ${({ theme }) => theme.fonts.primary_500};
+  font-size: ${RFValue(12)}px;
 `;
 
-export const ViewHelper = styled.View``;
-
-export const Container = styled.View`
-width: 100%
-height: ${RFPercentage(13)}px;
-flexDirection: row
-align-items: center
-margin: 2px 0
-`;
-
-export const Rank = styled.View`
-backgroundColor: ${({ theme }) => theme.colors.light.background_highlight}
-borderRadius: 5px
-height: 100%
-width: 10%
-align-items: center
-justify-content: center
-margin-left: 2px;
-`;
-
-export const RankingNumber = styled.Text`
-fontFamily: ${({ theme }) => theme.fonts.primary_600}
-color: ${({ theme }) => theme.colors.text}
+export const XpView = styled.Text`
+  color: ${({ theme }) => theme.colors.text};
+  font-family: ${({ theme }) => theme.fonts.primary_500};
+  font-size: ${RFValue(12)}px;
 `;

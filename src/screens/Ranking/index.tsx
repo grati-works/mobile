@@ -1,35 +1,66 @@
 import React, { useEffect, useState } from "react";
-import { Container } from "./styles";
+import { Container, Separator, EmptyText } from "./styles";
 
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList } from "react-native-gesture-handler";
 
-import { useNavigation } from "@react-navigation/native";
 import { RankingCard } from "../../components/RankingCard";
 import { Header } from "../../components/Header";
+import { api } from "../../services/api";
+import dayjs from "dayjs";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export function Ranking() {
-  const navigation = useNavigation();
-  const [state, setState] = useState();
+  const [ranking, setRanking] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    async function loadRanking() {
+      const lastOrganization = await AsyncStorage.getItem(
+        "@Grati:selected_organization"
+      );
+
+      if (lastOrganization) {
+        const nowDate = dayjs().format("YYYY-MM-DD");
+        const threeMonthsAgoDate = dayjs()
+          .subtract(3, "month")
+          .format("YYYY-MM-DD");
+
+        const response = await api.get(
+          `organization/${lastOrganization}/ranking?page=${
+            currentPage - 1
+          }&start_date=${threeMonthsAgoDate}&end_date=${nowDate}`
+        );
+
+        setRanking(response.data.ranking);
+        setTotalPages(response.data.total_pages);
+      } else {
+        setRanking([]);
+        setTotalPages(1);
+      }
+    }
+
+    loadRanking();
+  }, []);
 
   return (
     <>
-      <Header />
       <Container>
-        <FlatList
-          data={[
-            {
-              id: 1,
-            },
-            {
-              id: 2,
-            },
-          ]}
-          renderItem={(user) => <RankingCard user={user} />}
-          keyExtractor={(item) => item.id}
+        <Header />
+
+        {
+          ranking.length === 0 ? (
+            <EmptyText>Nenhuma organização selecionada!</EmptyText>
+          ) : (
+            <FlatList
+          data={ranking}
+          renderItem={(data) => <RankingCard data={data.item} />}
+          keyExtractor={(data) => data.id.toString()}
           showsVerticalScrollIndicator={false}
+          ItemSeparatorComponent={() => <Separator />}
         />
+          )
+        }
       </Container>
     </>
   );

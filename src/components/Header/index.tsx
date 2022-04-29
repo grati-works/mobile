@@ -6,31 +6,28 @@ import {
   ProfileContainer,
   ProfileName,
   ProfilePicture,
+  ActionInfo,
+  Text,
+  Name,
+  ActionButton,
+  ButtonText,
 } from "./styles";
 import { Modalize } from "react-native-modalize";
 
-import { useNavigation } from "@react-navigation/native";
 import BellIcon from "../../assets/icons/bell.svg";
 import { useTheme } from "styled-components";
 import { NotificationCard } from "../NotificationCard";
-import { Dimensions } from 'react-native';
+import { Dimensions } from "react-native";
+import { useAuth } from "../../hooks/auth";
+import { api } from "../../services/api";
 
 export function Header() {
-  const navigation = useNavigation();
-  const [state, setState] = useState();
+  const [notifications, setNotifications] = useState([]);
+
   const modalizeProfileRef = useRef<Modalize>(null);
   const modalizeNotificationsRef = useRef<Modalize>(null);
   const theme = useTheme();
-
-  const notification = {
-    user: {
-      name: "Túlio Nogueira",
-    },
-    feedback_id: 1,
-    created_at: new Date()
-  };
-
-  const notifications = [{ id: Math.random(), ...notification}, { id: Math.random(), ...notification}, { id: Math.random(), ...notification}];
+  const { user } = useAuth();
 
   const handleOpenProfileModal = () => {
     modalizeProfileRef.current?.open();
@@ -40,37 +37,67 @@ export function Header() {
     modalizeNotificationsRef.current?.open();
   };
 
+  useEffect(() => {
+    async function loadNotifications() {
+      const response = await api.get("notification/list");
+      const notifications = await response.data;
 
-  useEffect(() => {}, []);
+      setNotifications(notifications);
+    }
+
+    if (user) {
+      loadNotifications();
+    }
+  }, []);
 
   return (
     <>
       <Container>
         <NotificationsContainer onPress={handleOpenNotificationsModal}>
-          <NotificationIndicator>3</NotificationIndicator>
+          <NotificationIndicator>{notifications.length}</NotificationIndicator>
           <BellIcon width={36} height={36} />
         </NotificationsContainer>
 
         <ProfileContainer onPress={handleOpenProfileModal}>
-          <ProfileName>Túlio Nogueira</ProfileName>
-          <ProfilePicture source={{ uri: "https://imgur.com/random.png" }} />
+          <ProfileName>{user.name}</ProfileName>
+          <ProfilePicture source={{ uri: user.profile_picture }} />
         </ProfileContainer>
       </Container>
 
-      <Modalize ref={modalizeProfileRef} snapPoint={Dimensions.get('window').height - 200}>
-        <ProfileName>Perfil</ProfileName>
-      </Modalize>
-
-      <Modalize ref={modalizeNotificationsRef} snapPoint={Dimensions.get('window').height - 200} modalStyle={{
-        backgroundColor: theme.colors.light.background,
-      }}
-      flatListProps={{
-        data: notifications,
-        renderItem: ({ item }) => <NotificationCard key={item.id}  notificationData={item} />,
-        keyExtractor: item => Math.floor(Math.random() * 100).toString(),
-        showsVerticalScrollIndicator: false,
-      }}
+      <Modalize
+        ref={modalizeNotificationsRef}
+        snapPoint={Dimensions.get("window").height - 200}
+        modalStyle={{
+          backgroundColor: theme.colors.light.background,
+        }}
+        flatListProps={{
+          data: notifications,
+          renderItem: ({ item }) => (
+            <NotificationCard key={item.id} notificationData={item} />
+          ),
+          keyExtractor: (item) => Math.floor(Math.random() * 100).toString(),
+          showsVerticalScrollIndicator: false,
+        }}
       />
+
+      <Modalize
+        ref={modalizeProfileRef}
+        adjustToContentHeight
+        withHandle={false}
+      >
+        <ActionInfo>
+          <Text>
+            Autenticado como: <Name>@ericknathan</Name>
+          </Text>
+        </ActionInfo>
+        <ActionButton
+          onPress={() => {
+            console.log("AAA");
+          }}
+        >
+          <ButtonText>Fazer logout</ButtonText>
+        </ActionButton>
+      </Modalize>
     </>
   );
 }

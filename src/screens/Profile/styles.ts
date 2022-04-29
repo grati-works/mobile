@@ -1,6 +1,6 @@
-import styled from 'styled-components/native';
-import { getStatusBarHeight } from 'react-native-iphone-x-helper';
-import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
+import styled from "styled-components/native";
+import { getStatusBarHeight } from "react-native-iphone-x-helper";
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 
 export const Container = styled.View`
   align-items: center;
@@ -30,13 +30,13 @@ export const NotificationIndicator = styled.Text`
 
 export const ImageView = styled.View`
   display: flex;
-  flexDirection: row;
+  flex-direction: row;
 
   width: 90%;
   justify-content: center;
 
-  marginLeft: ${RFPercentage(3)}px;
-  marginTop: ${RFPercentage(3)}px;
+  margin-left: ${RFPercentage(3)}px;
+  margin-top: ${RFPercentage(3)}px;
 `;
 
 export const ProfilePicture = styled.Image`
@@ -47,30 +47,30 @@ export const ProfilePicture = styled.Image`
 `;
 
 export const Bold = styled.Text`
-  fontFamily: ${({ theme }) => theme.fonts.primary_500};
+  font-family: ${({ theme }) => theme.fonts.primary_500};
   font-size: ${RFValue(20)}px;
 
   border: none;
-  borderBottomWidth: ${RFValue(1)}px;
-  borderColor: ${({ theme }) => theme.colors.primaryDark};
+  border-bottom-width: ${RFValue(1)}px;
+  border-color: ${({ theme }) => theme.colors.primaryDark};
 `;
 
 export const NotBold = styled.Text`
-  fontFamily: ${({ theme }) => theme.fonts.primary_400};
+  font-family: ${({ theme }) => theme.fonts.primary_400};
   font-size: ${RFValue(20)}px;
 `;
 
 export const ButtonSave = styled.TouchableOpacity`
   display: flex;
-  alignItems: center;
+  align-items: center;
   justify-content: center;
 
   width: 90%;
   height: 10%;
 
-  borderRadius: 5px;
-  
-  backgroundColor: ${({ theme }) => theme.colors.primaryLight};
+  border-radius: 5px;
+
+  background-color: ${({ theme }) => theme.colors.primaryLight};
 `;
 
 export const ButtonSaveText = styled.Text`
@@ -80,14 +80,14 @@ export const ButtonSaveText = styled.Text`
 `;
 
 export const ButtonView = styled.View`
-  display: flex; 
-  flexDirection: row;
+  display: flex;
+  flex-direction: row;
   justify-content: space-evenly;
 
   width: 90%;
-  
-  marginTop: ${RFPercentage(2)}px;
 
-  borderBottomWidth: 0.2px;
+  margin-top: ${RFPercentage(2)}px;
+
+  border-bottom-width: 0.2px;
   border: none;
 `;

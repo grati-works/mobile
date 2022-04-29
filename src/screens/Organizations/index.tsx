@@ -115,7 +115,11 @@ export function Organizations() {
                         key={group.id}
                         name={group.name}
                         color={group.color}
-                        onPress={() => enterGroup(group.id)}
+                        onPress={async () => {
+                          console.log(selectedOrganization)
+                          await AsyncStorage.setItem("@Grati:selected_organization", selectedOrganization.toString())
+                          enterGroup(group.id)
+                        }}
                         />
                     ))
                   }

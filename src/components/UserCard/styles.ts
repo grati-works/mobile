@@ -1,7 +1,5 @@
-import styled from 'styled-components/native';
-import { getStatusBarHeight } from 'react-native-iphone-x-helper';
-import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
-import { Dimensions } from 'react-native';
+import styled from "styled-components/native";
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 
 export const Container = styled.View`
   align-items: center;
@@ -10,53 +8,56 @@ export const Container = styled.View`
 `;
 
 export const Row = styled.View`
-  borderRadius: 5px
-  borderWidth: 6px
-  flexDirection: row
-  align-items: center
-  borderColor: ${({ theme }) => theme.colors.light.background_highlight}
-  backgroundColor: ${({ theme }) => theme.colors.light.background_highlight}
-  borderWidth: 12px
+  border-radius: 5px;
+  border-width: 6px;
+  flex-direction: row;
+  align-items: center;
+  border-color: ${({ theme }) => theme.colors.light.background_highlight};
+  background-color: ${({ theme }) => theme.colors.light.background_highlight};
+  border-width: 12px;
   width: 100%;
 `;
 
-export const Pic = styled.Image` 
-  borderRadius: 30px
-  width: 60px
-  height: 60px
+export const Pic = styled.Image`
+  border-radius: 30px;
+  width: 60px;
+  height: 60px;
 `;
 
-export const NameContainer = styled.View` 
-  flexDirection: row
-  justifyContent: space-between
-  paddingRight: 35%
+export const NameContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  padding-right: 35%;
 `;
 
-export const NameTxt = styled.Text` 
-  marginLeft: 15px
-  fontFamily: ${({ theme }) => theme.fonts.primary_600}
-  color: ${({ theme }) => theme.colors.title}
+export const NameTxt = styled.Text`
+  margin-left: 15px;
+  font-family: ${({ theme }) => theme.fonts.primary_600};
+  color: ${({ theme }) => theme.colors.title};
   font-size: ${RFValue(20)}px;
-  width:170px`;
+  width: 170px;
+`;
 
 export const InfoContainer = styled.View`
-  flexDirection: row
-  alignItems: center
-  justifyContent: space-between`;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
 
-export const LvlTxt = styled.Text` 
-  color: ${({ theme }) => theme.colors.text}
-  fontSize: 12px
-  marginLeft: 16px
-  marginTop: 3px`;
+export const LvlTxt = styled.Text`
+  color: ${({ theme }) => theme.colors.text};
+  font-size: 12px;
+  margin-left: 16px;
+  margin-top: 3px;
+`;
 
 export const Xp = styled.View`
-  flexDirection: row;
+  flex-direction: row;
 `;
 
 export const XpView = styled.Text`
-  color: ${({ theme }) => theme.colors.text}
-  fontFamily: ${({ theme }) => theme.fonts.primary_500}
+  color: ${({ theme }) => theme.colors.text};
+  font-family: ${({ theme }) => theme.fonts.primary_500};
 `;
 
 export const XpNumber = styled.Text`

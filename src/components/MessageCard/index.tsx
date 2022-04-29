@@ -10,6 +10,7 @@ import {
 } from './styles';
 import { Emoji } from 'emoji-mart-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import dayjs from 'dayjs';
 
 interface User {
   id: number;
@@ -28,11 +29,12 @@ interface MessageCardProps {
   tags: Tag[];
   message: string;
   sender: User;
+  created_at: Date;
 }
 
 export function MessageCard(message: MessageCardProps) {
   useEffect(() => {
-    console.log(message);
+    // console.log(message);
   }, []);
   return (
       <MessageCardWrapper>
@@ -44,7 +46,7 @@ export function MessageCard(message: MessageCardProps) {
             </TagMessage>
           ) : (
             <TagMessage>
-              foi gratificado por #
+              {message?.receivers[0]?.name} foi gratificado por #{message.tags.map((tag) => tag.name).join(', #')}
               {message.tags.map((tag) => tag.name).join(', #')}
             </TagMessage>
           )}
@@ -53,7 +55,7 @@ export function MessageCard(message: MessageCardProps) {
         <MessageWrapper>{message.message}</MessageWrapper>
         <ActionsWrapper>
           <Timestamp>
-            Há 4h por <Author>{message.sender.name}</Author>
+            Há {dayjs(message.created_at).format('HH')}h por <Author>{message.sender.name}</Author>
           </Timestamp>
         </ActionsWrapper>
       </MessageCardWrapper>
