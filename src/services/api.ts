@@ -1,5 +1,6 @@
+import React from 'react';
 import axios from "axios";
-import { SERVER_URL } from "@env";
+import { SERVER_URL } from "react-native-dotenv";
 
 console.log(SERVER_URL);
 const api = axios.create({
