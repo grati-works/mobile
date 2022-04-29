@@ -7,10 +7,12 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export function Splash() {
   const navigation = useNavigation();
-  function startApp() {
-    if (!AsyncStorage.getItem("@Grati:alreadyAccessedApp")) {
+  async function startApp() {
+    const alreadyAccessedApp = await AsyncStorage.getItem("@Grati:alreadyAccessedApp");
+
+    if (!alreadyAccessedApp) {
       navigation.navigate("IntroSlider");
-      AsyncStorage.setItem("@Grati:alreadyAccessedApp", "true");
+      // AsyncStorage.setItem("@Grati:alreadyAccessedApp", "true");
     } else {
       navigation.navigate("Login");
     }
