@@ -1,4 +1,5 @@
-import { OrganizationCardWrapper, OrganizationImageWrapper, OrganizationImage, OrganizationName } from "./styles";
+import React from 'react';
+import { OrganizationCardWrapper, OrganizationImageWrapper, OrganizationName } from "./styles";
 
 interface OrganizationCardProps {
     name: string;

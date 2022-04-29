@@ -1,3 +1,4 @@
+import React from 'react';
 import { Logo } from '../../components/Logo';
 import LoginIllustration from '../../assets/images/login_illustration.svg';
 import UserIcon from '../../assets/icons/user.svg';

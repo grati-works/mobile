@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import {
   Container,
   ReceiversUsernamesWrapper,
@@ -18,8 +19,7 @@ import {
 import Icon from "react-native-vector-icons/SimpleLineIcons";
 import { useKeyboard } from "@react-native-community/hooks";
 import { useTheme } from "styled-components";
-import { RFValue, RFPercentage } from "react-native-responsive-fontsize";
-import { useEffect, useState } from "react";
+import { RFValue } from "react-native-responsive-fontsize";
 
 import Emoji from "../../assets/icons/emoji.svg";
 import Image from "../../assets/icons/image.svg";

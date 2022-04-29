@@ -1,3 +1,4 @@
+import React from 'react';
 import { GroupCardWrapper, GroupColor, GroupName } from "./styles";
 
 interface GroupCardProps {

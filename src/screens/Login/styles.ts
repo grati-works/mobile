@@ -3,10 +3,10 @@ import { Platform } from 'react-native';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
 
-export const Container = styled.View`
-  align-items: center;
+export const Container = styled.KeyboardAvoidingView`
+  flex: 1;
   background-color: ${({ theme }) => theme.colors.light.background};
-  height: ${RFPercentage(100) + getStatusBarHeight()}px;
+  margin-bottom: 50px;
 `;
 
 export const Header = styled.View`
@@ -27,6 +27,7 @@ export const LogoContainer = styled.View`
 export const ContentContainer = styled.View`
   width: 100%;
   padding: 10px 32px;
+  background-color: ${({ theme }) => theme.colors.light.background};
 `;
 
 export const Title = styled.Text`
