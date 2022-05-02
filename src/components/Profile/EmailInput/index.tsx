@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { SearchSection, SearchInput, HelperSection, EmailTag } from './styles';
 import { useNavigation } from '@react-navigation/native';
 
-import EmailIcon from '../../../assets/icons/email.svg';
+import EmailIcon from '../../../assets/icons/profile-input/email.svg';
 
 export function EmailInput() {
   const navigation = useNavigation();

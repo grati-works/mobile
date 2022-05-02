@@ -31,8 +31,11 @@ export const NotificationIndicator = styled.Text`
   top: -3px;
 `;
 
-export const CameraIcon = styled.Text`
+export const CameraIcon = styled.View`
   background-color: ${({ theme }) => theme.colors.primary};
+
+  padding: ${RFPercentage(.01)}px;
+  justify-content: center;
 
   width: ${RFPercentage(6.25)}px;
   height: ${RFPercentage(6.25)}px;

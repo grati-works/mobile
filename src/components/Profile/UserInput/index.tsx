@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { SearchSection, SearchInput, HelperSection, UserTag } from './styles';
 import { useNavigation } from '@react-navigation/native';
 
-import UserIcon from '../../../assets/icons/username.svg';
+import UserIcon from '../../../assets/icons/profile-input/username.svg';
 
 export function UserInput() {
   const navigation = useNavigation();
