@@ -34,7 +34,7 @@ export const NotificationIndicator = styled.Text`
 export const CameraIcon = styled.View`
   background-color: ${({ theme }) => theme.colors.primary};
 
-  padding: ${RFPercentage(.01)}px;
+  padding: ${RFPercentage(0.01)}px;
   justify-content: center;
 
   width: ${RFPercentage(6.25)}px;
@@ -42,19 +42,19 @@ export const CameraIcon = styled.View`
   border-radius: 2px;
 
   position: absolute;
-  right: ${Dimensions.get('window').width * .01}px;
-  top: ${Dimensions.get('window').width * .35}px;
+  right: ${Dimensions.get('window').width * 0.01}px;
+  top: ${Dimensions.get('window').width * 0.35}px;
 `;
 
 export const ImageView = styled.View`
   display: flex;
-  flexDirection: row;
+  flex-direction: row;
 
   width: 90%;
   justify-content: center;
 
-  marginLeft: ${RFPercentage(3)}px;
-  marginTop: ${RFPercentage(3)}px;
+  margin-left: ${RFPercentage(3)}px;
+  margin-top: ${RFPercentage(3)}px;
 `;
 
 export const ProfilePicture = styled.Image`
@@ -64,31 +64,35 @@ export const ProfilePicture = styled.Image`
   border-radius: ${RFValue(150)}px;
 `;
 
+export const ProfileData = styled.TouchableOpacity``;
+
+export const ProfilePassword = styled.TouchableOpacity``;
+
 export const Bold = styled.Text`
-  fontFamily: ${({ theme }) => theme.fonts.primary_500};
+  font-family: ${({ theme }) => theme.fonts.primary_500};
   font-size: ${RFValue(20)}px;
 
   border: none;
-  borderBottomWidth: ${RFValue(1)}px;
-  borderColor: ${({ theme }) => theme.colors.primaryDark};
+  border-bottom-width: ${RFValue(1)}px;
+  border-color: ${({ theme }) => theme.colors.primaryDark};
 `;
 
 export const NotBold = styled.Text`
-  fontFamily: ${({ theme }) => theme.fonts.primary_400};
+  font-family: ${({ theme }) => theme.fonts.primary_400};
   font-size: ${RFValue(20)}px;
 `;
 
 export const ButtonSave = styled.TouchableOpacity`
   display: flex;
-  alignItems: center;
+  align-items: center;
   justify-content: center;
 
   width: 90%;
   height: 10%;
 
-  borderRadius: 5px;
+  border-radius: 5px;
 
-  backgroundColor: ${({ theme }) => theme.colors.primaryLight};
+  background-color: ${({ theme }) => theme.colors.primaryLight};
 `;
 
 export const ButtonSaveText = styled.Text`
@@ -99,13 +103,13 @@ export const ButtonSaveText = styled.Text`
 
 export const ButtonView = styled.View`
   display: flex;
-  flexDirection: row;
+  flex-direction: row;
   justify-content: space-evenly;
 
   width: 90%;
 
-  marginTop: ${RFPercentage(2)}px;
+  margin-top: ${RFPercentage(2)}px;
 
-  borderBottomWidth: 0.2px;
+  border-bottom-width: 0.2px;
   border: none;
 `;

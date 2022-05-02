@@ -15,6 +15,8 @@ import {
   NotificationIndicator,
   ProfilePictureContainer,
   CameraIcon,
+  ProfileData,
+  ProfilePassword,
 } from './styles';
 
 import BellIcon from '../../../assets/icons/bell.svg';
@@ -55,8 +57,12 @@ export function ProfileMe() {
           </ImageView>
 
           <ButtonView>
-            <Bold>Dados</Bold>
-            <NotBold>Trocar senha</NotBold>
+            <ProfileData>
+              <Bold>Dados</Bold>
+            </ProfileData>
+            <ProfilePassword>
+              <NotBold>Trocar senha</NotBold>
+            </ProfilePassword>
           </ButtonView>
 
           <NameInput />
