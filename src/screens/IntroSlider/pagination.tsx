@@ -14,6 +14,9 @@ import {
 
 import theme from '../../styles/theme';
 import background from '../../assets/images/gggs_background.png';
+import { Button } from '../../components/Button';
+import { ButtonContainer } from '../../components/Button/styles';
+import { ButtonText } from '../../components/Header/styles';
 
 export function IntroSlider() {
   const [sliderState, setSliderState] = useState({ currentPage: 1 });
@@ -48,77 +51,60 @@ export function IntroSlider() {
             }}>
             <View style={{ width, height }}>
               <Image
-                source={require('../../assets/images/logo.png')}
+                source={require('../../assets/images/logo2.png')}
                 style={styles.imageStyle}
               />
               <View style={styles.wrapper}>
-                <Text style={styles.header}>
-                  Est tincidunt et ac pretium id tortor molestie.
-                </Text>
-                <Text style={styles.paragraph}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Tortor.
+                <Text style={styles.header1}>
+                  Olá!
                 </Text>
               </View>
             </View>
             <View style={{ width, height }}>
               <Image
-                source={require('../../assets/images/logo.png')}
+                source={require('../../assets/images/logo2.png')}
                 style={styles.imageStyle}
               />
               <View style={styles.wrapper}>
-                <Text style={styles.header}>
-                  Nibh neque tristique orci mollis in est.
-                </Text>
-                <Text style={styles.paragraph}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Tortor.
+                <Text style={styles.header2}>
+                  Seja bem-vindo à Grati!
                 </Text>
               </View>
             </View>
             <View style={{ width, height }}>
               <Image
-                source={require('../../assets/images/logo.png')}
+                source={require('../../assets/images/logo2.png')}
                 style={styles.imageStyle}
               />
               <View style={styles.wrapper}>
-                <Text style={styles.header}>
-                  Elit commodo non egestas iaculis sem.
-                </Text>
-                <Text style={styles.paragraph}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Tortor.
+                <Text style={styles.header3}>
+                  A Grati é sua rede social corporativa favorita!
                 </Text>
               </View>
             </View>
             <View style={{ width, height }}>
               <Image
-                source={require('../../assets/images/logo.png')}
+                source={require('../../assets/images/logo2.png')}
                 style={styles.imageStyle}
               />
               <View style={styles.wrapper}>
-                <Text style={styles.header}>
-                  Nunc nibh est egestas eu ornare vel.
-                </Text>
-                <Text style={styles.paragraph}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Tortor.
+                <Text style={styles.header3}>
+                  No qual você pode gratificar e ser gratificado
                 </Text>
               </View>
             </View>
             <View style={{ width, height }}>
               <Image
-                source={require('../../assets/images/logo.png')}
+                source={require('../../assets/images/logo2.png')}
                 style={styles.imageStyle}
               />
               <View style={styles.wrapper}>
-                <Text style={styles.header}>
-                  Posuere lorem erat at interdum adipiscing.
+                <Text style={styles.headerFinale}>
+                  Mas, por enquanto, é só isso que precisa saber...
                 </Text>
-                <Text style={styles.paragraph}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Tortor.
-                </Text>
+                <ButtonContainer style={styles.button}>
+                  <ButtonText style={styles.buttonText}>&gt;</ButtonText>
+                </ButtonContainer>
               </View>
             </View>
           </ScrollView>
@@ -144,20 +130,36 @@ const styles = StyleSheet.create({
     position: 'absolute',
     alignContent: 'center'
   },
+  button: {
+    width: 50,
+    height: 50,
+    top: 100,
+    position: 'relative',
+    alignContent: 'center',
+    justifyContent: 'flex-end',
+    backgroundColor: '#F6F7F8',
+    borderColor: '#E5E5E5'  
+  },
+  buttonText: {
+    bottom: 14,
+    alignContent: 'center',
+    justifyContent: 'center',
+    color: '#787c8c'
+  },
   image: {
     flex: 1,
     justifyContent: 'center'
   },
   imageStyle: {
-    left: 150,
+    left: 152,
     top: 50,
-    height: PixelRatio.getPixelSizeForLayoutSize(35),
-    width: '24%'
+    height: PixelRatio.getPixelSizeForLayoutSize(28),
+    width: PixelRatio.getPixelSizeForLayoutSize(30)
   },
   wrapper: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginVertical: 140,
+    marginVertical: 150,
   },
   header: {
     width: 300,
@@ -172,17 +174,57 @@ const styles = StyleSheet.create({
     lineHeight: 40,
     color: '#4B5066'
   },
-  paragraph: {
-    width: 254,
-    height:102,
+  header1: {
+    width: 300,
+    height: 120,
+    left: 6,
+    top: 0,
+    fontFamily: theme.fonts.primary_500,
+    fontSize: 54,
+    fontWeight: 'bold',
+    marginTop: 50,
+    textAlign: 'center',
+    lineHeight: 70,
+    color: '#4B5066'
+  },
+  header2: {
+    width: 300,
+    height: 120,
     left: 0,
     top: 0,
-    fontFamily: theme.fonts.primary_400,
-    fontSize: 15,
-    fontWeight: '400',
+    fontFamily: theme.fonts.primary_500,
+    fontSize: 42,
+    fontWeight: 'bold',
+    marginTop: 50,
     textAlign: 'center',
-    lineHeight: 25,
-    color: '#6874E8'
+    lineHeight: 48,
+    color: '#4B5066'
+  },
+  header3: {
+    width: 400,
+    height: 120,
+    left: 0,
+    top: 0,
+    fontFamily: theme.fonts.primary_500,
+    fontSize: 40,
+    fontWeight: 'bold',
+    marginTop: 50,
+    textAlign: 'center',
+    lineHeight: 40,
+    color: '#4B5066'
+  },
+  headerFinale: {
+    width: 400,
+    height: 120,
+    left: 0,
+    top: 0,
+    fontFamily: theme.fonts.primary_500,
+    fontSize: 40,
+    fontWeight: 'bold',
+    marginTop: 50,
+    textAlign: 'center',
+    lineHeight: 40,
+    color: '#4B5066'
   },
   paginationWrapper: {
     position: 'absolute',
