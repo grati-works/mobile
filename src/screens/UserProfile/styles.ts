@@ -15,29 +15,34 @@ export const Container = styled.View`
 
 export const ProfilePictureContainer = styled.View`
   margin-top: ${getStatusBarHeight()}px;
-  margin-bottom: ${getStatusBarHeight()}px;
+  margin-bottom: ${RFValue(10)}px;
 `;
 
 export const ProfilePicture = styled.Image`
-  width: ${RFValue(200)}px;
-  height: ${RFValue(200)}px;
+  width: ${RFValue(150)}px;
+  height: ${RFValue(150)}px;
 
   border-radius: ${RFValue(150)}px;
 `;
 
 export const KindaBoldText = styled.Text`
+  color: ${({ theme }) => theme.colors.title};
   font-family: ${({ theme }) => theme.fonts.primary_500};
-  font-size: ${RFValue(20)}px;
+  font-size: ${RFValue(22)}px;
 
   margin-top: ${RFValue(5)}px;
   margin-bottom: ${RFValue(5)}px;
 `;
 
-export const NormalText = styled.Text`
-  color: ${({ theme }) => theme.colors.text_detail};
+export const SubName = styled.Text`
+  font-size: ${RFValue(20)}px;
+  font-family: ${({ theme }) => theme.fonts.primary_400};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
-export const Function = styled.Text``;
+export const NormalText = styled.Text`
+  color: ${({ theme }) => theme.colors.text};
+`;
 
 export const XpView = styled.View`
   margin-top: ${RFValue(5)}px;
@@ -48,16 +53,23 @@ export const XpView = styled.View`
 
 export const XpNumber = styled.Text`
   color: ${({ theme }) => theme.colors.primary};
+  font-size: ${RFValue(20)}px;
+  font-family: ${({ theme }) => theme.fonts.primary_500};
 `;
 
 export const XpText = styled.Text`
   color: ${({ theme }) => theme.colors.text_detail};
 
+  font-family: ${({ theme }) => theme.fonts.primary_500};
+  font-size: ${RFValue(20)}px;
+
   margin-left: ${RFValue(3)}px;
   margin-bottom: ${RFValue(5)}px;
 `;
 
-export const AboutMe = styled.View``;
+export const AboutMe = styled.View`
+  margin-bottom: ${RFValue(10)}px;
+`;
 
 export const SkillsView = styled.View`
   background-color: ${({ theme }) => theme.colors.light.background_highlight};
@@ -66,6 +78,6 @@ export const SkillsView = styled.View`
 
   border-radius: 5px;
 
-  margin-top: ${RFValue(5)}px;
-  padding: ${RFPercentage(2)}px;
+  margin-top: ${RFValue(10)}px;
+  padding: ${RFPercentage(4)}px;
 `;

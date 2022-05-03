@@ -10,6 +10,7 @@ import {
   ProfilePicture,
   ProfilePictureContainer,
   SkillsView,
+  SubName,
   XpNumber,
   XpText,
   XpView,
@@ -31,7 +32,7 @@ export function UserProfile() {
 
       <KindaBoldText>César Lattes</KindaBoldText>
 
-      <NormalText>Méson π+</NormalText>
+      <SubName>Méson π+</SubName>
 
       <XpView>
         <XpNumber>9999</XpNumber>
