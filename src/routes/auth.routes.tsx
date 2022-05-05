@@ -21,8 +21,8 @@ export function AuthRoutes() {
         component={Splash}
       />
       <Screen
-        name="IntroSlider"
-        component={IntroSlider}
+      name="IntroSlider"
+      component={IntroSlider}
       />
       <Screen
         name="Login"

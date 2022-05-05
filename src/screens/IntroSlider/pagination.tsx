@@ -17,6 +17,9 @@ import background from '../../assets/images/gggs_background.png';
 import { Button } from '../../components/Button';
 import { ButtonContainer } from '../../components/Button/styles';
 import { ButtonText } from '../../components/Header/styles';
+import { Link } from '@react-navigation/native';
+
+import { Login } from "../../screens/Login";
 
 export function IntroSlider() {
   const [sliderState, setSliderState] = useState({ currentPage: 1 });
@@ -102,9 +105,11 @@ export function IntroSlider() {
                 <Text style={styles.headerFinale}>
                   Mas, por enquanto, é só isso que precisa saber...
                 </Text>
-                <ButtonContainer style={styles.button}>
-                  <ButtonText style={styles.buttonText}>&gt;</ButtonText>
-                </ButtonContainer>
+                <Link to={'Login'}>
+                  <ButtonContainer style={styles.button}>
+                    <ButtonText style={styles.buttonText}>&gt;</ButtonText>
+                  </ButtonContainer>
+                </Link>
               </View>
             </View>
           </ScrollView>
