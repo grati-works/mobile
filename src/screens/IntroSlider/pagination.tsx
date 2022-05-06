@@ -78,7 +78,7 @@ export function IntroSlider() {
               />
               <View style={styles.wrapper}>
                 <Text style={styles.header3}>
-                  A Grati é sua rede social corporativa favorita!
+                  Grati é sua nova rede social corporativa favorita
                 </Text>
               </View>
             </View>
@@ -89,7 +89,7 @@ export function IntroSlider() {
               />
               <View style={styles.wrapper}>
                 <Text style={styles.header3}>
-                  No qual você pode gratificar e ser gratificado
+                  Na qual você pode gratificar e ser gratificado
                 </Text>
               </View>
             </View>
@@ -100,9 +100,9 @@ export function IntroSlider() {
               />
               <View style={styles.wrapper}>
                 <Text style={styles.headerFinale}>
-                  Mas, por enquanto, é só isso que precisa saber...
+                  Mas é só isso que você precisa saber, por enquanto...
                 </Text>
-                <ButtonContainer style={styles.button}>
+                <ButtonContainer>
                   <ButtonText style={styles.buttonText}>&gt;</ButtonText>
                 </ButtonContainer>
               </View>
