@@ -14,9 +14,10 @@ import {
 
 import theme from '../../styles/theme';
 import background from '../../assets/images/gggs_background.png';
-import { Button } from '../../components/Button';
 import { ButtonContainer } from '../../components/Button/styles';
 import { ButtonText } from '../../components/Header/styles';
+
+import { useNavigation } from '@react-navigation/native';
 
 export function IntroSlider() {
   const [sliderState, setSliderState] = useState({ currentPage: 1 });
@@ -34,12 +35,20 @@ export function IntroSlider() {
     }
   };
 
+  const navigation = useNavigation();
+  async function goHome() {
+    navigation.navigate('Login');
+  }
+
   const { currentPage: pageIndex } = sliderState;
   return (
     <>
       <StatusBar barStyle='dark-content' />
       <SafeAreaView style={{ flex: 1 }}>
-        <ImageBackground source={background} resizeMode='cover' style={styles.image}>
+        <ImageBackground
+          source={background}
+          resizeMode='cover'
+          style={styles.image}>
           <ScrollView
             style={{ flex: 1 }}
             horizontal={true}
@@ -55,9 +64,7 @@ export function IntroSlider() {
                 style={styles.imageStyle}
               />
               <View style={styles.wrapper}>
-                <Text style={styles.header1}>
-                  Olá!
-                </Text>
+                <Text style={styles.header1}>Olá!</Text>
               </View>
             </View>
             <View style={{ width, height }}>
@@ -66,9 +73,7 @@ export function IntroSlider() {
                 style={styles.imageStyle}
               />
               <View style={styles.wrapper}>
-                <Text style={styles.header2}>
-                  Seja bem-vindo à Grati!
-                </Text>
+                <Text style={styles.header2}>Seja bem-vindo à Grati!</Text>
               </View>
             </View>
             <View style={{ width, height }}>
@@ -102,14 +107,17 @@ export function IntroSlider() {
                 <Text style={styles.headerFinale}>
                   Mas é só isso que você precisa saber, por enquanto...
                 </Text>
-                <ButtonContainer>
+                <ButtonContainer
+                  type='link'
+                  onPress={goHome}
+                  style={styles.button}>
                   <ButtonText style={styles.buttonText}>&gt;</ButtonText>
                 </ButtonContainer>
               </View>
             </View>
           </ScrollView>
           <View style={styles.paginationWrapper}>
-            {Array.from(Array(5).keys()).map((key, index) => (
+            {Array.from(Array(5).keys()).map((index) => (
               <View
                 style={[
                   styles.paginationDots,
@@ -138,7 +146,8 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     justifyContent: 'flex-end',
     backgroundColor: '#F6F7F8',
-    borderColor: '#E5E5E5'  
+    borderRadius: 7,
+    borderColor: '#E5E5E5'
   },
   buttonText: {
     bottom: 14,
@@ -159,7 +168,7 @@ const styles = StyleSheet.create({
   wrapper: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginVertical: 150,
+    marginVertical: 150
   },
   header: {
     width: 300,
