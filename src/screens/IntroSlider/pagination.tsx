@@ -145,15 +145,16 @@ const styles = StyleSheet.create({
     position: 'relative',
     alignContent: 'center',
     justifyContent: 'flex-end',
-    backgroundColor: '#F6F7F8',
-    borderRadius: 7,
-    borderColor: '#E5E5E5'
+    backgroundColor: '#6874E8',
+    borderRadius: 12,
   },
   buttonText: {
-    bottom: 14,
+    bottom: 11,
     alignContent: 'center',
     justifyContent: 'center',
-    color: '#787c8c'
+    color: '#FFFFFF',
+    fontSize: 22,
+    fontWeight: 'bold'
   },
   image: {
     flex: 1,

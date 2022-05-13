@@ -15,7 +15,9 @@ export const SearchSection = styled.View`
 
   padding: ${RFPercentage(2.5)}px;
 
-  marginBottom: ${RFPercentage(2)}px;
+  marginTop: ${RFPercentage(1.5)}px;
+  margin-bottom: ${RFPercentage(4)}px;
+
 `;
 
 export const HelperSection = styled.View`

@@ -8,6 +8,7 @@ export const SearchSection = styled.View`
 
   height: ${RFPercentage(10)}px;
   width: 90%;
+  margin-bottom: ${RFPercentage(1.4)}px;
 
   border-color: ${({ theme }) => theme.colors.input.input_border};
   border-radius: 5px;
@@ -15,7 +16,7 @@ export const SearchSection = styled.View`
 
   padding: ${RFPercentage(2.5)}px;
 
-  margin-top: ${RFPercentage(2)}px;
+  margin-top: ${RFPercentage(3)}px;
 `;
 
 export const HelperSection = styled.View`

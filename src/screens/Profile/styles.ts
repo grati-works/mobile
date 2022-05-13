@@ -40,8 +40,8 @@ export const ImageView = styled.View`
 `;
 
 export const ProfilePicture = styled.Image`
-  width: ${RFValue(200)}px;
-  height: ${RFValue(200)}px;
+  width: ${RFValue(100)}px;
+  height: ${RFValue(100)}px;
 
   border-radius: ${RFValue(150)}px;
 `;
