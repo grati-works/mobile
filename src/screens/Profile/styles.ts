@@ -1,6 +1,6 @@
-import styled from "styled-components/native";
-import { getStatusBarHeight } from "react-native-iphone-x-helper";
-import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import styled from 'styled-components/native';
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
+import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
 
 export const Container = styled.View`
   align-items: center;
@@ -68,6 +68,7 @@ export const ButtonSave = styled.TouchableOpacity`
   width: 90%;
   height: 10%;
 
+  margin-top: ${RFPercentage(2)}px;
   border-radius: 5px;
 
   background-color: ${({ theme }) => theme.colors.primaryLight};

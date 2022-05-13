@@ -69,7 +69,6 @@ function AuthProvider({ children }: AuthProviderProps) {
 
   async function signOut() {
     try {
-      // TODO: Remove user from AsyncStorage
       await AsyncStorage.removeItem("@Grati:user");
       await AsyncStorage.removeItem("@Grati:token");
       await AsyncStorage.removeItem("@Grati:refresh_token");

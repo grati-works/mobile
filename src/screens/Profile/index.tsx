@@ -3,29 +3,29 @@ import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-
 import { useNavigation } from '@react-navigation/native';
 
 import {
+  ButtonSaveText,
   ButtonSave,
   Container,
-  ButtonSaveText,
-  ButtonView,
-  Bold,
-  NotBold,
   ImageView,
   ProfilePicture,
   NotificationsContainer,
   NotificationIndicator,
+  ButtonView,
+  Bold,
+  NotBold,
 } from './styles';
 
 import BellIcon from '../../assets/icons/bell.svg';
-import { NameInput } from '../../components/Profile/NameInput';
-import { UserInput } from '../../components/Profile/UserInput';
-import { EmailInput } from '../../components/Profile/EmailInput';
 import { Modalize } from 'react-native-modalize';
+import { PasswordInput } from '../../components/Profile/PasswordInput';
+import { EmailInput } from '../../components/Profile/EmailInput';
+import { UserInput } from '../../components/Profile/UserInput';
 
 export function Profile() {
   const navigation = useNavigation();
   const [state, setState] = useState();
   const modalizeNotificationsRef = useRef<Modalize>(null);
-  
+
   const handleOpenNotificationsModal = () => {
     modalizeNotificationsRef.current?.open();
   };
@@ -40,19 +40,17 @@ export function Profile() {
             <ProfilePicture source={{ uri: 'https://imgur.com/random.png' }} />
 
             <NotificationsContainer onPress={handleOpenNotificationsModal}>
-              <NotificationIndicator>3</NotificationIndicator>
+              <NotificationIndicator>2</NotificationIndicator>
               <BellIcon width={36} height={36} />
             </NotificationsContainer>
           </ImageView>
 
           <ButtonView>
-            <Bold>Dados</Bold>
-            <NotBold>Trocar senha</NotBold>
+            <NotBold>Dados</NotBold>
+            <Bold>Trocar senha</Bold>
           </ButtonView>
 
-          <NameInput />
-          <UserInput />
-          <EmailInput />
+          <PasswordInput />
 
           <ButtonSave>
             <ButtonSaveText>Salvar alterações</ButtonSaveText>
