@@ -18,10 +18,10 @@ import { ButtonText } from '../../components/Header/styles';
 
 import { useNavigation } from '@react-navigation/native';
 
-import Logo from '../../assets/images/logo.svg'
+import Logo from '../../assets/images/logo.svg';
 
 export function IntroSlider() {
-  const [sliderState, setSliderState] = useState ({ currentPage: 1 });
+  const [sliderState, setSliderState] = useState({ currentPage: 1 });
   const { width, height } = Dimensions.get('window');
 
   const setSliderPage = (event: any) => {
@@ -44,7 +44,7 @@ export function IntroSlider() {
   const { currentPage: pageIndex } = sliderState;
   return (
     <>
-      <StatusBar style="dark"  backgroundColor='transparent' />
+      <StatusBar style='dark' backgroundColor='transparent' />
       <SafeAreaView style={{ flex: 1 }}>
         <ImageBackground
           source={background}
@@ -60,19 +60,19 @@ export function IntroSlider() {
               setSliderPage(event);
             }}>
             <View style={{ width, height }}>
-              <Logo style={styles.logo}/>
+              <Logo style={styles.logo} />
               <View style={styles.wrapper}>
                 <Text style={styles.header1}>Olá!</Text>
               </View>
             </View>
             <View style={{ width, height }}>
-            <Logo style={styles.logo}/>
+              <Logo style={styles.logo} />
               <View style={styles.wrapper}>
                 <Text style={styles.header2}>Seja bem-vindo à Grati!</Text>
               </View>
             </View>
             <View style={{ width, height }}>
-            <Logo style={styles.logo}/>
+              <Logo style={styles.logo} />
               <View style={styles.wrapper}>
                 <Text style={styles.header3}>
                   Grati é sua nova rede social corporativa favorita
@@ -80,7 +80,7 @@ export function IntroSlider() {
               </View>
             </View>
             <View style={{ width, height }}>
-            <Logo style={styles.logo}/>
+              <Logo style={styles.logo} />
               <View style={styles.wrapper}>
                 <Text style={styles.header3}>
                   Na qual você pode gratificar e ser gratificado
@@ -88,7 +88,7 @@ export function IntroSlider() {
               </View>
             </View>
             <View style={{ width, height }}>
-            <Logo style={styles.logo}/>
+              <Logo style={styles.logo} />
               <View style={styles.wrapper}>
                 <Text style={styles.headerFinale}>
                   Mas é só isso que você precisa saber, por enquanto...
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     justifyContent: 'flex-end',
     backgroundColor: '#6874E8',
-    borderRadius: 12,
+    borderRadius: 12
   },
   buttonText: {
     bottom: 11,
@@ -153,9 +153,15 @@ const styles = StyleSheet.create({
     width: PixelRatio.getPixelSizeForLayoutSize(20)
   },
   wrapper: {
+    width: '74%',
+    height: 140,
+    left: 56,
+    display: 'flex',
+    position: 'absolute',
     justifyContent: 'center',
     alignItems: 'center',
-    marginVertical: 150
+    marginTop: 220,
+    marginVertical: 180
   },
   header: {
     width: 300,
@@ -224,7 +230,7 @@ const styles = StyleSheet.create({
   },
   paginationWrapper: {
     position: 'absolute',
-    bottom: 62,
+    bottom: 50,
     left: 0,
     right: 0,
     justifyContent: 'center',

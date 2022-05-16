@@ -30,4 +30,5 @@ export const Timestamp = styled.Text`
 
 export const Author = styled.Text`
   font-family: ${({ theme }) => theme.fonts.primary_400};
+  text-decoration: underline;
 `;

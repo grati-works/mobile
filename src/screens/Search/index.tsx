@@ -4,15 +4,36 @@ import { Container, SearchInput, SearchSection } from './styles';
 import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, FlatList } from 'react-native';
 import SearchIcon from '../../assets/icons/search.svg';
 
-import { useNavigation } from '@react-navigation/native';
 import { UserCard } from '../../components/UserCard';
 import { Header } from '../../components/Header';
+import { api } from '../../services/api';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export function Search() {
-  const navigation = useNavigation();
-  const [state, setState] = useState();
+  const [query, setQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
 
-  useEffect(() => {}, []);
+  async function updateSuggestions(query) {
+    const organization_id = await AsyncStorage.getItem(
+      "@Grati:selected_organization"
+    );
+    const suggestions = await api.get(
+      `/search/suggest/${organization_id}?q=${query}`
+    ).catch(console.log);
+    // console.log({suggestions})
+    // setSuggestions(suggestions.data);
+  }
+
+  useEffect(() => {
+    if (query) {
+      if (query.length === 0) {
+        setSuggestions([]);
+      }
+      if (query.length > 0 && query.length % 3 === 0) {
+        updateSuggestions(query);
+      }
+    }
+  }, [query]);
 
   return (
     <KeyboardAvoidingView behavior="position" enabled>
@@ -25,6 +46,8 @@ export function Search() {
               placeholder="Luciano Monteiro"
               multiline={false}
               placeholderTextColor={({ theme }) => theme.colors.text}
+              onChangeText={setQuery}
+              value={query}
             />
             <SearchIcon width={30} height={30} />
           </SearchSection>
