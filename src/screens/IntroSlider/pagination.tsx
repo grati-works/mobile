@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import {
   Dimensions,
-  Image,
   PixelRatio,
   SafeAreaView,
   ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   View,
   ImageBackground
 } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 
 import theme from '../../styles/theme';
 import background from '../../assets/images/gggs_background.png';
@@ -19,8 +18,10 @@ import { ButtonText } from '../../components/Header/styles';
 
 import { useNavigation } from '@react-navigation/native';
 
+import Logo from '../../assets/images/logo.svg'
+
 export function IntroSlider() {
-  const [sliderState, setSliderState] = useState({ currentPage: 1 });
+  const [sliderState, setSliderState] = useState ({ currentPage: 1 });
   const { width, height } = Dimensions.get('window');
 
   const setSliderPage = (event: any) => {
@@ -43,7 +44,7 @@ export function IntroSlider() {
   const { currentPage: pageIndex } = sliderState;
   return (
     <>
-      <StatusBar barStyle='dark-content' />
+      <StatusBar style="dark"  backgroundColor='transparent' />
       <SafeAreaView style={{ flex: 1 }}>
         <ImageBackground
           source={background}
@@ -59,28 +60,19 @@ export function IntroSlider() {
               setSliderPage(event);
             }}>
             <View style={{ width, height }}>
-              <Image
-                source={require('../../assets/images/logo2.png')}
-                style={styles.imageStyle}
-              />
+              <Logo style={styles.logo}/>
               <View style={styles.wrapper}>
                 <Text style={styles.header1}>Olá!</Text>
               </View>
             </View>
             <View style={{ width, height }}>
-              <Image
-                source={require('../../assets/images/logo2.png')}
-                style={styles.imageStyle}
-              />
+            <Logo style={styles.logo}/>
               <View style={styles.wrapper}>
                 <Text style={styles.header2}>Seja bem-vindo à Grati!</Text>
               </View>
             </View>
             <View style={{ width, height }}>
-              <Image
-                source={require('../../assets/images/logo2.png')}
-                style={styles.imageStyle}
-              />
+            <Logo style={styles.logo}/>
               <View style={styles.wrapper}>
                 <Text style={styles.header3}>
                   Grati é sua nova rede social corporativa favorita
@@ -88,10 +80,7 @@ export function IntroSlider() {
               </View>
             </View>
             <View style={{ width, height }}>
-              <Image
-                source={require('../../assets/images/logo2.png')}
-                style={styles.imageStyle}
-              />
+            <Logo style={styles.logo}/>
               <View style={styles.wrapper}>
                 <Text style={styles.header3}>
                   Na qual você pode gratificar e ser gratificado
@@ -99,10 +88,7 @@ export function IntroSlider() {
               </View>
             </View>
             <View style={{ width, height }}>
-              <Image
-                source={require('../../assets/images/logo2.png')}
-                style={styles.imageStyle}
-              />
+            <Logo style={styles.logo}/>
               <View style={styles.wrapper}>
                 <Text style={styles.headerFinale}>
                   Mas é só isso que você precisa saber, por enquanto...
@@ -160,11 +146,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center'
   },
-  imageStyle: {
-    left: 152,
+  logo: {
+    left: 164,
     top: 50,
-    height: PixelRatio.getPixelSizeForLayoutSize(28),
-    width: PixelRatio.getPixelSizeForLayoutSize(30)
+    height: PixelRatio.getPixelSizeForLayoutSize(20),
+    width: PixelRatio.getPixelSizeForLayoutSize(20)
   },
   wrapper: {
     justifyContent: 'center',

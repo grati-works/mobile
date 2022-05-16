@@ -111,7 +111,8 @@ function AuthProvider({ children }: AuthProviderProps) {
             setData(user);
           }
         } catch(error) {
-          console.log("API ERROR [RefreshToken]: ", error.response.data);
+          console.log("API ERROR [RefreshToken]: ",
+           error.response.data);
         }
       }
   
