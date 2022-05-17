@@ -1,9 +1,9 @@
-import React from "react";
-import AppLoading from "expo-app-loading";
+import React, { useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import theme from "./src/styles/theme";
 import { Routes } from "./src/routes";
 import { AuthProvider } from "./src/hooks/auth";
+import * as SplashScreen from "expo-splash-screen";
 
 import {
   useFonts,
@@ -12,7 +12,7 @@ import {
   Inter_600SemiBold,
 } from "@expo-google-fonts/inter";
 
-
+SplashScreen.preventAutoHideAsync();
 export default function App() {
   const [fontsLoaded] = useFonts({
     Inter_400Regular,
@@ -20,9 +20,13 @@ export default function App() {
     Inter_600SemiBold,
   });
 
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
+  useEffect(() => {
+    if (!fontsLoaded) {
+      return;
+    }
+
+    SplashScreen.hideAsync();
+  }, [fontsLoaded]);
 
   return (
     <AuthProvider>

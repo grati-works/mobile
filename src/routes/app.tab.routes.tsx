@@ -28,8 +28,8 @@ export function AppTabRoutes() {
         tabBarActiveBackgroundColor: theme.colors.transparent_black,
         tabBarShowLabel: false,
         tabBarStyle: {
-          paddingVertical: Platform.OS === 'ios' ? 20 : 0,
-          height: 78,
+          paddingVertical: 0,
+          height: Platform.OS == 'ios' ? 108 : 78,
           backgroundColor: theme.colors.title,
         },
       }}

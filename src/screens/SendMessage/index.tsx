@@ -76,7 +76,7 @@ export function SendMessage() {
               multiline={true}
             />
           </MessageInfoWrapper>
-          <FooterWrapper>
+          <FooterWrapper keyboardIsVisible={keyboardIsVisible}>
             <AttachButton>
               <Emoji />
             </AttachButton>

@@ -1,7 +1,6 @@
 import styled from "styled-components/native";
 import { getStatusBarHeight } from "react-native-iphone-x-helper";
 import { RFValue } from "react-native-responsive-fontsize";
-import { Modalize } from "react-native-modalize";
 
 export const Container = styled.View`
   width: 100%;
@@ -12,25 +11,6 @@ export const Container = styled.View`
   justify-content: space-between;
   padding: ${getStatusBarHeight() + RFValue(10)}px;
   margin-top: ${getStatusBarHeight()}px;
-`;
-
-export const NotificationsContainer = styled.TouchableOpacity``;
-
-export const NotificationIndicator = styled.Text`
-  background-color: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.button_text};
-  width: 20px;
-  height: 20px;
-  border-radius: 12px;
-
-  text-align: center;
-  font-size: ${RFValue(11)}px;
-  font-family: ${({ theme }) => theme.fonts.primary_400};
-
-  position: absolute;
-  z-index: 10;
-  right: -3px;
-  top: -3px;
 `;
 
 export const ProfileContainer = styled.TouchableOpacity`

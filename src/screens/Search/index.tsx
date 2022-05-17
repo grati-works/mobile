@@ -1,12 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { Container, SearchInput, SearchSection } from './styles';
+import React, { useEffect, useState } from "react";
+import { Container, SearchInput, SearchSection } from "./styles";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, FlatList } from 'react-native';
-import SearchIcon from '../../assets/icons/search.svg';
+import {
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Keyboard,
+  FlatList,
+} from "react-native";
+import SearchIcon from "../../assets/icons/search.svg";
 
-import { UserCard } from '../../components/UserCard';
-import { Header } from '../../components/Header';
-import { api } from '../../services/api';
+import { UserCard } from "../../components/UserCard";
+import { Header } from "../../components/Header";
+import { api } from "../../services/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export function Search() {
@@ -17,55 +23,45 @@ export function Search() {
     const organization_id = await AsyncStorage.getItem(
       "@Grati:selected_organization"
     );
-    const suggestions = await api.get(
-      `/search/suggest/${organization_id}?q=${query}`
-    ).catch(console.log);
-    // console.log({suggestions})
-    // setSuggestions(suggestions.data);
+
+    const suggestions = await api.get(`/search/${organization_id}?q=${query}`);
+    setSuggestions(suggestions.data);
   }
 
   useEffect(() => {
-    if (query) {
-      if (query.length === 0) {
-        setSuggestions([]);
-      }
-      if (query.length > 0 && query.length % 3 === 0) {
-        updateSuggestions(query);
-      }
+    if (query.length === 0) {
+      setSuggestions([]);
+    } else if (query.length % 3 === 0) {
+      updateSuggestions(query);
     }
   }, [query]);
 
   return (
-    <KeyboardAvoidingView behavior="position" enabled>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <Container>
-          <Header />
+    <GestureHandlerRootView>
+      <KeyboardAvoidingView behavior="position" enabled>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <Container>
+            <Header />
 
-          <SearchSection>
-            <SearchInput
-              placeholder="Luciano Monteiro"
-              multiline={false}
-              placeholderTextColor={({ theme }) => theme.colors.text}
-              onChangeText={setQuery}
-              value={query}
+            <SearchSection>
+              <SearchInput
+                placeholder="Luciano Monteiro"
+                multiline={false}
+                placeholderTextColor={({ theme }) => theme.colors.text}
+                onChangeText={setQuery}
+                value={query}
+              />
+              <SearchIcon width={30} height={30} />
+            </SearchSection>
+
+            <FlatList
+              data={suggestions}
+              renderItem={(profile) => <UserCard profile={profile.item} />}
+              keyExtractor={(profile) => profile.id}
             />
-            <SearchIcon width={30} height={30} />
-          </SearchSection>
-
-          <FlatList
-            data={[
-              {
-                id: 1,
-              },
-              {
-                id: 2,
-              },
-            ]}
-            renderItem={(user) => <UserCard user={user} />}
-            keyExtractor={(user) => user.id}
-          />
-        </Container>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+          </Container>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
+    </GestureHandlerRootView>
   );
 }

@@ -13,6 +13,7 @@ interface User {
   id: string;
   email: string;
   name: string;
+  username: string;
   profile_picture: string;
   token: string;
   refresh_token: string;

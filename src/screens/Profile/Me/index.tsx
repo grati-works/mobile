@@ -1,73 +1,120 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useState, useRef } from "react";
+import {
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import {
   ButtonSave,
   Container,
   ButtonSaveText,
-  ButtonView,
-  Bold,
-  NotBold,
-  ImageView,
+  Header,
   ProfilePicture,
-  NotificationsContainer,
-  NotificationIndicator,
   ProfilePictureContainer,
   CameraIcon,
-  ProfileData,
-  ProfilePassword,
-} from './styles';
+  NotificationsWrapper,
+  TabMenu,
+  MenuOption,
+  MenuOptionText,
+  UserDataWrapper,
+} from "./styles";
 
-import BellIcon from '../../../assets/icons/bell.svg';
-import Photo from '../../../assets/icons/photo.svg';
+import Photo from "../../../assets/icons/photo.svg";
 
-import { NameInput } from '../../../components/Profile/NameInput';
-import { UserInput } from '../../../components/Profile/UserInput';
-import { EmailInput } from '../../../components/Profile/EmailInput';
-import { Modalize } from 'react-native-modalize';
+import { Input } from "../../../components/Input";
+import { Modalize } from "react-native-modalize";
+import { useAuth } from "../../../hooks/auth";
+
+import UserIcon from "../../../assets/icons/profile-input/user.svg";
+import UsernameIcon from '../../../assets/icons/profile-input/username.svg';
+import EmailIcon from '../../../assets/icons/profile-input/email.svg';
+import { NotificationsBell } from "../../../components/NotificationsBell";
+
+import { api } from "../../../services/api";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export function ProfileMe() {
-  const navigation = useNavigation();
-  const [state, setState] = useState();
+  const { user } = useAuth();
   const modalizeNotificationsRef = useRef<Modalize>(null);
+
+  const [profile, setProfile] = useState(null);
+  const [name, setName] = useState(user.name);
+  const [username, setUsername] = useState(user.username);
+  const [email, setEmail] = useState("");
 
   const handleOpenNotificationsModal = () => {
     modalizeNotificationsRef.current?.open();
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    async function loadProfile() {
+      try {
+        const organization_id = await AsyncStorage.getItem(
+          "@Grati:selected_organization"
+        );
+  
+        const response = await api.get(`/profile/${organization_id}/${user.id}`);
+    
+        setProfile(response.data);
+      } catch(error) {
+        console.log(error.response.data)
+      }
+    }
+
+    loadProfile();
+  }, [])
 
   return (
     <KeyboardAvoidingView behavior="position" enabled>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <Container>
-          <ImageView>
+          <Header>
             <ProfilePictureContainer>
-              <ProfilePicture source={{ uri: 'https://imgur.com/random.png' }} />
+              <ProfilePicture source={{ uri: user.profile_picture }} />
               <CameraIcon>
-                <Photo width={40} height={40}></Photo>
+                <Photo width={32} height={32} />
               </CameraIcon>
             </ProfilePictureContainer>
 
-            <NotificationsContainer onPress={handleOpenNotificationsModal}>
-              <NotificationIndicator>3</NotificationIndicator>
-              <BellIcon width={36} height={36} />
-            </NotificationsContainer>
-          </ImageView>
+            <NotificationsWrapper>
+              <NotificationsBell notifications={[]} onPress={() => {}} />
+            </NotificationsWrapper>
+          </Header>
 
-          <ButtonView>
-            <ProfileData>
-              <Bold>Dados</Bold>
-            </ProfileData>
-            <ProfilePassword>
-              <NotBold>Trocar senha</NotBold>
-            </ProfilePassword>
-          </ButtonView>
+          <TabMenu>
+            <MenuOption>
+              <MenuOptionText selected={true}>Dados</MenuOptionText>
+            </MenuOption>
+            <MenuOption>
+              <MenuOptionText>Trocar senha</MenuOptionText>
+            </MenuOption>
+          </TabMenu>
 
-          <NameInput />
-          <UserInput />
-          <EmailInput />
+          <UserDataWrapper>
+            <Input
+              placeholder="Nome"
+              value={name}
+              onChangeText={setName}
+              icon={<UserIcon width={30} height={30} />}
+              size={53}
+            />
+            <Input
+              placeholder="Usuário"
+              value={username}
+              onChangeText={setUsername}
+              icon={<UsernameIcon width={30} height={30} />}
+              size={53}
+            />
+            <Input
+              placeholder="Email"
+              value={email}
+              onChangeText={setEmail}
+              icon={<EmailIcon width={30} height={30} />}
+              size={53}
+            />
+          </UserDataWrapper>
 
           <ButtonSave>
             <ButtonSaveText>Salvar alterações</ButtonSaveText>

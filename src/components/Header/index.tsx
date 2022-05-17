@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import {
   Container,
-  NotificationsContainer,
-  NotificationIndicator,
   ProfileContainer,
   ProfileName,
   ProfilePicture,
@@ -14,12 +12,12 @@ import {
 } from "./styles";
 import { Modalize } from "react-native-modalize";
 
-import BellIcon from "../../assets/icons/bell.svg";
 import { useTheme } from "styled-components";
 import { NotificationCard } from "../NotificationCard";
-import { Dimensions } from "react-native";
+import { Dimensions, Platform } from "react-native";
 import { useAuth } from "../../hooks/auth";
 import { api } from "../../services/api";
+import { NotificationsBell } from "../NotificationsBell";
 
 export function Header() {
   const [notifications, setNotifications] = useState([]);
@@ -27,7 +25,7 @@ export function Header() {
   const modalizeProfileRef = useRef<Modalize>(null);
   const modalizeNotificationsRef = useRef<Modalize>(null);
   const theme = useTheme();
-  const { user } = useAuth();
+  const { user, signOut } = useAuth();
 
   const handleOpenProfileModal = () => {
     modalizeProfileRef.current?.open();
@@ -53,10 +51,10 @@ export function Header() {
   return (
     <>
       <Container>
-        <NotificationsContainer onPress={handleOpenNotificationsModal}>
-          <NotificationIndicator>{notifications.length}</NotificationIndicator>
-          <BellIcon width={36} height={36} />
-        </NotificationsContainer>
+        <NotificationsBell
+          notifications={notifications}
+          onPress={handleOpenNotificationsModal}
+        />
 
         <ProfileContainer onPress={handleOpenProfileModal}>
           <ProfileName>{user.name}</ProfileName>
@@ -84,6 +82,9 @@ export function Header() {
         ref={modalizeProfileRef}
         adjustToContentHeight
         withHandle={false}
+        rootStyle={{
+          marginBottom: Platform.OS === 'ios' ? 108 : 78
+        }}
       >
         <ActionInfo>
           <Text>
@@ -92,7 +93,7 @@ export function Header() {
         </ActionInfo>
         <ActionButton
           onPress={() => {
-            console.log("AAA");
+            signOut()
           }}
         >
           <ButtonText>Fazer logout</ButtonText>

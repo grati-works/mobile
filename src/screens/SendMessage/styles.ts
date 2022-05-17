@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components/native";
 import { getStatusBarHeight } from "react-native-iphone-x-helper";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import { Platform } from "react-native";
 
 export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.light.background};
@@ -113,7 +114,16 @@ export const FooterWrapper = styled.View`
   display: flex;
   flex-direction: row;
 
-  margin-bottom: ${getStatusBarHeight() + 10}px;
+  margin-bottom: ${getStatusBarHeight() + Platform.OS === 'ios' ? 80 : 50}px;
+
+  ${({ keyboardIsVisible }) =>
+    keyboardIsVisible
+      ? css`
+          display: none;
+        `
+      : css`
+          display: flex;
+        `};
 `;
 
 export const AttachButton = styled.TouchableOpacity`

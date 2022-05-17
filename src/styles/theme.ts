@@ -11,6 +11,7 @@ export default {
       background: '#F6F7F8',
       background_highlight: '#FFF',
       detail: '#EFEEF2',
+      detail_contrast: '#DEDEE3'
     },
     dark: {
       background: '#1a1a1a',

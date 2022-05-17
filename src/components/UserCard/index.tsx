@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   Container,
   Row,
@@ -15,26 +15,21 @@ import {
 
 import { useNavigation } from '@react-navigation/native';
 
-export function UserCard({ user }) {
-  const navigation = useNavigation();
-  const [state, setState] = useState();
-
-  useEffect(() => {}, []);
-
+export function UserCard({ profile }) {
   return (
-    <Container id={user.id}>
+    <Container id={profile.id}>
       <Row>
-        <Pic source={require('../../../tmp/images/EnWo7vrXMAAb5vO.png')} />
+        <Pic source={{ uri: profile.user.profile_picture }} />
         <ViewHelper>
           <NameContainer>
             <NameTxt numberOfLines={1} ellipsizeMode="clip">
-              Luciano Monteiro
+              {profile.user.name}
             </NameTxt>
           </NameContainer>
           <InfoContainer>
-            <LvlTxt>Nível 2</LvlTxt>
+            <LvlTxt>{profile.responsibility}</LvlTxt>
             <Xp>
-              <XpNumber>3333</XpNumber>
+              <XpNumber>{profile.points}</XpNumber>
               <XpView> xp</XpView>
             </Xp>
           </InfoContainer>

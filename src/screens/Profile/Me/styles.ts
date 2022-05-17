@@ -1,85 +1,87 @@
-import styled from 'styled-components/native';
-import { getStatusBarHeight } from 'react-native-iphone-x-helper';
-import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
-import { Dimensions } from 'react-native';
+import styled from "styled-components/native";
+import { getStatusBarHeight } from "react-native-iphone-x-helper";
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import { Dimensions } from "react-native";
 
 export const Container = styled.View`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.light.background};
   height: ${RFPercentage(100) + getStatusBarHeight()}px;
   margin-top: ${getStatusBarHeight()}px;
+  padding-horizontal: ${RFPercentage(5)}px;
 `;
 
-export const ProfilePictureContainer = styled.TouchableOpacity``;
-
-export const NotificationsContainer = styled.TouchableOpacity``;
-
-export const NotificationIndicator = styled.Text`
-  background-color: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.button_text};
-  width: 20px;
-  height: 20px;
-  border-radius: 12px;
-
-  text-align: center;
-  font-size: ${RFValue(13)}px;
-  font-family: ${({ theme }) => theme.fonts.primary_400};
-
-  position: absolute;
-  z-index: 10;
-  right: -3px;
-  top: -3px;
-`;
-
-export const CameraIcon = styled.View`
-  background-color: ${({ theme }) => theme.colors.primary};
-
-  padding: ${RFPercentage(0.01)}px;
-  justify-content: center;
-
-  width: ${RFPercentage(6.25)}px;
-  height: ${RFPercentage(6.25)}px;
-  border-radius: 2px;
-
-  position: absolute;
-  right: ${Dimensions.get('window').width * 0.01}px;
-  top: ${Dimensions.get('window').width * 0.35}px;
-`;
-
-export const ImageView = styled.View`
+export const Header = styled.View`
+  width: 100%;
   display: flex;
   flex-direction: row;
 
-  width: 90%;
   justify-content: center;
-
-  margin-left: ${RFPercentage(3)}px;
-  margin-top: ${RFPercentage(3)}px;
+  margin-top: 50px;
 `;
 
+export const ProfilePictureContainer = styled.View``;
+
 export const ProfilePicture = styled.Image`
-  width: ${RFValue(200)}px;
-  height: ${RFValue(200)}px;
+  width: ${RFValue(162)}px;
+  height: ${RFValue(162)}px;
 
   border-radius: ${RFValue(150)}px;
 `;
 
-export const ProfileData = styled.TouchableOpacity``;
+export const CameraIcon = styled.TouchableOpacity`
+  background-color: ${({ theme }) => theme.colors.primary};
 
-export const ProfilePassword = styled.TouchableOpacity``;
+  align-items: center;
+  justify-content: center;
 
-export const Bold = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.primary_500};
-  font-size: ${RFValue(20)}px;
+  width: 48px;
+  height: 48px;
+  border-radius: 2px;
 
-  border: none;
-  border-bottom-width: ${RFValue(1)}px;
-  border-color: ${({ theme }) => theme.colors.primaryDark};
+  position: absolute;
+  left: ${RFValue(116)}px;
+  top: ${RFValue(116)}px;
 `;
 
-export const NotBold = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.primary_400};
-  font-size: ${RFValue(20)}px;
+export const NotificationsWrapper = styled.View`
+  position: absolute;
+  right: ${RFValue(10)}px;
+  top: -${RFValue(10)}px;
+`;
+
+export const TabMenu = styled.View`
+  width: 100%;
+
+  flex-direction: row;
+  border-bottom-width: 1px;
+  border-bottom-color: ${({ theme }) => theme.colors.light.detail_contrast};
+
+  margin-top: 32px;
+`;
+
+export const MenuOption = styled.TouchableOpacity`
+  width: 50%;
+`;
+
+export const MenuOptionText = styled.Text`
+  width: 100%;
+
+  font-family: ${({ theme, selected }) =>
+    theme.fonts[selected ? "primary_600" : "primary_400"]};
+  font-size: ${RFValue(16)}px;
+  text-align: center;
+  color: ${({ theme, selected }) => selected? theme.colors.title : theme.colors.text};
+
+  border-bottom-width: 3px;
+  border-bottom-color: ${({ theme, selected }) =>
+    selected ? theme.colors.primary : theme.colors.light.background};
+
+  padding-bottom: 10px;
+`;
+
+export const UserDataWrapper = styled.View`
+  margin-top: ${RFValue(20)}px;
 `;
 
 export const ButtonSave = styled.TouchableOpacity`
@@ -87,8 +89,8 @@ export const ButtonSave = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
 
-  width: 90%;
-  height: 10%;
+  width: 100%;
+  height: 53px;
 
   border-radius: 5px;
 
@@ -97,8 +99,8 @@ export const ButtonSave = styled.TouchableOpacity`
 
 export const ButtonSaveText = styled.Text`
   color: ${({ theme }) => theme.colors.button_text};
-
-  font-size: ${RFValue(20)}px;
+  font-family: ${({ theme }) => theme.fonts.primary_500};
+  font-size: ${RFValue(14)}px;
 `;
 
 export const ButtonView = styled.View`
@@ -106,9 +108,7 @@ export const ButtonView = styled.View`
   flex-direction: row;
   justify-content: space-evenly;
 
-  width: 90%;
-
-  margin-top: ${RFPercentage(2)}px;
+  width: 100%;
 
   border-bottom-width: 0.2px;
   border: none;
