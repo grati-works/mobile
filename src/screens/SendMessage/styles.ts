@@ -10,7 +10,7 @@ export const Container = styled.View`
     keyboardIsVisible
       ? css`
           height: ${RFPercentage(100) - keyboardHeight}px;
-          margin-top: ${keyboardHeight - (getStatusBarHeight() * 3)}px;
+          margin-top: ${keyboardHeight - getStatusBarHeight() * 3}px;
         `
       : css`
           height: ${RFPercentage(100) - 48}px;
@@ -103,7 +103,7 @@ export const TagName = styled.Text`
 `;
 
 export const TextInput = styled.TextInput`
-  min-height: ${Dimensions.get("window").height * .2}px;
+  min-height: ${Dimensions.get("window").height * 0.2}px;
   margin: auto;
   margin-top: 10px;
   color: ${({ theme }) => theme.colors.text};
@@ -145,6 +145,14 @@ export const AttachButton = styled.TouchableOpacity`
   justify-content: center;
 
   margin-right: 10px;
+`;
+
+export const AttachedImage = styled.Image`
+  width: ${RFValue(48)}px;
+  height: ${RFValue(48)}px;
+  border-radius: 5px;
+  border-width: 3px;
+  border-color: ${({ theme }) => theme.colors.primary};
 `;
 
 export const SendButton = styled.TouchableOpacity`

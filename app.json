@@ -24,7 +24,15 @@
     },
     "ios": {
       "icon": "./assets/icon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "O Grati precisa de permissão para acessar suas fotos."
+        }
+      ]
+    ]
   },
   "name": "Grati"
 }
