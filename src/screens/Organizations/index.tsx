@@ -1,11 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import {
-  Container,
-  CardList,
-  Header,
-  Title,
-  ModalTitle,
-} from "./styles";
+import { Container, CardList, Header, Title, ModalTitle } from "./styles";
 
 import {
   KeyboardAvoidingView,
@@ -13,14 +7,15 @@ import {
   Keyboard,
   Dimensions,
 } from "react-native";
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useTheme } from 'styled-components';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useTheme } from "styled-components";
 
 import { OrganizationCard } from "../../components/OrganizationCard";
 import { GroupCard } from "../../components/GroupCard";
 import { api } from "../../services/api";
 import { useNavigation } from "@react-navigation/native";
-import { Modalize } from 'react-native-modalize';
+import { Modalize } from "react-native-modalize";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export function Organizations() {
   const navigation = useNavigation();
@@ -43,7 +38,7 @@ export function Organizations() {
     navigation.navigate("Home", {
       organization_id: selectedOrganization,
       group_id: id,
-    })
+    });
     AsyncStorage.setItem("@Grati:group_id", id.toString());
     setSelectedGroup(id);
   }
@@ -51,24 +46,26 @@ export function Organizations() {
   useEffect(() => {
     async function loadSelectedInfo() {
       try {
-        const organization_id = await AsyncStorage.getItem("@Grati:organization_id");
+        const organization_id = await AsyncStorage.getItem(
+          "@Grati:organization_id"
+        );
         const group_id = await AsyncStorage.getItem("@Grati:group_id");
-  
-        if(organization_id) setSelectedOrganization(organization_id);
-        if(group_id) setSelectedGroup(group_id);
+
+        if (organization_id) setSelectedOrganization(organization_id);
+        if (group_id) setSelectedGroup(group_id);
       } catch (error) {
-        console.debug('Não foi possível recarregar organização selecionada')
+        console.debug("Não foi possível recarregar organização selecionada");
       }
     }
 
     async function loadOrganizations() {
       try {
-        const organizations = await api.get('user/organizations');
+        const organizations = await api.get("user/organizations");
 
         setOrganizations(organizations.data);
       } catch (error) {
         console.log(error);
-        console.debug('Não foi possível carregar as organizações de usuário');
+        console.debug("Não foi possível carregar as organizações de usuário");
       }
     }
 
@@ -79,13 +76,14 @@ export function Organizations() {
   return (
     <KeyboardAvoidingView behavior="position" enabled>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <Container>
-          <Header>
-            <Title>Organizações inscritas</Title>
-          </Header>
+        <GestureHandlerRootView>
+          <Container>
+            <Header>
+              <Title>Organizações inscritas</Title>
+            </Header>
             <CardList
               data={organizations}
-              contentContainerStyle={{paddingBottom:100}} 
+              contentContainerStyle={{ paddingBottom: 100 }}
               renderItem={({ item }) => (
                 <OrganizationCard
                   key={item.id}
@@ -99,32 +97,48 @@ export function Organizations() {
             />
             <Modalize
               ref={modalizeRef}
-              snapPoint={Dimensions.get('window').height - 100}
+              snapPoint={Dimensions.get("window").height - 100}
               HeaderComponent={
-                <ModalTitle>Grupos inscritos na organização - {organizations.find(organization => organization.id === selectedOrganization)?.name}</ModalTitle>
+                <ModalTitle>
+                  Grupos inscritos na organização -{" "}
+                  {
+                    organizations.find(
+                      (organization) => organization.id === selectedOrganization
+                    )?.name
+                  }
+                </ModalTitle>
               }
-              childrenStyle={{padding: 20}}
+              childrenStyle={{ padding: 20 }}
               modalStyle={{
                 padding: 40,
                 backgroundColor: theme.colors.light.background,
               }}
-            >
-                  {
-                    organizations.find(organization => organization.id === selectedOrganization)?.groups.map(group => (
-                      <GroupCard
-                        key={group.id}
-                        name={group.name}
-                        color={group.color}
-                        onPress={async () => {
-                          console.log(selectedOrganization)
-                          await AsyncStorage.setItem("@Grati:selected_organization", selectedOrganization.toString())
-                          enterGroup(group.id)
-                        }}
-                        />
-                    ))
-                  }
-            </Modalize>
-        </Container>
+              flatListProps={{
+                data: organizations.find(
+                  (organization) => organization.id === selectedOrganization
+                )?.groups,
+                renderItem: ({ item, index }) => (
+                  <GroupCard
+                    key={`${index}-${item.id}`}
+                    name={item.name}
+                    color={item.color}
+                    onPress={async () => {
+                      console.log(selectedOrganization);
+                      await AsyncStorage.setItem(
+                        "@Grati:selected_organization",
+                        selectedOrganization.toString()
+                      );
+                      enterGroup(item.id);
+                    }}
+                  />
+                ),
+                keyExtractor: (item) =>
+                  Math.floor(Math.random() * 100).toString(),
+                showsVerticalScrollIndicator: false,
+              }}
+            />
+          </Container>
+        </GestureHandlerRootView>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );

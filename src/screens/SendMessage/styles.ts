@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components/native";
 import { getStatusBarHeight } from "react-native-iphone-x-helper";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
-import { Platform } from "react-native";
+import { Dimensions, Platform } from "react-native";
 
 export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.light.background};
@@ -9,8 +9,8 @@ export const Container = styled.View`
   ${({ keyboardIsVisible, keyboardHeight, theme }) =>
     keyboardIsVisible
       ? css`
-          height: ${RFPercentage(100) - keyboardHeight - 70}px;
-          margin-top: ${keyboardHeight + getStatusBarHeight() - 48}px;
+          height: ${RFPercentage(100) - keyboardHeight}px;
+          margin-top: ${keyboardHeight - (getStatusBarHeight() * 3)}px;
         `
       : css`
           height: ${RFPercentage(100) - 48}px;
@@ -29,12 +29,16 @@ export const ReceiversUsernamesWrapper = styled.View`
   flex-wrap: wrap;
 `;
 
-export const ReceiverUsername = styled.Text`
+export const ReceiverUsernameButton = styled.TouchableOpacity`
   background-color: ${({ theme }) => theme.colors.light.detail};
-  font-family: ${({ theme }) => theme.fonts.primary_400};
   border-radius: 5px;
   padding: 8px 16px;
   margin-right: 12px;
+  margin-bottom: 6px;
+`;
+
+export const ReceiverUsername = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.primary_400};
   font-size: ${RFValue(14)}px;
 `;
 
@@ -64,7 +68,7 @@ export const TagsWrapper = styled.View`
   flex-wrap: wrap;
 `;
 
-export const Tag = styled.View`
+export const Tag = styled.TouchableOpacity`
   height: 48px;
   background-color: ${({ theme }) => theme.colors.light.detail};
   border-radius: 5px;
@@ -99,10 +103,14 @@ export const TagName = styled.Text`
 `;
 
 export const TextInput = styled.TextInput`
+  min-height: ${Dimensions.get("window").height * .2}px;
+  margin: auto;
+  margin-top: 10px;
   color: ${({ theme }) => theme.colors.text};
-  padding: 0 32px;
   font-size: ${RFValue(14)}px;
-  max-width: 100%;
+  width: 85%;
+
+  text-align-vertical: top;
 `;
 
 export const FooterWrapper = styled.View`
@@ -114,7 +122,7 @@ export const FooterWrapper = styled.View`
   display: flex;
   flex-direction: row;
 
-  margin-bottom: ${getStatusBarHeight() + Platform.OS === 'ios' ? 80 : 50}px;
+  margin-bottom: ${getStatusBarHeight() + Platform.OS === "ios" ? 80 : 50}px;
 
   ${({ keyboardIsVisible }) =>
     keyboardIsVisible

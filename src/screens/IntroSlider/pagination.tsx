@@ -1,55 +1,62 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Dimensions,
-  PixelRatio,
   SafeAreaView,
   ScrollView,
-  StyleSheet,
-  Text,
-  View,
-  ImageBackground
-} from 'react-native';
-import { StatusBar } from 'expo-status-bar';
+} from "react-native";
+import { StatusBar } from "expo-status-bar";
 
-import theme from '../../styles/theme';
-import background from '../../assets/images/gggs_background.png';
-import { ButtonContainer } from '../../components/Button/styles';
-import { ButtonText } from '../../components/Header/styles';
+import background from "../../assets/images/gggs_background.png";
 
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 
-import Logo from '../../assets/images/logo.svg';
+
+import {
+  BackgroundWrapper,
+  Logo,
+  NextButtonText,
+  NextButtonWrapper,
+  PageDescription,
+  PageTitle,
+  PageTitleWrapper,
+  PageWrapper,
+  PaginationDot,
+  PaginationWrapper,
+} from "./styles";
 
 export function IntroSlider() {
-  const [sliderState, setSliderState] = useState({ currentPage: 1 });
-  const { width, height } = Dimensions.get('window');
+  const [sliderState, setSliderState] = useState({ currentPage: 0 });
+  const { width } = Dimensions.get("window");
 
   const setSliderPage = (event: any) => {
     const { currentPage } = sliderState;
     const { x } = event.nativeEvent.contentOffset;
     const indexOfNextScreen = Math.round(x / width);
+
     if (indexOfNextScreen !== currentPage) {
       setSliderState({
         ...sliderState,
-        currentPage: indexOfNextScreen
+        currentPage: indexOfNextScreen,
       });
     }
   };
 
   const navigation = useNavigation();
+
   async function goHome() {
-    navigation.navigate('Login');
+    navigation.navigate("Login");
   }
 
   const { currentPage: pageIndex } = sliderState;
+
   return (
     <>
-      <StatusBar style='dark' backgroundColor='transparent' />
+      <StatusBar style="dark" backgroundColor="transparent" />
       <SafeAreaView style={{ flex: 1 }}>
-        <ImageBackground
+        <BackgroundWrapper
           source={background}
-          resizeMode='cover'
-          style={styles.image}>
+          resizeMode="cover"
+        >
           <ScrollView
             style={{ flex: 1 }}
             horizontal={true}
@@ -58,190 +65,57 @@ export function IntroSlider() {
             showsHorizontalScrollIndicator={false}
             onScroll={(event: any) => {
               setSliderPage(event);
-            }}>
-            <View style={{ width, height }}>
-              <Logo style={styles.logo} />
-              <View style={styles.wrapper}>
-                <Text style={styles.header1}>Olá!</Text>
-              </View>
-            </View>
-            <View style={{ width, height }}>
-              <Logo style={styles.logo} />
-              <View style={styles.wrapper}>
-                <Text style={styles.header2}>Seja bem-vindo à Grati!</Text>
-              </View>
-            </View>
-            <View style={{ width, height }}>
-              <Logo style={styles.logo} />
-              <View style={styles.wrapper}>
-                <Text style={styles.header3}>
-                  Grati é sua nova rede social corporativa favorita
-                </Text>
-              </View>
-            </View>
-            <View style={{ width, height }}>
-              <Logo style={styles.logo} />
-              <View style={styles.wrapper}>
-                <Text style={styles.header3}>
-                  Na qual você pode gratificar e ser gratificado
-                </Text>
-              </View>
-            </View>
-            <View style={{ width, height }}>
-              <Logo style={styles.logo} />
-              <View style={styles.wrapper}>
-                <Text style={styles.headerFinale}>
-                  Mas é só isso que você precisa saber, por enquanto...
-                </Text>
-                <ButtonContainer
-                  type='link'
-                  onPress={goHome}
-                  style={styles.button}>
-                  <ButtonText style={styles.buttonText}>&gt;</ButtonText>
-                </ButtonContainer>
-              </View>
-            </View>
+            }}
+          >
+            <PageWrapper>
+              <Logo />
+              <PageTitleWrapper>
+                <PageTitle>Olá usuário!</PageTitle>
+              </PageTitleWrapper>
+              <PageDescription>Lorem ipsum dolor sit amet</PageDescription>
+            </PageWrapper>
+            <PageWrapper>
+              <Logo />
+              <PageTitleWrapper>
+                <PageTitle>Seja bem-vindo(a) à Grati</PageTitle>
+              </PageTitleWrapper>
+              <PageDescription>Lorem ipsum dolor sit amet</PageDescription>
+            </PageWrapper>
+            <PageWrapper>
+              <Logo />
+              <PageTitleWrapper>
+                <PageTitle>Sua nova rede social corporativa</PageTitle>
+              </PageTitleWrapper>
+              <PageDescription>Lorem ipsum dolor sit amet</PageDescription>
+            </PageWrapper>
+            <PageWrapper>
+              <Logo />
+              <PageTitleWrapper>
+                <PageTitle>Podendo gratificar e ser gratificado</PageTitle>
+              </PageTitleWrapper>
+              <PageDescription>Lorem ipsum dolor sit amet</PageDescription>
+            </PageWrapper>
+            <PageWrapper>
+              <Logo />
+              <PageTitleWrapper>
+                <PageTitle>Ainda não possui conta?</PageTitle>
+              </PageTitleWrapper>
+              <PageDescription>Lorem ipsum dolor sit amet</PageDescription>
+              <NextButtonWrapper onPress={goHome}>
+                <NextButtonText>&gt;</NextButtonText>
+              </NextButtonWrapper>
+            </PageWrapper>
           </ScrollView>
-          <View style={styles.paginationWrapper}>
+          <PaginationWrapper>
             {Array.from(Array(5).keys()).map((index) => (
-              <View
-                style={[
-                  styles.paginationDots,
-                  { opacity: pageIndex === index ? 1 : 0.4 }
-                ]}
+              <PaginationDot
+                active={pageIndex === index}
                 key={index}
               />
             ))}
-          </View>
-        </ImageBackground>
+          </PaginationWrapper>
+        </BackgroundWrapper>
       </SafeAreaView>
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  backgroundStyle: {
-    position: 'absolute',
-    alignContent: 'center'
-  },
-  button: {
-    width: 50,
-    height: 50,
-    top: 100,
-    position: 'relative',
-    alignContent: 'center',
-    justifyContent: 'flex-end',
-    backgroundColor: '#6874E8',
-    borderRadius: 12
-  },
-  buttonText: {
-    bottom: 11,
-    alignContent: 'center',
-    justifyContent: 'center',
-    color: '#FFFFFF',
-    fontSize: 22,
-    fontWeight: 'bold'
-  },
-  image: {
-    flex: 1,
-    justifyContent: 'center'
-  },
-  logo: {
-    left: 164,
-    top: 50,
-    height: PixelRatio.getPixelSizeForLayoutSize(20),
-    width: PixelRatio.getPixelSizeForLayoutSize(20)
-  },
-  wrapper: {
-    width: '74%',
-    height: 140,
-    left: 56,
-    display: 'flex',
-    position: 'absolute',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 220,
-    marginVertical: 180
-  },
-  header: {
-    width: 300,
-    height: 120,
-    left: 0,
-    top: 10,
-    fontFamily: theme.fonts.primary_500,
-    fontSize: 40,
-    fontWeight: 'bold',
-    marginBottom: 78,
-    textAlign: 'center',
-    lineHeight: 40,
-    color: '#4B5066'
-  },
-  header1: {
-    width: 300,
-    height: 120,
-    left: 6,
-    top: 0,
-    fontFamily: theme.fonts.primary_500,
-    fontSize: 54,
-    fontWeight: 'bold',
-    marginTop: 50,
-    textAlign: 'center',
-    lineHeight: 70,
-    color: '#4B5066'
-  },
-  header2: {
-    width: 300,
-    height: 120,
-    left: 0,
-    top: 0,
-    fontFamily: theme.fonts.primary_500,
-    fontSize: 42,
-    fontWeight: 'bold',
-    marginTop: 50,
-    textAlign: 'center',
-    lineHeight: 48,
-    color: '#4B5066'
-  },
-  header3: {
-    width: 400,
-    height: 120,
-    left: 0,
-    top: 0,
-    fontFamily: theme.fonts.primary_500,
-    fontSize: 40,
-    fontWeight: 'bold',
-    marginTop: 50,
-    textAlign: 'center',
-    lineHeight: 40,
-    color: '#4B5066'
-  },
-  headerFinale: {
-    width: 400,
-    height: 120,
-    left: 0,
-    top: 0,
-    fontFamily: theme.fonts.primary_500,
-    fontSize: 40,
-    fontWeight: 'bold',
-    marginTop: 50,
-    textAlign: 'center',
-    lineHeight: 40,
-    color: '#4B5066'
-  },
-  paginationWrapper: {
-    position: 'absolute',
-    bottom: 50,
-    left: 0,
-    right: 0,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row'
-  },
-  paginationDots: {
-    height: 12,
-    width: 12,
-    borderRadius: 12 / 2,
-    backgroundColor: '#6874E8',
-    marginLeft: 10
-  }
-});
