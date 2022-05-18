@@ -23,7 +23,9 @@ import { useKeyboard } from "@react-native-community/hooks";
 import { useTheme } from "styled-components";
 import { RFValue } from "react-native-responsive-fontsize";
 import { Emoji, emojiIndex } from "emoji-mart-native";
+
 import * as ImagePicker from "expo-image-picker";
+import * as DocumentPicker from "expo-document-picker";
 
 import EmojiIcon from "../../assets/icons/emoji.svg";
 import ImageIcon from "../../assets/icons/image.svg";
@@ -33,6 +35,7 @@ import Airplane from "../../assets/icons/airplane.svg";
 import {
   Keyboard,
   KeyboardAvoidingView,
+  ScrollView,
   TouchableWithoutFeedback,
 } from "react-native";
 import { EmojiPicker } from "../../components/EmojiPicker";
@@ -51,10 +54,11 @@ export function SendMessage() {
   const [emojiData, setEmojiData] = useState(null);
 
   const [image, setImage] = useState(null);
+  const [document, setDocument] = useState(null);
 
   async function handlePickImage() {
     let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
@@ -66,6 +70,16 @@ export function SendMessage() {
 
   async function handleRemoveImage() {
     setImage(null);
+  }
+
+  async function handlePickDocument() {
+    let result = await DocumentPicker.getDocumentAsync({
+      type: "application/pdf",
+    });
+
+    if(result.type !== 'cancel') {
+      setDocument(result.uri);
+    }
   }
 
   function handleOpenEmojiModal() {
@@ -185,7 +199,7 @@ export function SendMessage() {
               <AttachButton>
                 <Gif />
               </AttachButton>
-              <AttachButton>
+              <AttachButton onPress={handlePickDocument} attached={document !== null}>
                 <Document />
               </AttachButton>
               <SendButton>
