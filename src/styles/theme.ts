@@ -6,6 +6,7 @@ export default {
 
     success: '#4CD62B',
     error: '#E83F5B',
+    line: '#4B5066',
 
     light: {
       background: '#F6F7F8',
@@ -13,10 +14,12 @@ export default {
       detail: '#EFEEF2',
       detail_contrast: '#DEDEE3'
     },
+
     dark: {
       background: '#1a1a1a',
       background_highlight: '#252525',
     },
+
     input: {
       input_border: '#D3D0D7',
       input_icon: '#7A7A80',
@@ -29,6 +32,7 @@ export default {
     button_text: '#FFFFFF',
     transparent_black: '#4B506677',
   },
+
   fonts: {
     primary_400: 'Inter_400Regular',
     primary_500: 'Inter_500Medium',

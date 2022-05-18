@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   MessageCardWrapper,
   ReceiverInfoWrapper,
@@ -13,9 +13,13 @@ import {
   UserProfilePicture,
   MessageUserInfoWrapper,
   Tag,
-} from "./styles";
-import { Emoji } from "emoji-mart-native";
-import dayjs from "dayjs";
+  EmojiView,
+  Line,
+  LineTop
+} from './styles';
+import { Emoji } from 'emoji-mart-native';
+import dayjs from 'dayjs';
+import Remove from '../../assets/icons/remove_grati.svg';
 
 interface User {
   id: number;
@@ -58,8 +62,7 @@ export function MessageCard(message: MessageCardProps) {
           <MessageUserInfoWrapper>
             <UserProfilePicture
               source={{
-                uri: message?.receivers[selectedUserIndex]?.user
-                  .profile_picture,
+                uri: message?.receivers[selectedUserIndex]?.user.profile_picture
               }}
               style={{ width: 50, height: 50 }}
             />
@@ -72,7 +75,7 @@ export function MessageCard(message: MessageCardProps) {
               </UserResponsibility>
               <TagMessage>
                 foram gratificados por #
-                {message.tags.map((tag) => tag.name).join(", #")}
+                {message.tags.map((tag) => tag.name).join(', #')}
               </TagMessage>
             </UserInfoWrapper>
           </MessageUserInfoWrapper>
@@ -80,8 +83,7 @@ export function MessageCard(message: MessageCardProps) {
           <MessageUserInfoWrapper>
             <UserProfilePicture
               source={{
-                uri: message?.receivers[selectedUserIndex]?.user
-                  .profile_picture,
+                uri: message?.receivers[selectedUserIndex]?.user.profile_picture
               }}
               style={{ width: 50, height: 50 }}
             />
@@ -93,21 +95,31 @@ export function MessageCard(message: MessageCardProps) {
                 ({message?.receivers[selectedUserIndex]?.responsibility})
               </UserResponsibility>
               <TagMessage>
-                foi gratificado por{" "}
-                <Tag>#{message.tags.map((tag) => tag.name).join(", #")}</Tag>
+                foi gratificado por{' '}
+                <Tag>#{message.tags.map((tag) => tag.name).join(', #')}</Tag>
               </TagMessage>
+              <LineTop />
             </UserInfoWrapper>
           </MessageUserInfoWrapper>
         )}
-        <Emoji emoji={message.emoji} size={24} set="twitter" />
+        <EmojiView>
+          <Emoji emoji={message.emoji} size={28} set='twitter' />
+        </EmojiView>
       </ReceiverInfoWrapper>
       <MessageWrapper>{message.message}</MessageWrapper>
       <ActionsWrapper>
         <Timestamp>
-          Há {dayjs(message.created_at).format("HH")}h por{" "}
+          Há {dayjs(message.created_at).format('HH')}h por{' '}
           <Author>{message.sender.name}</Author>
         </Timestamp>
+        <Remove
+          style={{
+            left: 346,
+            bottom: 30
+          }}
+        />
       </ActionsWrapper>
+      <Line />
     </MessageCardWrapper>
   );
 }
