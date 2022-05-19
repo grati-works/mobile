@@ -63,6 +63,7 @@ function AuthProvider({ children }: AuthProviderProps) {
 
       return userInfo;
     } catch (error) {
+      console.log(error.response)
       console.log("API ERROR [Sessions]: ", error.response.data);
       throw new Error(error);
     }

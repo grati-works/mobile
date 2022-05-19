@@ -27,6 +27,7 @@ export function Input({
         placeholder={placeholder}
         value={value}
         onChangeText={onChangeText}
+        secureTextEntry={secureTextEntry}
         {...props}
       />
     </InputContainer>

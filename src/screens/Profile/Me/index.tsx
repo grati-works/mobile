@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useEffect, useState, useRef } from "react";
 import {
   KeyboardAvoidingView,
@@ -5,6 +6,7 @@ import {
   Keyboard,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import * as ImagePicker from "expo-image-picker";
 
 import {
   ButtonSave,
@@ -28,8 +30,8 @@ import { Modalize } from "react-native-modalize";
 import { useAuth } from "../../../hooks/auth";
 
 import UserIcon from "../../../assets/icons/profile-input/user.svg";
-import UsernameIcon from '../../../assets/icons/profile-input/username.svg';
-import EmailIcon from '../../../assets/icons/profile-input/email.svg';
+import UsernameIcon from "../../../assets/icons/profile-input/username.svg";
+import EmailIcon from "../../../assets/icons/profile-input/email.svg";
 import { NotificationsBell } from "../../../components/NotificationsBell";
 
 import { api } from "../../../services/api";
@@ -48,23 +50,69 @@ export function ProfileMe() {
     modalizeNotificationsRef.current?.open();
   };
 
+  const [profilePicture, setProfilePicture] = useState(null);
+
+  async function handlePickImage() {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [3, 3],
+      quality: 1,
+    });
+
+    if (!result.cancelled) {
+      const { uri } = result;
+      setProfilePicture(uri);
+
+      let uriParts = uri.split(".");
+      let fileType = uriParts[uriParts.length - 1];
+
+      console.log({
+        uri,
+        name: `avatar.${fileType}`,
+        type: `image/${fileType}`,
+      });
+
+      let formData = new FormData();
+      formData.append("avatar", {
+        uri,
+        name: `avatar.${fileType}`,
+        type: `image/${fileType}`,
+      });
+
+      await api.patch("/user/avatar", formData, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "multipart/form-data",
+        },
+      });
+    }
+  }
+
+  async function handleRemoveImage() {
+    setProfilePicture(null);
+  }
+
   useEffect(() => {
     async function loadProfile() {
       try {
         const organization_id = await AsyncStorage.getItem(
           "@Grati:selected_organization"
         );
-  
-        const response = await api.get(`/profile/${organization_id}/${user.id}`);
-    
+
+        const response = await api.get(
+          `/profile/${organization_id}/${user.id}`
+        );
+
         setProfile(response.data);
-      } catch(error) {
-        console.log(error.response.data)
+      } catch (error) {
+        console.log(error.response.data);
       }
     }
 
+    setProfilePicture(user.profile_picture);
     loadProfile();
-  }, [])
+  }, []);
 
   return (
     <KeyboardAvoidingView behavior="position" enabled>
@@ -72,8 +120,8 @@ export function ProfileMe() {
         <Container>
           <Header>
             <ProfilePictureContainer>
-              <ProfilePicture source={{ uri: user.profile_picture }} />
-              <CameraIcon>
+              <ProfilePicture source={{ uri: profilePicture }} />
+              <CameraIcon onPress={handlePickImage}>
                 <Photo width={32} height={32} />
               </CameraIcon>
             </ProfilePictureContainer>

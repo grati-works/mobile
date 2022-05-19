@@ -37,9 +37,9 @@ export function Search() {
   }, [query]);
 
   return (
-    <GestureHandlerRootView>
-      <KeyboardAvoidingView behavior="position" enabled>
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+    <KeyboardAvoidingView behavior="position" enabled>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <GestureHandlerRootView>
           <Container>
             <Header />
 
@@ -60,8 +60,8 @@ export function Search() {
               keyExtractor={(profile) => profile.id}
             />
           </Container>
-        </TouchableWithoutFeedback>
-      </KeyboardAvoidingView>
-    </GestureHandlerRootView>
+        </GestureHandlerRootView>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 }

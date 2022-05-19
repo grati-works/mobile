@@ -12,7 +12,7 @@ export function Splash() {
 
     if (!alreadyAccessedApp) {
       navigation.navigate("IntroSlider");
-      // AsyncStorage.setItem("@Grati:alreadyAccessedApp", "true");
+      AsyncStorage.setItem("@Grati:alreadyAccessedApp", "true");
     } else {
       navigation.navigate("Login");
     }

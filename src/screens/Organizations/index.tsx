@@ -71,6 +71,10 @@ export function Organizations() {
 
     loadSelectedInfo();
     loadOrganizations();
+
+    // organizations.find(
+    //   (organization) => organization.id === selectedOrganization
+    // )?.groups.map((group, index) => console.log(`${index}- ${group.id}`));
   }, []);
 
   return (
@@ -120,6 +124,7 @@ export function Organizations() {
                 renderItem: ({ item, index }) => (
                   <GroupCard
                     key={`${index}-${item.id}`}
+                    id={`${index}-${item.id}`}
                     name={item.name}
                     color={item.color}
                     onPress={async () => {
@@ -132,8 +137,7 @@ export function Organizations() {
                     }}
                   />
                 ),
-                keyExtractor: (item) =>
-                  Math.floor(Math.random() * 100).toString(),
+                keyExtractor: (item, index) => `${index}-${item.id}`,
                 showsVerticalScrollIndicator: false,
               }}
             />
