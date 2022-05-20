@@ -5,7 +5,6 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import * as ImagePicker from "expo-image-picker";
 
 import {
@@ -29,9 +28,9 @@ import { Input } from "../../../components/Input";
 import { Modalize } from "react-native-modalize";
 import { useAuth } from "../../../hooks/auth";
 
-import UserIcon from "../../../assets/icons/profile-input/user.svg";
-import UsernameIcon from "../../../assets/icons/profile-input/username.svg";
-import EmailIcon from "../../../assets/icons/profile-input/email.svg";
+import UserIcon from "../../../assets/icons/username.svg";
+import UsernameIcon from "../../../assets/icons/user.svg";
+import EmailIcon from "../../../assets/icons/message.svg";
 import LockIcon from "../../../assets/icons/lock.svg";
 import { NotificationsBell } from "../../../components/NotificationsBell";
 
