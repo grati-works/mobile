@@ -42,7 +42,8 @@ export const PageTitle = styled.Text`
 export const PageDescription = styled.Text`
   font-size: ${RFValue(15)}px;
   font-family: ${({ theme }) => theme.fonts.primary_400};
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.primary};
+  margin-top: ${RFPercentage(0.5)}px;
 `;
 
 export const NextButtonWrapper = styled.TouchableOpacity`

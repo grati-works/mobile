@@ -20,6 +20,8 @@ import {
 import { Emoji } from 'emoji-mart-native';
 import dayjs from 'dayjs';
 import Remove from '../../assets/icons/remove_grati.svg';
+import Reactions from '../../assets/icons/reactions.svg';
+import ReactionsAdd from '../../assets/icons/reactions_added.svg';
 
 interface User {
   id: number;
@@ -77,6 +79,7 @@ export function MessageCard(message: MessageCardProps) {
                 foram gratificados por #
                 {message.tags.map((tag) => tag.name).join(', #')}
               </TagMessage>
+              <LineTop />
             </UserInfoWrapper>
           </MessageUserInfoWrapper>
         ) : (
@@ -120,6 +123,8 @@ export function MessageCard(message: MessageCardProps) {
         />
       </ActionsWrapper>
       <Line />
+      <ReactionsAdd />
+      <Reactions style={{ left: 346, bottom: 24 }} />
     </MessageCardWrapper>
   );
 }

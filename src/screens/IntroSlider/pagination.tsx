@@ -72,35 +72,35 @@ export function IntroSlider() {
               <PageTitleWrapper>
                 <PageTitle>Olá usuário!</PageTitle>
               </PageTitleWrapper>
-              <PageDescription>Lorem ipsum dolor sit amet</PageDescription>
+              <PageDescription></PageDescription>
             </PageWrapper>
             <PageWrapper>
               <Logo />
               <PageTitleWrapper>
                 <PageTitle>Seja bem-vindo(a) à Grati</PageTitle>
               </PageTitleWrapper>
-              <PageDescription>Lorem ipsum dolor sit amet</PageDescription>
+              <PageDescription>A plataforma mais intuitiva que vai encontrar</PageDescription>
             </PageWrapper>
             <PageWrapper>
               <Logo />
               <PageTitleWrapper>
                 <PageTitle>Sua nova rede social corporativa</PageTitle>
               </PageTitleWrapper>
-              <PageDescription>Lorem ipsum dolor sit amet</PageDescription>
+              <PageDescription>Àquela que você não vai querer ficar sem...</PageDescription>
             </PageWrapper>
             <PageWrapper>
               <Logo />
               <PageTitleWrapper>
                 <PageTitle>Podendo gratificar e ser gratificado</PageTitle>
               </PageTitleWrapper>
-              <PageDescription>Lorem ipsum dolor sit amet</PageDescription>
+              <PageDescription>E sempre manter contato com seus colegas</PageDescription>
             </PageWrapper>
             <PageWrapper>
               <Logo />
               <PageTitleWrapper>
                 <PageTitle>Ainda não possui conta?</PageTitle>
               </PageTitleWrapper>
-              <PageDescription>Lorem ipsum dolor sit amet</PageDescription>
+              <PageDescription>Junte-se a nós!</PageDescription>
               <NextButtonWrapper onPress={goHome}>
                 <NextButtonText>&gt;</NextButtonText>
               </NextButtonWrapper>

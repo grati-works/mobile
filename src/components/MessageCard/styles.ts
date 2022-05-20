@@ -3,13 +3,15 @@ import styled from 'styled-components/native';
 
 export const MessageCardWrapper = styled.View`
   width: 100%;
+  height: 11%;
   background-color: ${({ theme }) => theme.colors.light.background_highlight};
   border-radius: 5px;
-  padding: 22px;
+  padding: 20px;
   margin-bottom: 26px;
 `;
 
-export const ReceiverInfoWrapper = styled.View``;
+export const ReceiverInfoWrapper = styled.View`
+`;
 
 export const TagMessage = styled.Text`
   font-family: ${({ theme }) => theme.fonts.primary_400};
@@ -21,20 +23,24 @@ export const Tag = styled.Text`
 `;
 
 export const MessageWrapper = styled.Text`
+  width: 362px;
+  color: ${({ theme }) => theme.colors.line};
   font-family: ${({ theme }) => theme.fonts.primary_400};
-  margin-top: 17px;
+  margin-top: 24px;
+  line-height: 22px;
 `;
 
 export const ActionsWrapper = styled.View``;
 
 export const Timestamp = styled.Text`
+  color: ${({ theme }) => theme.colors.line};
   font-family: ${({ theme }) => theme.fonts.primary_400};
   margin-top: 16px;
   margin-bottom: 7px;
 `;
 
 export const Author = styled.Text`
-  color: ${({ theme }) => theme.colors.line};
+  color: ${({ theme }) => theme.colors.dark.background};
   font-family: ${({ theme }) => theme.fonts.primary_400};
   text-decoration: underline
 `;
@@ -44,7 +50,8 @@ export const MessageUserInfoWrapper = styled.View`
   align-items: center;
 `;
 
-export const UserInfoWrapper = styled.View``;
+export const UserInfoWrapper = styled.View`
+`;
 
 export const UserProfilePicture = styled.Image`
   width: 48px;
@@ -72,18 +79,18 @@ export const EmojiView = styled.View`
 `;
 
 export const Line = styled.View`
-  width: 370px;
-  height: 0.4px;
+  width: 368px;
+  height: 0.5px;
   bottom: 14px;
   background-color: ${({ theme }) => theme.colors.line};
   border-radius: 3px;
 `;
 
 export const LineTop = styled.View`
-  width: 370px;
-  height: 0.4px;
+  width: 368px;
+  height: 0.5px;
   right: 68px;
-  top: 10px;
+  top: 12px;
   background-color: ${({ theme }) => theme.colors.line};
   border-radius: 3px;
 `;
