@@ -1,8 +1,9 @@
 import styled from "styled-components/native";
 import { getStatusBarHeight } from "react-native-iphone-x-helper";
 import { RFValue } from "react-native-responsive-fontsize";
+import { GestureHandlerRootView, RectButton } from "react-native-gesture-handler";
 
-export const Container = styled.View`
+export const Container = styled(GestureHandlerRootView)`
   width: 100%;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.light.background};
@@ -13,7 +14,7 @@ export const Container = styled.View`
   margin-top: ${getStatusBarHeight()}px;
 `;
 
-export const ProfileContainer = styled.TouchableOpacity`
+export const ProfileContainer = styled(RectButton)`
   flex-direction: row;
   align-items: center;
 `;

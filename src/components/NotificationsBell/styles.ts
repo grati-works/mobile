@@ -1,7 +1,8 @@
+import { BorderlessButton } from "react-native-gesture-handler";
 import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
 
-export const NotificationsContainer = styled.TouchableOpacity``;
+export const NotificationsContainer = styled(BorderlessButton)``;
 
 export const NotificationIndicatorWrapper = styled.View`
   background-color: ${({ theme }) => theme.colors.primary};
