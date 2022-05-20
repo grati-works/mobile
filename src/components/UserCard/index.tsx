@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Container,
   Row,
@@ -11,13 +11,19 @@ import {
   XpView,
   Xp,
   XpNumber,
-} from './styles';
+} from "./styles";
 
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 
 export function UserCard({ profile }) {
+  const navigation = useNavigation();
+
+  function handleGoToProfile() {
+    navigation.navigate("Profile", { profile });
+  }
+
   return (
-    <Container id={profile.id}>
+    <Container id={profile.id} onPress={handleGoToProfile}>
       <Row>
         <Pic source={{ uri: profile.user.profile_picture }} />
         <ViewHelper>

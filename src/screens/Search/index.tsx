@@ -44,7 +44,7 @@ export function Search() {
 
             <SearchSection>
               <SearchInput
-                placeholder="Luciano Monteiro"
+                placeholder="Insira o termo para pesquisa"
                 multiline={false}
                 placeholderTextColor={({ theme }) => theme.colors.text}
                 onChangeText={setQuery}
