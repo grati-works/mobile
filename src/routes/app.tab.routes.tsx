@@ -10,9 +10,9 @@ import SearchSvg from '../assets/icons/bottom-tab/search.svg';
 import UserSvg from '../assets/icons/bottom-tab/user.svg';
 
 import { AppStackRoutes } from './app.stack.routes';
+import { SearchStackRoutes } from './search.stack.routes';
 import { SendMessage } from '../screens/SendMessage';
 import { Ranking } from '../screens/Ranking';
-import { Search } from '../screens/Search';
 import { ProfileMe } from '../screens/Profile/Me';
 
 const { Navigator, Screen } = createBottomTabNavigator();
@@ -63,7 +63,7 @@ export function AppTabRoutes() {
       />
       <Screen
         name="Search"
-        component={Search}
+        component={SearchStackRoutes}
         options={{
           tabBarIcon: ({ color }) => (
             <SearchSvg width={26} height={26} stroke={color} />

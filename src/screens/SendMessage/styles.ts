@@ -10,7 +10,7 @@ export const Container = styled.View`
     keyboardIsVisible
       ? css`
           height: ${RFPercentage(100) - keyboardHeight}px;
-          margin-top: ${keyboardHeight - getStatusBarHeight() * 3}px;
+          margin-top: ${keyboardHeight - getStatusBarHeight() * 3 + (Platform.OS == 'ios' ? 20 : 0)}}px;
         `
       : css`
           height: ${RFPercentage(100) - 48}px;

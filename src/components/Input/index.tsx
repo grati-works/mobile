@@ -16,7 +16,7 @@ export function Input({
   placeholder,
   value,
   onChangeText,
-  size,
+  size = 53,
   secureTextEntry,
   ...props
 }: InputProps) {

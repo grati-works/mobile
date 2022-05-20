@@ -7,6 +7,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   FlatList,
+  TouchableOpacity,
 } from "react-native";
 import SearchIcon from "../../assets/icons/search.svg";
 
@@ -45,13 +46,16 @@ export function Search() {
 
             <SearchSection>
               <SearchInput
-                placeholder="Luciano Monteiro"
+                placeholder="Insira o termo para pesquisa"
                 multiline={false}
                 placeholderTextColor={({ theme }) => theme.colors.text}
                 onChangeText={setQuery}
                 value={query}
               />
-              <SearchIcon width={30} height={30} />
+
+              <TouchableOpacity onPress={() => updateSuggestions(query)}>
+                <SearchIcon width={30} height={30} />
+              </TouchableOpacity>
             </SearchSection>
 
             <FlatList
