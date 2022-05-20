@@ -62,6 +62,9 @@ export const TabMenu = styled.View`
 
 export const MenuOption = styled.TouchableOpacity`
   width: 50%;
+  border-bottom-width: 3px;
+  border-bottom-color: ${({ theme, selected }) =>
+    selected ? theme.colors.primary : theme.colors.light.background};
 `;
 
 export const MenuOptionText = styled.Text`
@@ -71,11 +74,8 @@ export const MenuOptionText = styled.Text`
     theme.fonts[selected ? "primary_600" : "primary_400"]};
   font-size: ${RFValue(16)}px;
   text-align: center;
-  color: ${({ theme, selected }) => selected? theme.colors.title : theme.colors.text};
-
-  border-bottom-width: 3px;
-  border-bottom-color: ${({ theme, selected }) =>
-    selected ? theme.colors.primary : theme.colors.light.background};
+  color: ${({ theme, selected }) =>
+    selected ? theme.colors.title : theme.colors.text};
 
   padding-bottom: 10px;
 `;

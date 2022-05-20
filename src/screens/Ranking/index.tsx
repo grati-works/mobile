@@ -48,19 +48,19 @@ export function Ranking() {
       <Container>
         <Header />
 
-        {
-          ranking.length === 0 ? (
-            <EmptyText>Nenhuma organização selecionada!</EmptyText>
-          ) : (
-            <FlatList
-          data={ranking}
-          renderItem={(data) => <RankingCard data={data.item} />}
-          keyExtractor={(data) => data.id.toString()}
-          showsVerticalScrollIndicator={false}
-          ItemSeparatorComponent={() => <Separator />}
-        />
-          )
-        }
+        {ranking.length === 0 ? (
+          <EmptyText>Nenhuma organização selecionada!</EmptyText>
+        ) : (
+          <FlatList
+            data={ranking}
+            renderItem={({ item, index }) => (
+              <RankingCard data={item} position={index+1} />
+            )}
+            keyExtractor={(data) => data.id.toString()}
+            showsVerticalScrollIndicator={false}
+            ItemSeparatorComponent={() => <Separator />}
+          />
+        )}
       </Container>
     </>
   );

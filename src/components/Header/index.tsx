@@ -82,9 +82,6 @@ export function Header() {
         ref={modalizeProfileRef}
         adjustToContentHeight
         withHandle={false}
-        rootStyle={{
-          marginBottom: Platform.OS === 'ios' ? 108 : 78
-        }}
       >
         <ActionInfo>
           <Text>
@@ -93,7 +90,7 @@ export function Header() {
         </ActionInfo>
         <ActionButton
           onPress={() => {
-            signOut()
+            signOut();
           }}
         >
           <ButtonText>Fazer logout</ButtonText>

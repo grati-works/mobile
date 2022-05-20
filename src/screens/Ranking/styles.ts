@@ -1,9 +1,11 @@
-import styled from 'styled-components/native';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
-import { getStatusBarHeight } from 'react-native-iphone-x-helper';
+import styled from "styled-components/native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import { getStatusBarHeight } from "react-native-iphone-x-helper";
 
 export const Container = styled(GestureHandlerRootView)`
+  flex: 1;
+  height: 100%;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.light.background};
   height: ${RFPercentage(100) + getStatusBarHeight() - 78}px;

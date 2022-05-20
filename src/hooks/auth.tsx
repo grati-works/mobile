@@ -59,6 +59,8 @@ function AuthProvider({ children }: AuthProviderProps) {
       await AsyncStorage.setItem("@Grati:token", token);
       await AsyncStorage.setItem("@Grati:refresh_token", refresh_token);
 
+      if(userInfo.profile_picture === null) userInfo.profile_picture = 'https://res.cloudinary.com/grati-works/image/upload/v1653055728/avatars/default_profile_picture_xjujhn.png';
+
       setData(userInfo);
 
       return userInfo;
