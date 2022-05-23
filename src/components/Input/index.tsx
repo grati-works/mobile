@@ -8,6 +8,7 @@ interface InputProps {
   value?: string;
   onChangeText?: React.Dispatch<(prevState: undefined) => undefined>;
   secureTextEntry?: boolean;
+  disabled?: boolean;
   size?: number;
 }
 
@@ -18,6 +19,7 @@ export function Input({
   onChangeText,
   size = 53,
   secureTextEntry,
+  disabled = false,
   ...props
 }: InputProps) {
   return (
@@ -28,6 +30,7 @@ export function Input({
         value={value}
         onChangeText={onChangeText}
         secureTextEntry={secureTextEntry}
+        editable={!disabled}
         {...props}
       />
     </InputContainer>

@@ -12,10 +12,10 @@ export function SearchStackRoutes() {
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName="Search"
+      initialRouteName="SearchScreen"
     >
       <Screen
-        name="Search"
+        name="SearchScreen"
         component={Search}
       />
       <Screen

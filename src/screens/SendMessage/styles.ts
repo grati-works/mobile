@@ -10,12 +10,14 @@ export const Container = styled.View`
     keyboardIsVisible
       ? css`
           height: ${RFPercentage(100) - keyboardHeight}px;
-          margin-top: ${keyboardHeight - getStatusBarHeight() * 3 + (Platform.OS == 'ios' ? 20 : 0)}}px;
+          margin-top: ${keyboardHeight -
+          getStatusBarHeight() * 3 +
+          (Platform.OS == "ios" ? 20 : 10)}px;
         `
       : css`
           height: ${RFPercentage(100) - 48}px;
-          margin-top: ${getStatusBarHeight()}px;
-        `};
+          margin-top: ${getStatusBarHeight() - 20}px;
+        `}
 `;
 
 export const ReceiversUsernamesWrapper = styled.View`
@@ -114,6 +116,7 @@ export const TextInput = styled.TextInput`
 `;
 
 export const FooterWrapper = styled.View`
+  width: 100%;
   padding: 0 32px;
 
   position: absolute;
@@ -122,7 +125,7 @@ export const FooterWrapper = styled.View`
   display: flex;
   flex-direction: row;
 
-  margin-bottom: ${getStatusBarHeight() + Platform.OS === "ios" ? 80 : 50}px;
+  margin-bottom: ${getStatusBarHeight() + Platform.OS === "ios" ? 80 : 60}px;
 
   ${({ keyboardIsVisible }) =>
     keyboardIsVisible
@@ -145,6 +148,11 @@ export const AttachButton = styled.TouchableOpacity`
   justify-content: center;
 
   margin-right: 10px;
+
+  ${({ theme, attached }) => attached && css`
+      border-width: 3px;
+      border-color: ${theme.colors.primary};
+  `}
 `;
 
 export const AttachedImage = styled.Image`
@@ -165,5 +173,7 @@ export const SendButton = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
 
-  margin-left: 9%;
+  position: absolute;
+  right: 32px;
+  bottom: 0;
 `;

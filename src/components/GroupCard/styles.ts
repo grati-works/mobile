@@ -1,4 +1,4 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { RFValue } from 'react-native-responsive-fontsize';
 
 export const GroupCardWrapper = styled.TouchableOpacity`
@@ -6,6 +6,11 @@ export const GroupCardWrapper = styled.TouchableOpacity`
   border-radius: 5px;
   background-color: ${({ theme }) => theme.colors.light.background_highlight};
   margin-top: 16px;
+
+  ${({ theme, selected }) => selected == true && css`
+    border-width: 2px;
+    border-color: ${theme.colors.primary};
+  `}
 `;
 
 export const GroupColor = styled.View`

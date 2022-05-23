@@ -9,12 +9,12 @@ import BellIcon from "../../assets/icons/bell.svg";
 export function NotificationsBell({ notifications, onPress }) {
   return (
     <NotificationsContainer onPress={onPress}>
+      <BellIcon width={36} height={36} />
       <NotificationIndicatorWrapper>
         <NotificationIndicatorText>
           {notifications.length}
         </NotificationIndicatorText>
       </NotificationIndicatorWrapper>
-      <BellIcon width={36} height={36} />
     </NotificationsContainer>
   );
 }

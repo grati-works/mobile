@@ -23,6 +23,7 @@ import { useKeyboard } from "@react-native-community/hooks";
 import { useTheme } from "styled-components";
 import { RFValue } from "react-native-responsive-fontsize";
 import { Emoji, emojiIndex } from "emoji-mart-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import * as ImagePicker from "expo-image-picker";
 import * as DocumentPicker from "expo-document-picker";
@@ -35,10 +36,10 @@ import Airplane from "../../assets/icons/airplane.svg";
 import {
   Keyboard,
   KeyboardAvoidingView,
-  ScrollView,
   TouchableWithoutFeedback,
 } from "react-native";
 import { EmojiPicker } from "../../components/EmojiPicker";
+import { api } from "../../services/api";
 
 export function SendMessage() {
   const theme = useTheme();
@@ -49,12 +50,80 @@ export function SendMessage() {
   const [usersList, setUsersList] = useState(["ericknathan"]);
   const [tags, setTags] = useState(["Resiliência"]);
   const [tag, setTag] = useState("Persistência");
-  const [message, setMessage] = useState();
+  const [message, setMessage] = useState(
+    "Nos dá autonomia pra tomada de decisões, super atencioso e quer ver a melhor versão de nós mesmos, excelente líder :)"
+  );
   const [emojiModalIsOpen, setEmojiModalIsOpen] = useState(false);
   const [emojiData, setEmojiData] = useState(null);
 
   const [image, setImage] = useState(null);
   const [document, setDocument] = useState(null);
+
+  async function handleSendMessage() {
+    if (message == "" || usersList.length < 1 || tags.length < 1) {
+      console.log(
+        "Por favor, preencha todos os campos! É necessário inserir no mínimo a mensagem, os destinatários e tags"
+      );
+      return;
+    }
+
+    const organization_id = await AsyncStorage.getItem(
+      "@Grati:selected_organization"
+    );
+    const group_id = await AsyncStorage.getItem("@Grati:group_id");
+
+    if (!organization_id || !group_id) {
+      console.log("Por favor, selecione uma organização e um grupo");
+      return;
+    }
+
+    let sentData = {
+      receivers_usernames: usersList,
+      tags,
+      message,
+      emoji: emojiData.emoji,
+      groups: [group_id],
+      organization_id,
+    };
+    console.log(sentData);
+
+    const formData = new FormData();
+
+    if (image !== null) {
+      let uriParts = image.split(".");
+      let fileType = uriParts[uriParts.length - 1];
+
+      formData.append("attachment", {
+        uri: image,
+        name: `avatar.${fileType}`,
+        type: `image/${fileType}`,
+      });
+    }
+
+    formData.append("data", JSON.stringify(sentData));
+
+    api
+      .post(`message/${organization_id}`, formData, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((response) => {
+        console.log("Mensagem enviada com sucesso!");
+        setEmojiData(null);
+        setImage(null);
+        setTag("");
+        setUsername("");
+        setMessage("");
+        setDocument(null);
+        setTags([]);
+        setUsersList([]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   async function handlePickImage() {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -77,7 +146,7 @@ export function SendMessage() {
       type: "application/pdf",
     });
 
-    if(result.type !== 'cancel') {
+    if (result.type !== "cancel") {
       setDocument(result.uri);
     }
   }
@@ -196,13 +265,18 @@ export function SendMessage() {
                   <ImageIcon />
                 </AttachButton>
               )}
-              <AttachButton>
-                <Gif />
-              </AttachButton>
-              <AttachButton onPress={handlePickDocument} attached={document !== null}>
+              {!image && (
+                <AttachButton>
+                  <Gif />
+                </AttachButton>
+              )}
+              <AttachButton
+                onPress={handlePickDocument}
+                attached={document !== null}
+              >
                 <Document />
               </AttachButton>
-              <SendButton>
+              <SendButton onPress={handleSendMessage}>
                 <Airplane />
               </SendButton>
             </FooterWrapper>
