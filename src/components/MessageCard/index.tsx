@@ -124,7 +124,7 @@ export function MessageCard(message: MessageCardProps) {
       </ActionsWrapper>
       <Line />
       <ReactionsAdd />
-      <Reactions style={{ left: 346, bottom: 24 }} />
+      <Reactions style={{ left: 346, bottom: 22 }} />
     </MessageCardWrapper>
   );
 }

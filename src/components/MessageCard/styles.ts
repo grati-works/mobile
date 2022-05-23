@@ -1,13 +1,13 @@
-import { RFValue } from 'react-native-responsive-fontsize';
+import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
 export const MessageCardWrapper = styled.View`
   width: 100%;
-  height: 11%;
+  height: auto;
   background-color: ${({ theme }) => theme.colors.light.background_highlight};
   border-radius: 5px;
   padding: 20px;
-  margin-bottom: 26px;
+  margin-bottom: 28px;
 `;
 
 export const ReceiverInfoWrapper = styled.View`

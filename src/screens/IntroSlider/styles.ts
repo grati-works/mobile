@@ -2,7 +2,7 @@ import { Dimensions } from "react-native";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
 const { width, height } = Dimensions.get("window");
-import LogoImage from "../../assets/images/logo.svg";
+import LogoImage from "../../assets/icons/logo_fade.svg";
 
 export const BackgroundWrapper = styled.ImageBackground`
   flex: 1;
