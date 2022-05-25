@@ -2,7 +2,7 @@ import { Dimensions } from "react-native";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
 const { width, height } = Dimensions.get("window");
-import LogoImage from "../../assets/icons/logo_fade.svg";
+import LogoImage from "../../assets/images/logo.svg";
 
 export const BackgroundWrapper = styled.ImageBackground`
   flex: 1;
@@ -33,7 +33,7 @@ export const PageTitle = styled.Text`
   font-size: ${RFValue(40)}px;
   font-family: ${({ theme }) => theme.fonts.primary_600};
   text-align: center;
-  line-height: ${RFValue(40)}px;
+  line-height: ${RFValue(40)}px;a
   color: ${({ theme }) => theme.colors.text};
   margin-bottom: ${RFPercentage(5)}px;
   margin-top: ${RFPercentage(15)}px;
