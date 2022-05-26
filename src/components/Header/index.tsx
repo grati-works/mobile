@@ -14,7 +14,7 @@ import { Modalize } from "react-native-modalize";
 
 import { useTheme } from "styled-components";
 import { NotificationCard } from "../NotificationCard";
-import { Dimensions, Platform } from "react-native";
+import { Dimensions } from "react-native";
 import { useAuth } from "../../hooks/auth";
 import { api } from "../../services/api";
 import { NotificationsBell } from "../NotificationsBell";
@@ -78,24 +78,24 @@ export function Header() {
         }}
       />
 
-      <Modalize
-        ref={modalizeProfileRef}
-        adjustToContentHeight
-        withHandle={false}
-      >
-        <ActionInfo>
-          <Text>
-            Autenticado como: <Name>@ericknathan</Name>
-          </Text>
-        </ActionInfo>
-        <ActionButton
-          onPress={() => {
-            signOut();
-          }}
+        <Modalize
+          ref={modalizeProfileRef}
+          adjustToContentHeight
+          withHandle={false}
         >
-          <ButtonText>Fazer logout</ButtonText>
-        </ActionButton>
-      </Modalize>
+          <ActionInfo>
+            <Text>
+              Autenticado como: <Name>@ericknathan</Name>
+            </Text>
+          </ActionInfo>
+          <ActionButton
+            onPress={() => {
+              signOut();
+            }}
+          >
+            <ButtonText>Fazer logout</ButtonText>
+          </ActionButton>
+        </Modalize>
     </>
   );
 }

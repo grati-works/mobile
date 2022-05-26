@@ -1,7 +1,6 @@
 import React from "react";
 import {
   Container,
-  Row,
   Pic,
   NameContainer,
   NameTxt,
@@ -24,7 +23,6 @@ export function UserCard({ profile }) {
 
   return (
     <Container id={profile.id} onPress={handleGoToProfile}>
-      <Row>
         <Pic source={{ uri: profile.user.profile_picture }} />
         <ViewHelper>
           <NameContainer>
@@ -40,7 +38,6 @@ export function UserCard({ profile }) {
             </Xp>
           </InfoContainer>
         </ViewHelper>
-      </Row>
     </Container>
   );
 }

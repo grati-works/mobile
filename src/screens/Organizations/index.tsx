@@ -137,9 +137,10 @@ export function Organizations() {
                         color={item.color}
                         selected={item.id == selectedGroup}
                         onPress={async () => {
+                          console.log(item.id);
                           await AsyncStorage.setItem(
                             "@Grati:group_id",
-                            selectedGroup.toString()
+                            item.id.toString()
                           );
                           enterGroup(item.id);
                         }}

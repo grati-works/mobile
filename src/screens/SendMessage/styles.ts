@@ -2,6 +2,7 @@ import styled, { css } from "styled-components/native";
 import { getStatusBarHeight } from "react-native-iphone-x-helper";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { Dimensions, Platform } from "react-native";
+import { RectButton } from "react-native-gesture-handler";
 
 export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.light.background};
@@ -16,7 +17,7 @@ export const Container = styled.View`
         `
       : css`
           height: ${RFPercentage(100) - 48}px;
-          margin-top: ${getStatusBarHeight() - 20}px;
+          margin-top: ${getStatusBarHeight() - 20 + (Platform.OS == "ios" ? 20 : 0)}px;
         `}
 `;
 
@@ -31,7 +32,7 @@ export const ReceiversUsernamesWrapper = styled.View`
   flex-wrap: wrap;
 `;
 
-export const ReceiverUsernameButton = styled.TouchableOpacity`
+export const ReceiverUsernameButton = styled(RectButton)`
   background-color: ${({ theme }) => theme.colors.light.detail};
   border-radius: 5px;
   padding: 8px 16px;
@@ -42,6 +43,7 @@ export const ReceiverUsernameButton = styled.TouchableOpacity`
 export const ReceiverUsername = styled.Text`
   font-family: ${({ theme }) => theme.fonts.primary_400};
   font-size: ${RFValue(14)}px;
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 export const ReceiverInput = styled.TextInput`
@@ -49,6 +51,7 @@ export const ReceiverInput = styled.TextInput`
   height: 36px;
   font-size: ${RFValue(12)}px;
   font-family: ${({ theme }) => theme.fonts.primary_400};
+  color: ${({ theme }) => theme.colors.title};
 `;
 
 export const TagInput = styled.TextInput`
@@ -56,6 +59,7 @@ export const TagInput = styled.TextInput`
   height: 48px;
   font-size: ${RFValue(12)}px;
   font-family: ${({ theme }) => theme.fonts.primary_400};
+  color: ${({ theme }) => theme.colors.title};
 `;
 
 export const MessageInfoWrapper = styled.ScrollView``;
@@ -70,7 +74,7 @@ export const TagsWrapper = styled.View`
   flex-wrap: wrap;
 `;
 
-export const Tag = styled.TouchableOpacity`
+export const Tag = styled(RectButton)`
   height: 48px;
   background-color: ${({ theme }) => theme.colors.light.detail};
   border-radius: 5px;
@@ -137,7 +141,7 @@ export const FooterWrapper = styled.View`
         `};
 `;
 
-export const AttachButton = styled.TouchableOpacity`
+export const AttachButton = styled(RectButton)`
   width: ${RFValue(48)}px;
   height: ${RFValue(48)}px;
   background-color: ${({ theme }) => theme.colors.light.detail};
@@ -149,10 +153,12 @@ export const AttachButton = styled.TouchableOpacity`
 
   margin-right: 10px;
 
-  ${({ theme, attached }) => attached && css`
+  ${({ theme, attached }) =>
+    attached &&
+    css`
       border-width: 3px;
       border-color: ${theme.colors.primary};
-  `}
+    `}
 `;
 
 export const AttachedImage = styled.Image`
@@ -163,7 +169,7 @@ export const AttachedImage = styled.Image`
   border-color: ${({ theme }) => theme.colors.primary};
 `;
 
-export const SendButton = styled.TouchableOpacity`
+export const SendButton = styled(RectButton)`
   width: ${RFValue(48)}px;
   height: ${RFValue(48)}px;
   background-color: ${({ theme }) => theme.colors.primary};

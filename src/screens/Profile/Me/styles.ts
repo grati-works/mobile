@@ -2,6 +2,7 @@ import styled from "styled-components/native";
 import { getStatusBarHeight } from "react-native-iphone-x-helper";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { Dimensions } from "react-native";
+import { RectButton } from "react-native-gesture-handler";
 
 export const Container = styled.View`
   align-items: center;
@@ -29,7 +30,7 @@ export const ProfilePicture = styled.Image`
   border-radius: ${RFValue(150)}px;
 `;
 
-export const CameraIcon = styled.TouchableOpacity`
+export const CameraIcon = styled(RectButton)`
   background-color: ${({ theme }) => theme.colors.primary};
 
   align-items: center;
@@ -60,7 +61,7 @@ export const TabMenu = styled.View`
   margin-top: 32px;
 `;
 
-export const MenuOption = styled.TouchableOpacity`
+export const MenuOption = styled(RectButton)`
   width: 50%;
   border-bottom-width: 3px;
   border-bottom-color: ${({ theme, selected }) =>
@@ -84,7 +85,7 @@ export const UserDataWrapper = styled.View`
   margin-top: ${RFValue(20)}px;
 `;
 
-export const ButtonSave = styled.TouchableOpacity`
+export const ButtonSave = styled(RectButton)`
   display: flex;
   align-items: center;
   justify-content: center;

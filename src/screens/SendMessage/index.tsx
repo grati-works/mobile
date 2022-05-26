@@ -40,6 +40,7 @@ import {
 } from "react-native";
 import { EmojiPicker } from "../../components/EmojiPicker";
 import { api } from "../../services/api";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export function SendMessage() {
   const theme = useTheme();
@@ -184,7 +185,7 @@ export function SendMessage() {
   }, [keyboard.keyboardShown]);
 
   return (
-    <>
+    <GestureHandlerRootView>
       <KeyboardAvoidingView behavior="position" enabled>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <Container
@@ -289,6 +290,6 @@ export function SendMessage() {
         isOpen={emojiModalIsOpen}
         onClose={() => setEmojiModalIsOpen(false)}
       />
-    </>
+    </GestureHandlerRootView>
   );
 }

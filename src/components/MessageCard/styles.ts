@@ -1,17 +1,16 @@
-import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
-import styled from 'styled-components/native';
+import { BorderlessButton } from "react-native-gesture-handler";
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import styled from "styled-components/native";
 
 export const MessageCardWrapper = styled.View`
   width: 100%;
-  height: auto;
   background-color: ${({ theme }) => theme.colors.light.background_highlight};
   border-radius: 5px;
   padding: 20px;
   margin-bottom: 28px;
 `;
 
-export const ReceiverInfoWrapper = styled.View`
-`;
+export const ReceiverInfoWrapper = styled.View``;
 
 export const TagMessage = styled.Text`
   font-family: ${({ theme }) => theme.fonts.primary_400};
@@ -30,19 +29,22 @@ export const MessageWrapper = styled.Text`
   line-height: 22px;
 `;
 
-export const ActionsWrapper = styled.View``;
+export const ActionsWrapper = styled.View`
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 16px;
+`;
 
 export const Timestamp = styled.Text`
   color: ${({ theme }) => theme.colors.line};
   font-family: ${({ theme }) => theme.fonts.primary_400};
-  margin-top: 16px;
-  margin-bottom: 7px;
 `;
 
 export const Author = styled.Text`
   color: ${({ theme }) => theme.colors.dark.background};
   font-family: ${({ theme }) => theme.fonts.primary_400};
-  text-decoration: underline
+  text-decoration: underline;
 `;
 
 export const MessageUserInfoWrapper = styled.View`
@@ -50,8 +52,7 @@ export const MessageUserInfoWrapper = styled.View`
   align-items: center;
 `;
 
-export const UserInfoWrapper = styled.View`
-`;
+export const UserInfoWrapper = styled.View``;
 
 export const UserProfilePicture = styled.Image`
   width: 48px;
@@ -79,11 +80,11 @@ export const EmojiView = styled.View`
 `;
 
 export const Line = styled.View`
-  width: 368px;
+  width: 100%;
   height: 0.5px;
-  bottom: 14px;
   background-color: ${({ theme }) => theme.colors.line};
   border-radius: 3px;
+  margin-vertical: 16px;
 `;
 
 export const LineTop = styled.View`
@@ -93,4 +94,23 @@ export const LineTop = styled.View`
   top: 12px;
   background-color: ${({ theme }) => theme.colors.line};
   border-radius: 3px;
+`;
+
+export const ReactionsList = styled.View`
+  flex-direction: row;
+  background-color: ${({ theme }) => theme.colors.primary};
+  width: 10%;
+  height: 20px;
+`;
+
+export const ActionButtonWrapper = styled(BorderlessButton)`
+  margin-left: auto;
+  margin-right: 8px;
+`;
+
+
+export const FooterWrapper = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 `;

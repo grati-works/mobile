@@ -9,9 +9,16 @@ interface GroupCardProps {
   onPress?: () => void;
 }
 
-export function GroupCard({ id, color, name, selected = false, ...props }: GroupCardProps) {
+export function GroupCard({
+  id,
+  color,
+  name,
+  selected = false,
+  onPress,
+  ...props
+}: GroupCardProps) {
   return (
-    <GroupCardWrapper {...props} selected={selected}>
+    <GroupCardWrapper {...props} selected={selected} onPress={onPress}>
       <GroupColor color={color} />
       <GroupName>{name}</GroupName>
     </GroupCardWrapper>

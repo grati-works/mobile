@@ -45,7 +45,7 @@ export const Name = styled.Text`
   font-family: ${({ theme }) => theme.fonts.primary_500};
 `;
 
-export const ActionButton = styled.TouchableOpacity`
+export const ActionButton = styled(RectButton)`
   width: 95%;
   height: 80px;
   align-items: center;

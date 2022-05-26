@@ -234,19 +234,23 @@ export function ProfileMe() {
                     onChangeText={setName}
                     icon={<UserIcon width={30} height={30} />}
                   />
-                  <Input
-                    placeholder="Usuário"
-                    value={username}
-                    onChangeText={setUsername}
-                    icon={<UsernameIcon width={30} height={30} />}
-                  />
-                  <Input
-                    placeholder="Email"
-                    value={email}
-                    onChangeText={setEmail}
-                    icon={<EmailIcon width={30} height={30} />}
-                    disabled
-                  />
+                  {username !== '' && email !== '' && (
+                    <>
+                      <Input
+                        placeholder="Usuário"
+                        value={username}
+                        onChangeText={setUsername}
+                        icon={<UsernameIcon width={30} height={30} />}
+                      />
+                      <Input
+                        placeholder="Email"
+                        value={email}
+                        onChangeText={setEmail}
+                        icon={<EmailIcon width={30} height={30} />}
+                        disabled
+                      />
+                    </>
+                  )}
                 </>
               ) : (
                 <>

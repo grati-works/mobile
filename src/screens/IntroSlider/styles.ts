@@ -33,7 +33,7 @@ export const PageTitle = styled.Text`
   font-size: ${RFValue(40)}px;
   font-family: ${({ theme }) => theme.fonts.primary_600};
   text-align: center;
-  line-height: ${RFValue(40)}px;a
+  line-height: ${RFValue(40)}px;
   color: ${({ theme }) => theme.colors.text};
   margin-bottom: ${RFPercentage(5)}px;
   margin-top: ${RFPercentage(15)}px;

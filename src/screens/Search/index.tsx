@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container, SearchInput, SearchSection } from "./styles";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { BorderlessButton, GestureHandlerRootView } from "react-native-gesture-handler";
 
 import {
   KeyboardAvoidingView,
@@ -53,9 +53,9 @@ export function Search() {
                 value={query}
               />
 
-              <TouchableOpacity onPress={() => updateSuggestions(query)}>
+              <BorderlessButton onPress={() => updateSuggestions(query)}>
                 <SearchIcon width={30} height={30} />
-              </TouchableOpacity>
+              </BorderlessButton>
             </SearchSection>
 
             <FlatList
