@@ -1,13 +1,22 @@
-import styled from "styled-components/native";
-import { getStatusBarHeight } from "react-native-iphone-x-helper";
-import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
-import { Dimensions } from "react-native";
-import { RectButton } from "react-native-gesture-handler";
-
+import styled from 'styled-components/native';
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
+import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
+import { Dimensions, Platform } from 'react-native';
+import { RectButton } from 'react-native-gesture-handler';
+import { css } from 'styled-components';
+// height: ${RFPercentage(100) + getStatusBarHeight()}px;
 export const Container = styled.View`
-  align-items: center;
   background-color: ${({ theme }) => theme.colors.light.background};
-  height: ${RFPercentage(100) + getStatusBarHeight()}px;
+
+  ${({ keyboardIsVisible, keyboardHeight, theme }) =>
+    keyboardIsVisible
+      ? css`
+          margin-bottom: ${getStatusBarHeight() - 20 + (Platform.OS == 'ios' ? 20 : 0)}px;
+        `
+      : css`
+          height: ${RFPercentage(100)}px;
+          margin-top: ${getStatusBarHeight() - 20 + (Platform.OS == 'ios' ? 20 : 0)}px;
+        `}
   margin-top: ${getStatusBarHeight()}px;
   padding-horizontal: ${RFPercentage(5)}px;
 `;
@@ -71,12 +80,10 @@ export const MenuOption = styled(RectButton)`
 export const MenuOptionText = styled.Text`
   width: 100%;
 
-  font-family: ${({ theme, selected }) =>
-    theme.fonts[selected ? "primary_600" : "primary_400"]};
+  font-family: ${({ theme, selected }) => theme.fonts[selected ? 'primary_600' : 'primary_400']};
   font-size: ${RFValue(16)}px;
   text-align: center;
-  color: ${({ theme, selected }) =>
-    selected ? theme.colors.title : theme.colors.text};
+  color: ${({ theme, selected }) => (selected ? theme.colors.title : theme.colors.text)};
 
   padding-bottom: 10px;
 `;

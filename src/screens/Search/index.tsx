@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Container, SearchInput, SearchSection } from "./styles";
-import { BorderlessButton, GestureHandlerRootView } from "react-native-gesture-handler";
+import React, { useEffect, useState } from 'react';
+import { Container, SearchInput, SearchSection } from './styles';
+import { BorderlessButton, GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import {
   KeyboardAvoidingView,
@@ -8,22 +8,24 @@ import {
   Keyboard,
   FlatList,
   TouchableOpacity,
-} from "react-native";
-import SearchIcon from "../../assets/icons/search.svg";
+} from 'react-native';
+import SearchIcon from '../../assets/icons/search.svg';
 
-import { UserCard } from "../../components/UserCard";
-import { Header } from "../../components/Header";
-import { api } from "../../services/api";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { UserCard } from '../../components/UserCard';
+import { Header } from '../../components/Header';
+import { api } from '../../services/api';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useKeyboard } from '@react-native-community/hooks';
 
 export function Search() {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
 
+  const keyboard = useKeyboard();
+  const [keyboardIsVisible, setKeyboardIsVisible] = useState(false);
+
   async function updateSuggestions(query) {
-    const organization_id = await AsyncStorage.getItem(
-      "@Grati:selected_organization"
-    );
+    const organization_id = await AsyncStorage.getItem('@Grati:selected_organization');
 
     const suggestions = await api.get(`/search/${organization_id}?q=${query}`);
     setSuggestions(suggestions.data);
@@ -38,10 +40,10 @@ export function Search() {
   }, [query]);
 
   return (
-    <KeyboardAvoidingView behavior="position" enabled>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <GestureHandlerRootView>
-          <Container>
+    <GestureHandlerRootView>
+      <KeyboardAvoidingView behavior="height" enabled>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <Container KeyboardIsVisible={keyboardIsVisible} keyboardHeight={keyboard.keyboardHeight}>
             <Header />
 
             <SearchSection>
@@ -64,8 +66,8 @@ export function Search() {
               keyExtractor={(profile) => profile.id}
             />
           </Container>
-        </GestureHandlerRootView>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
+    </GestureHandlerRootView>
   );
 }
