@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   Container,
   ReceiversUsernamesWrapper,
@@ -16,65 +16,63 @@ import {
   AttachButton,
   SendButton,
   ReceiverUsernameButton,
-  AttachedImage,
-} from "./styles";
-import Icon from "react-native-vector-icons/SimpleLineIcons";
-import { useKeyboard } from "@react-native-community/hooks";
-import { useTheme } from "styled-components";
-import { RFValue } from "react-native-responsive-fontsize";
-import { Emoji, emojiIndex } from "emoji-mart-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+  AttachedImage
+} from './styles';
+import Icon from 'react-native-vector-icons/SimpleLineIcons';
+import { useKeyboard } from '@react-native-community/hooks';
+import { useTheme } from 'styled-components';
+import { RFValue } from 'react-native-responsive-fontsize';
+import { Emoji, emojiIndex } from 'emoji-mart-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import * as ImagePicker from "expo-image-picker";
-import * as DocumentPicker from "expo-document-picker";
+import * as ImagePicker from 'expo-image-picker';
 
-import EmojiIcon from "../../assets/icons/emoji.svg";
-import ImageIcon from "../../assets/icons/image.svg";
-import Gif from "../../assets/icons/gif.svg";
-import Document from "../../assets/icons/document.svg";
-import Airplane from "../../assets/icons/airplane.svg";
+import EmojiIcon from '../../assets/icons/emoji.svg';
+import ImageIcon from '../../assets/icons/image.svg';
+import Gif from '../../assets/icons/gif.svg';
+import Airplane from '../../assets/icons/airplane.svg';
 import {
   Keyboard,
   KeyboardAvoidingView,
-  TouchableWithoutFeedback,
-} from "react-native";
-import { EmojiPicker } from "../../components/EmojiPicker";
-import { api } from "../../services/api";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
+  TouchableWithoutFeedback
+} from 'react-native';
+import { EmojiPicker } from '../../components/EmojiPicker';
+import { api } from '../../services/api';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { StatusBar } from 'expo-status-bar';
 
 export function SendMessage() {
   const theme = useTheme();
   const keyboard = useKeyboard();
   const [keyboardIsVisible, setKeyboardIsVisible] = useState(false);
 
-  const [username, setUsername] = useState("pedrothecatholic");
-  const [usersList, setUsersList] = useState(["ericknathan"]);
-  const [tags, setTags] = useState(["Resiliência"]);
-  const [tag, setTag] = useState("Persistência");
+  const [username, setUsername] = useState('pedrothecatholic');
+  const [usersList, setUsersList] = useState(['ericknathan']);
+  const [tags, setTags] = useState(['Resiliência']);
+  const [tag, setTag] = useState('Persistência');
   const [message, setMessage] = useState(
-    "Nos dá autonomia pra tomada de decisões, super atencioso e quer ver a melhor versão de nós mesmos, excelente líder :)"
+    'Nos dá autonomia pra tomada de decisões, super atencioso e quer ver a melhor versão de nós mesmos, excelente líder :)'
   );
   const [emojiModalIsOpen, setEmojiModalIsOpen] = useState(false);
   const [emojiData, setEmojiData] = useState(null);
 
   const [image, setImage] = useState(null);
-  const [document, setDocument] = useState(null);
 
   async function handleSendMessage() {
-    if (message == "" || usersList.length < 1 || tags.length < 1) {
+    if (message == '' || usersList.length < 1 || tags.length < 1) {
       console.log(
-        "Por favor, preencha todos os campos! É necessário inserir no mínimo a mensagem, os destinatários e tags"
+        'Por favor, preencha todos os campos! É necessário inserir no mínimo a mensagem, os destinatários e tags'
       );
       return;
     }
 
     const organization_id = await AsyncStorage.getItem(
-      "@Grati:selected_organization"
+      '@Grati:selected_organization'
     );
-    const group_id = await AsyncStorage.getItem("@Grati:group_id");
+    const group_id = await AsyncStorage.getItem('@Grati:group_id');
 
     if (!organization_id || !group_id) {
-      console.log("Por favor, selecione uma organização e um grupo");
+      console.log('Por favor, selecione uma organização e um grupo');
       return;
     }
 
@@ -84,40 +82,39 @@ export function SendMessage() {
       message,
       emoji: emojiData.emoji,
       groups: [group_id],
-      organization_id,
+      organization_id
     };
     console.log(sentData);
 
     const formData = new FormData();
 
     if (image !== null) {
-      let uriParts = image.split(".");
+      let uriParts = image.split('.');
       let fileType = uriParts[uriParts.length - 1];
 
-      formData.append("attachment", {
+      formData.append('attachment', {
         uri: image,
         name: `avatar.${fileType}`,
-        type: `image/${fileType}`,
+        type: `image/${fileType}`
       });
     }
 
-    formData.append("data", JSON.stringify(sentData));
+    formData.append('data', JSON.stringify(sentData));
 
     api
       .post(`message/${organization_id}`, formData, {
         headers: {
-          Accept: "application/json",
-          "Content-Type": "multipart/form-data",
-        },
+          Accept: 'application/json',
+          'Content-Type': 'multipart/form-data'
+        }
       })
       .then((response) => {
-        console.log("Mensagem enviada com sucesso!");
+        console.log('Mensagem enviada com sucesso!');
         setEmojiData(null);
         setImage(null);
-        setTag("");
-        setUsername("");
-        setMessage("");
-        setDocument(null);
+        setTag('');
+        setUsername('');
+        setMessage('');
         setTags([]);
         setUsersList([]);
       })
@@ -131,7 +128,7 @@ export function SendMessage() {
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
       aspect: [4, 3],
-      quality: 1,
+      quality: 1
     });
 
     // @ts-ignore
@@ -140,16 +137,6 @@ export function SendMessage() {
 
   async function handleRemoveImage() {
     setImage(null);
-  }
-
-  async function handlePickDocument() {
-    let result = await DocumentPicker.getDocumentAsync({
-      type: "application/pdf",
-    });
-
-    if (result.type !== "cancel") {
-      setDocument(result.uri);
-    }
   }
 
   function handleOpenEmojiModal() {
@@ -162,7 +149,7 @@ export function SendMessage() {
 
   function handleAddUser(event) {
     setUsersList([...usersList, event.nativeEvent.text]);
-    setUsername("");
+    setUsername('');
   }
 
   function handleRemoveUser(index) {
@@ -172,7 +159,7 @@ export function SendMessage() {
 
   function handleAddTag(event) {
     setTags([...tags, event.nativeEvent.text]);
-    setTag("");
+    setTag('');
   }
 
   function handleRemoveTag(index) {
@@ -186,23 +173,22 @@ export function SendMessage() {
 
   return (
     <GestureHandlerRootView>
-      <KeyboardAvoidingView behavior="position" enabled>
+      <KeyboardAvoidingView behavior='position' enabled>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <Container
             keyboardIsVisible={keyboardIsVisible}
-            keyboardHeight={keyboard.keyboardHeight}
-          >
+            keyboardHeight={keyboard.keyboardHeight}>
+            <StatusBar style='dark' backgroundColor='transparent' />
             <ReceiversUsernamesWrapper>
               {usersList.map((user, index) => (
                 <ReceiverUsernameButton
                   onPress={() => handleRemoveUser(index)}
-                  key={index}
-                >
+                  key={index}>
                   <ReceiverUsername>@{user}</ReceiverUsername>
                 </ReceiverUsernameButton>
               ))}
               <ReceiverInput
-                placeholder="Insira o próximo usuário"
+                placeholder='Insira o próximo usuário'
                 value={username}
                 onChange={setUsername}
                 onSubmitEditing={handleAddUser}
@@ -216,7 +202,7 @@ export function SendMessage() {
                     <TagIconWrapper>
                       <TagIcon>
                         <Icon
-                          name="trophy"
+                          name='trophy'
                           size={RFValue(20)}
                           color={theme.colors.text}
                         />
@@ -226,7 +212,7 @@ export function SendMessage() {
                   </Tag>
                 ))}
                 <TagInput
-                  placeholder="Insira a próxima tag"
+                  placeholder='Insira a próxima tag'
                   value={tag}
                   onChange={setTag}
                   onSubmitEditing={handleAddTag}
@@ -234,7 +220,7 @@ export function SendMessage() {
                 />
               </TagsWrapper>
               <TextInput
-                placeholder="Digite aqui sua mensagem..."
+                placeholder='Digite aqui sua mensagem...'
                 value={message}
                 onChangeText={setMessage}
                 multiline={true}
@@ -253,7 +239,7 @@ export function SendMessage() {
                         .id
                     }
                     size={24}
-                    set="twitter"
+                    set='twitter'
                   />
                 )}
               </AttachButton>
@@ -271,12 +257,6 @@ export function SendMessage() {
                   <Gif />
                 </AttachButton>
               )}
-              <AttachButton
-                onPress={handlePickDocument}
-                attached={document !== null}
-              >
-                <Document />
-              </AttachButton>
               <SendButton onPress={handleSendMessage}>
                 <Airplane />
               </SendButton>

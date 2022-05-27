@@ -11,6 +11,7 @@ import {
   Inter_500Medium,
   Inter_600SemiBold,
 } from "@expo-google-fonts/inter";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 SplashScreen.preventAutoHideAsync();
 export default function App() {
@@ -23,7 +24,9 @@ export default function App() {
   useEffect(() => {
     if (!fontsLoaded) {
       return;
-    }
+    };
+
+    AsyncStorage.clear();
 
     SplashScreen.hideAsync();
   }, [fontsLoaded]);

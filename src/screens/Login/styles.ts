@@ -27,6 +27,8 @@ export const ContentContainer = styled.View`
   width: 100%;
   padding: 10px 32px;
   background-color: ${({ theme }) => theme.colors.light.background};
+  margin-bottom: 100%;
+
 `;
 
 export const Title = styled.Text`
