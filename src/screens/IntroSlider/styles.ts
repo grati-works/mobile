@@ -73,7 +73,7 @@ export const NextButtonContainer = styled.TouchableOpacity`
   top: ${Platform.OS == 'ios' ? 26 : 110}px;
   margin-bottom: ${Platform.OS == 'ios' ? -40 : -48}px;
 `;
-
+  
 export const NextButtonWrapper = styled.TouchableOpacity`
   width: 50px;
   height: 50px;
