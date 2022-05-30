@@ -1,10 +1,16 @@
-import styled from "styled-components/native";
-import { getStatusBarHeight } from "react-native-iphone-x-helper";
-import { RFValue } from "react-native-responsive-fontsize";
-import { GestureHandlerRootView, RectButton } from "react-native-gesture-handler";
+import styled from 'styled-components/native';
+import { Dimensions, Platform } from 'react-native';
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
+import { RFValue } from 'react-native-responsive-fontsize';
+import {
+  GestureHandlerRootView,
+  RectButton
+} from 'react-native-gesture-handler';
+const { width, height } = Dimensions.get('window');
 
 export const Container = styled(GestureHandlerRootView)`
   width: 100%;
+  height: 126px;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.light.background};
 
@@ -20,6 +26,7 @@ export const ProfileContainer = styled(RectButton)`
 `;
 
 export const ProfileName = styled.Text`
+  height: ${Platform.OS == 'ios' ? 20 : 20}px;
   font-family: ${({ theme }) => theme.fonts.primary_400};
 `;
 
