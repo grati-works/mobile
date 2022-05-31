@@ -17,7 +17,7 @@ export function Ranking() {
   useEffect(() => {
     async function loadRanking() {
       const lastOrganization = await AsyncStorage.getItem(
-        "@Grati:selected_organization"
+        "@Grati:organization_id"
       );
 
       if (lastOrganization) {

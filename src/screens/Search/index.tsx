@@ -25,7 +25,7 @@ export function Search() {
   const [keyboardIsVisible, setKeyboardIsVisible] = useState(false);
 
   async function updateSuggestions(query) {
-    const organization_id = await AsyncStorage.getItem('@Grati:selected_organization');
+    const organization_id = await AsyncStorage.getItem('@Grati:organization_id');
 
     const suggestions = await api.get(`/search/${organization_id}?q=${query}`);
     setSuggestions(suggestions.data);

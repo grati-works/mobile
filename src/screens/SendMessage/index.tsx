@@ -67,20 +67,24 @@ export function SendMessage() {
     }
 
     const organization_id = await AsyncStorage.getItem(
-      '@Grati:selected_organization'
+      '@Grati:organization_id'
     );
     const group_id = await AsyncStorage.getItem('@Grati:group_id');
+
+    console.log(organization_id, group_id)
 
     if (!organization_id || !group_id) {
       console.log('Por favor, selecione uma organização e um grupo');
       return;
     }
 
+    const emoji = emojiData?.emoji || null;
+
     let sentData = {
       receivers_usernames: usersList,
       tags,
       message,
-      emoji: emojiData.emoji,
+      emoji,
       groups: [group_id],
       organization_id
     };
@@ -222,6 +226,7 @@ export function SendMessage() {
                 value={message}
                 onChangeText={setMessage}
                 multiline={true}
+                spellCheck={false}
               />
             </MessageInfoWrapper>
             <FooterWrapper keyboardIsVisible={keyboardIsVisible}>
