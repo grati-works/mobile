@@ -10,14 +10,13 @@ const { width, height } = Dimensions.get('window');
 
 export const Container = styled(GestureHandlerRootView)`
   width: 100%;
-  height: 126px;
+  height: 17.5%;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.light.background};
-
+  top: 15px;  
   flex-direction: row;
   justify-content: space-between;
-  padding: 0 ${RFValue(24)}px;
-  margin-top: ${getStatusBarHeight()}px;
+  padding: 0 ${RFValue(30)}px;
 `;
 
 export const ProfileContainer = styled(RectButton)`
