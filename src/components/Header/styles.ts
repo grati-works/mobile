@@ -16,7 +16,7 @@ export const Container = styled(GestureHandlerRootView)`
 
   flex-direction: row;
   justify-content: space-between;
-  padding: ${getStatusBarHeight() + RFValue(10)}px;
+  padding: 0 ${RFValue(24)}px;
   margin-top: ${getStatusBarHeight()}px;
 `;
 

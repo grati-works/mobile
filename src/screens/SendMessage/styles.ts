@@ -6,19 +6,8 @@ import { RectButton } from "react-native-gesture-handler";
 
 export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.light.background};
-
-  ${({ keyboardIsVisible, keyboardHeight, theme }) =>
-    keyboardIsVisible
-      ? css`
-          height: ${RFPercentage(100) - keyboardHeight}px;
-          margin-top: ${keyboardHeight -
-          getStatusBarHeight() * 3 +
-          (Platform.OS == "ios" ? 20 : 10)}px;
-        `
-      : css`
-          height: ${RFPercentage(100) - 48}px;
-          margin-top: ${getStatusBarHeight() - 20 + (Platform.OS == "ios" ? 20 : 0)}px;
-        `}
+  height: ${RFPercentage(100)}px;
+  margin-top: ${getStatusBarHeight() + (Platform.OS == "ios" ? 20 : 0)}px;
 `;
 
 export const ReceiversUsernamesWrapper = styled.View`
@@ -130,15 +119,6 @@ export const FooterWrapper = styled.View`
   flex-direction: row;
 
   margin-bottom: ${getStatusBarHeight() + Platform.OS === "ios" ? 80 : 60}px;
-
-  ${({ keyboardIsVisible }) =>
-    keyboardIsVisible
-      ? css`
-          display: none;
-        `
-      : css`
-          display: flex;
-        `};
 `;
 
 export const AttachButton = styled(RectButton)`

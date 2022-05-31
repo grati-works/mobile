@@ -173,11 +173,9 @@ export function SendMessage() {
 
   return (
     <GestureHandlerRootView>
-      <KeyboardAvoidingView behavior='position' enabled>
+      <KeyboardAvoidingView behavior='height' enabled>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <Container
-            keyboardIsVisible={keyboardIsVisible}
-            keyboardHeight={keyboard.keyboardHeight}>
+          <Container >
             <StatusBar style='dark' backgroundColor='transparent' />
             <ReceiversUsernamesWrapper>
               {usersList.map((user, index) => (
