@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
-import { useWindowDimensions } from "react-native";
-import RenderHTML from "react-native-render-html";
-import { RFValue } from "react-native-responsive-fontsize";
-import theme from "../../styles/theme";
+import React, { useEffect } from 'react';
+import { Animated, useWindowDimensions } from 'react-native';
+import RenderHTML from 'react-native-render-html';
+import { RFValue } from 'react-native-responsive-fontsize';
+import theme from '../../styles/theme';
+import { FabButton } from '../../components/FabButton';
 
 import {
   AboutMe,
@@ -20,14 +21,18 @@ import {
   XpView,
   ScrollView,
   SocialMediaWidget,
-} from "./styles";
-import ExternalLinkIcon from "../../assets/icons/external.svg";
+} from './styles';
+import ExternalLinkIcon from '../../assets/icons/external.svg';
 
 export function UserProfile({ route, navigation }) {
   const { profile } = route.params;
   useEffect(() => {
     console.log(route.params);
   }, []);
+
+  animation = new Animated.Value(0);
+
+  toggleMenu = () => {}
 
   const { width } = useWindowDimensions();
   const tagsStyles = {
@@ -59,10 +64,7 @@ export function UserProfile({ route, navigation }) {
           <AboutMe>
             <SectionTitle>Sobre mim</SectionTitle>
             <NormalText>
-              <RenderHTML
-                source={{ html: profile.description }}
-                tagsStyles={tagsStyles}
-              />
+              <RenderHTML source={{ html: profile.description }} tagsStyles={tagsStyles} />
             </NormalText>
           </AboutMe>
 
@@ -90,6 +92,7 @@ export function UserProfile({ route, navigation }) {
         </Container>
       </ScrollView>
       <SocialMediaWidget>
+        <FabButton></FabButton>
         <ExternalLinkIcon />
       </SocialMediaWidget>
     </>

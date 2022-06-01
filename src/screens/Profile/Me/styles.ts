@@ -1,15 +1,13 @@
 import styled from 'styled-components/native';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
-import { Dimensions, Platform } from 'react-native';
+import { Platform } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
-import { css } from 'styled-components';
 
 export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.light.background};
 
   margin-top: ${getStatusBarHeight() - 20 + (Platform.OS == 'ios' ? 20 : 0)}px;
-  // margin-top: ${getStatusBarHeight()}px;
   padding-horizontal: ${RFPercentage(5)}px;
 `;
 
