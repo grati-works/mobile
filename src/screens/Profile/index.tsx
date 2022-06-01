@@ -3,7 +3,7 @@ import { Animated, useWindowDimensions } from 'react-native';
 import RenderHTML from 'react-native-render-html';
 import { RFValue } from 'react-native-responsive-fontsize';
 import theme from '../../styles/theme';
-import { FabButton } from '../../components/FabButton';
+import FabButton  from '../../components/FabButton';
 
 import {
   AboutMe,
@@ -13,7 +13,6 @@ import {
   ProfilePicture,
   ProfilePictureContainer,
   SectionWrapper,
-  SubName,
   UserName,
   UserResponsibiliy,
   XpNumber,
@@ -29,10 +28,6 @@ export function UserProfile({ route, navigation }) {
   useEffect(() => {
     console.log(route.params);
   }, []);
-
-  animation = new Animated.Value(0);
-
-  toggleMenu = () => {}
 
   const { width } = useWindowDimensions();
   const tagsStyles = {
@@ -91,10 +86,10 @@ export function UserProfile({ route, navigation }) {
           </SectionWrapper>
         </Container>
       </ScrollView>
-      <SocialMediaWidget>
-        <FabButton></FabButton>
+        <FabButton />
+      {/* <SocialMediaWidget>
         <ExternalLinkIcon />
-      </SocialMediaWidget>
+      </SocialMediaWidget> */}
     </>
   );
 }
