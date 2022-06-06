@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigation } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
 import { Header } from "../../components/Header";
 import { MessageCard } from "../../components/MessageCard";
@@ -49,7 +49,7 @@ export function Home() {
     setEmojiData({ slug, emoji });
   }
 
-  useEffect(() => {
+  useFocusEffect(() => {
     async function loadMessages() {
       try {
         const selectedOrganization = await AsyncStorage.getItem(
@@ -65,7 +65,7 @@ export function Home() {
     }
 
     loadMessages();
-  }, []);
+  });
 
   return (
     <>
