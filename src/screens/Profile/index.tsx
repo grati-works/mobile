@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { Animated, useWindowDimensions } from 'react-native';
+import { useWindowDimensions } from 'react-native';
 import RenderHTML from 'react-native-render-html';
 import { RFValue } from 'react-native-responsive-fontsize';
 import theme from '../../styles/theme';
-import FabButton  from '../../components/FabButton';
+import { FabButton } from '../../components/FabButton';
 
 import {
   AboutMe,
@@ -19,9 +19,7 @@ import {
   XpText,
   XpView,
   ScrollView,
-  SocialMediaWidget,
 } from './styles';
-import ExternalLinkIcon from '../../assets/icons/external.svg';
 
 export function UserProfile({ route, navigation }) {
   const { profile } = route.params;
@@ -38,6 +36,8 @@ export function UserProfile({ route, navigation }) {
       width: width * 0.88,
     },
   };
+
+  console.log(profile);
 
   return (
     <>
@@ -86,10 +86,11 @@ export function UserProfile({ route, navigation }) {
           </SectionWrapper>
         </Container>
       </ScrollView>
-        <FabButton />
-      {/* <SocialMediaWidget>
-        <ExternalLinkIcon />
-      </SocialMediaWidget> */}
+      <FabButton
+        gitHubUsername={profile.user.username}
+        dribbleUsername={profile.user.username}
+        LinkedInUsername={profile.user.username}
+      />
     </>
   );
 }
