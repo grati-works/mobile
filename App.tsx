@@ -12,6 +12,7 @@ import {
   Inter_600SemiBold,
 } from "@expo-google-fonts/inter";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { LogBox } from 'react-native';
 
 SplashScreen.preventAutoHideAsync();
 export default function App() {
@@ -30,6 +31,8 @@ export default function App() {
 
     SplashScreen.hideAsync();
   }, [fontsLoaded]);
+  
+  LogBox.ignoreAllLogs()
 
   return (
     <AuthProvider>

@@ -8,13 +8,14 @@ import { Header } from "../../components/Header";
 import { api } from "../../services/api";
 import dayjs from "dayjs";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useFocusEffect } from '@react-navigation/native';
 
 export function Ranking() {
   const [ranking, setRanking] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  useEffect(() => {
+  useFocusEffect(() => {
     async function loadRanking() {
       const lastOrganization = await AsyncStorage.getItem(
         "@Grati:organization_id"
@@ -41,7 +42,7 @@ export function Ranking() {
     }
 
     loadRanking();
-  }, []);
+  });
 
   return (
     <>
