@@ -43,6 +43,7 @@ function AuthProvider({ children }: AuthProviderProps) {
   const [isLoading, setIsLoading] = useState(true);
 
   async function signIn({ email, password }: SignInCredentials) {
+    console.log({ email, password })
     try {
       const response = await api.post("/sessions", {
         email,

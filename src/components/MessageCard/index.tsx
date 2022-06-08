@@ -166,7 +166,6 @@ export function MessageCard({
         </ActionsWrapper>
         <Line />
         <FooterWrapper>
-          <ReactionsAdd />
           <ActionButtonWrapper onPress={openEmojiModal}>
             <Reactions />
           </ActionButtonWrapper>

@@ -68,6 +68,7 @@ export const Tag = styled(RectButton)`
   background-color: ${({ theme }) => theme.colors.light.detail};
   border-radius: 5px;
   margin-right: 12px;
+  margin-bottom: 8px;
 
   display: flex;
   flex-direction: row;
@@ -118,7 +119,7 @@ export const FooterWrapper = styled.View`
   display: flex;
   flex-direction: row;
 
-  margin-bottom: ${getStatusBarHeight() + Platform.OS === "ios" ? 80 : 60}px;
+  margin-bottom: ${getStatusBarHeight() + Platform.OS === "ios" ? 80 : 120}px;
 `;
 
 export const AttachButton = styled(RectButton)`
